@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,12 @@ Route::get('/section/items', [CategoryController::class, 'index'])
     ->name('section.items');
 
 Route::get('section/itemsPage.edit', [CategoryController::class, 'edit'])
-    ->name('ection.itemsPage.edit');
+    ->name('section.itemsPage.edit');
 
 
 Route::resource('itemsPage', CategoryController::class);
+
+
+// Dashboard
+Route::get('section/home', [DashboardController::class, 'countItem'])
+    ->name('section.home');
