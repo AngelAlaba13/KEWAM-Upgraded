@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Log;
 
 class DashboardController extends Controller
 {
@@ -17,6 +18,10 @@ class DashboardController extends Controller
         $totalQuantity = Category::sum('quantity');  // Sum of all quantities from the 'quantity' column in the 'items' table
         $totalValue = Category::sum('value');
 
-        return view('section.home', compact('itemCount', 'categoryCount', 'totalQuantity', 'totalValue'));
+        // Fetch all logs
+        $logs = Log::latest()->get();
+
+        return view('section.home', compact('categoryCount', 'itemCount', 'totalQuantity', 'totalValue', 'logs'));
     }
+
 }

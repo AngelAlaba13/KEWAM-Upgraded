@@ -43,3 +43,11 @@ Route::resource('itemsPage', CategoryController::class);
 // Dashboard
 Route::get('section/home', [DashboardController::class, 'countItem'])
     ->name('section.home');
+
+
+
+
+
+
+
+
