@@ -45,5 +45,5 @@ Route::get('section/home', [DashboardController::class, 'countItem'])
 Route::get('/search/suggestions', [CategoryController::class, 'suggestions'])
     ->name('search.suggestions'); // For the search suggestions
 
-Route::get('/search', [CategoryController::class, 'search'])
+Route::get('section/itemsPage/search', [CategoryController::class, 'search'])
     ->name('section.itemsPage.search'); // For displaying the search results

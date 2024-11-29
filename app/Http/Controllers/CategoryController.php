@@ -164,7 +164,7 @@ class CategoryController extends Controller
             $categories = Category::all();
         }
 
-        return view('section.items', compact('categories'));
+        return view('section.itemsPage.search', compact('categories'));
     }
 
 

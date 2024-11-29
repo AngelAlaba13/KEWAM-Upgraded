@@ -30,7 +30,7 @@
             <div class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4">
                 <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Items</div>
                 <form action="{{ route('section.items') }}" method="GET">
-                    <div class="flex bg-gray-300 px-3 py-1 w-80 shadow-inner">
+                    <div class="flex bg-gray-300 px-3 py-1 ml-1 w-80 shadow-inner shadow-gray-300">
                         <input type="text" name="query" id="search-input" placeholder="Search" class="w-full text-base sm:text-lg border-none outline-none bg-transparent pr-12">
                         <div class=" fixed top-2 ml-64 bg-slate-500 h-9 w-14">
                             <button type="submit" class=" px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm" style="font-size: 10px;">
@@ -40,9 +40,11 @@
                     </div>
                 </form>
 
-                <div id="suggestions" class="absolute bg-white shadow-md w-80 mt-1 hidden">
-                    <!-- Suggestions will appear here -->
-                </div>
+                <a href="{{ route('section.itemsPage.search')}}">
+                    <div id="suggestions" class="absolute top-11 bg-gray-300 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
+
+                    </div>
+                </a>
 
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
