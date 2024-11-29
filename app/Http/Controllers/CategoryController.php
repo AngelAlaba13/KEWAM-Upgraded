@@ -41,11 +41,11 @@ class CategoryController extends Controller
         ]);
 
         // Handle image upload
-    $imagePath = null;
+        $imagePath = null;
 
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('uploads', 'public');
-    }
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('uploads', 'public');
+        }
 
         // Calculate the value as quantity * price
         $value = $request->quantity * $request->price;
@@ -93,30 +93,37 @@ class CategoryController extends Controller
             'image' => 'nullable|image|mimes:jpeg,jpg,png|max:4096',
         ]);
 
-        $imagePath = null;
+        // Handle image upload
+        $imagePath = $itemsPage->image_path;  // Keep the existing image path if no new image is uploaded
 
-        // Handle image upload if present
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/categories', 'public');
+            // Delete the old image if it exists
+            if ($itemsPage->image_path && file_exists(storage_path('app/public/' . $itemsPage->image_path))) {
+                unlink(storage_path('app/public/' . $itemsPage->image_path));
+            }
+
+            // Store the new image
+            $imagePath = $request->file('image')->store('uploads', 'public');
         }
 
         // Calculate the value as quantity * price
         $value = $request->quantity * $request->price;
 
-
+        // Update the category
         $itemsPage->update([
             'name' => $request->name,
             'category' => $request->category,
             'quantity' => $request->quantity,
             'price' => $request->price,
             'value' => $value,
-            'image_path' => $imagePath,
+            'image_path' => $imagePath, // Update image path
         ]);
 
-            return redirect()->route('itemsPage.index')->with('status', 'Item Updated Successfully');
+        $message = "Item {$itemsPage->name} was updated";
+        Log::create(['message' => $message]);
+
+        return redirect()->route('itemsPage.index')->with('status', 'Item Updated Successfully');
     }
-
-
 
 
     /**
@@ -133,7 +140,49 @@ class CategoryController extends Controller
         // Reset the AUTO_INCREMENT value to the maximum ID
         DB::statement("ALTER TABLE categories AUTO_INCREMENT = {$maxId}");
 
+
+        $message = "Item {$itemsPage->name} was deleted";
+        Log::create(['message' => $message]);
+
         // Redirect back with a success message
         return redirect()->route('itemsPage.index')->with('status', 'Item deleted');
     }
+
+
+
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            // Search for categories by name or category
+            $categories = Category::where('name', 'like', "%{$query}%")
+                ->orWhere('category', 'like', "%{$query}%")
+                ->get();
+        } else {
+            $categories = Category::all();
+        }
+
+        return view('section.items', compact('categories'));
+    }
+
+
+
+    public function suggestions(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $categories = Category::where('name', 'like', "%{$query}%")
+                ->orWhere('category', 'like', "%{$query}%")
+                ->limit(5) // Limit to 5 results for suggestions
+                ->get(['name', 'category']);
+        } else {
+            $categories = [];
+        }
+
+        return response()->json($categories);
+    }
+
 }

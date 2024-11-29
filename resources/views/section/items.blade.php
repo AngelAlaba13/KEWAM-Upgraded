@@ -29,9 +29,21 @@
             <!-- Items Label and Search Bar -->
             <div class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4">
                 <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Items</div>
-                <div class="flex bg-gray-200 px-3 py-1 w-80">
-                    <input type="text" placeholder="Search" class="w-full text-base sm:text-lg border-none outline-none bg-transparent">
+                <form action="{{ route('section.items') }}" method="GET">
+                    <div class="flex bg-gray-300 px-3 py-1 w-80 shadow-inner">
+                        <input type="text" name="query" id="search-input" placeholder="Search" class="w-full text-base sm:text-lg border-none outline-none bg-transparent pr-12">
+                        <div class=" fixed top-2 ml-64 bg-slate-500 h-9 w-14">
+                            <button type="submit" class=" px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm" style="font-size: 10px;">
+                                <img src="{{ asset('imgs/search.png') }}" alt="back to items" class=" w-4 mt-1">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="suggestions" class="absolute bg-white shadow-md w-80 mt-1 hidden">
+                    <!-- Suggestions will appear here -->
                 </div>
+
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
                 <a href="{{ route('section.itemsPage.create') }}">
@@ -57,14 +69,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $category)
+                    @forelse ($categories as $index => $category)
                     <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
                         onclick="showPopup(event, {{ $category->id }}, '{{ $category->name }}', '{{ $category->category }}', {{ $category->quantity }}, {{ $category->price }}, '{{ asset($category->image_path) }}')">
-                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->id }}</td>
+                        <!-- Display Sequential Number -->
+                        <td class="px-3 py-2 border border-gray-300 text-center">
+                            {{ $categories->firstItem() + $index }} <!-- Sequential Number -->
+                        </td>
 
                         <!-- Image and Name Display -->
                         <td class="px-2 py-1 border border-gray-300 flex items-center space-x-2 h-10">
-                            <img src="{{ asset($category->image_path) }}" alt="Image" class="w-8 h-8 object-cover">
+                            <img src="{{ asset($category->image_path) }}" alt="Image" class="w-8 h-8 object-cover mr-2">
                             <span>{{ $category->name }}</span>
                         </td>
                         <td class="px-3 py-2 border border-gray-300">{{ $category->category }}</td>
@@ -84,6 +99,7 @@
                     @endforelse
                 </tbody>
 
+
             </table>
         </div>
         <div class="flex center justify-center mt-5 mb-4">
@@ -94,9 +110,10 @@
 
 <!-- Pop-up -->
 <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
-    <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/4 relative">
+    <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/3 relative">
 
-        <div class="flex justify-start items-start mb-5">
+        <div class="flex justify-start items-start mb-2">
+            <p class=" text-gray-500 font-medium text-2xl ml-2">Item</p>
             <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
                 x
             </button>
@@ -107,33 +124,20 @@
         <p id="popup-item-category" class="text-center text-xs mb-3"></p>
 
         <!-- Image Container -->
-        <div class="flex flex-col items-center">
-            <div class="flex justify-center mt-3 w-64 h-64 overflow-hidden" id="popup-item-image">
-                <img id="popup-image" src="" alt="Image" class="w-full h-full object-cover">
+        <div class=" flex flex-col items-center">
+            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden" id="popup-item-image">
+                <img src="" alt="Image" class="w-full h-full object-cover">
             </div>
         </div>
 
         <!-- Quantity and Price -->
-        <div class="flex justify-between mt-7">
+        <div class="flex justify-between mt-9">
             <p id="popup-item-quantity" class="flex justify-start"></p>
             <p id="popup-item-price" class="flex justify-end font-bold"></p>
         </div>
 
     </div>
 </div>
-
-<script>
-    // Set default image if no uploaded image is provided
-    window.onload = function() {
-        const imageElement = document.getElementById('popup-image');
-        const defaultImage = 'path/to/default-image.jpg'; // Replace with the path to your default image
-
-        // Check if the image source is empty or invalid
-        if (!imageElement.src || imageElement.src === window.location.href) {
-            imageElement.src = defaultImage;
-        }
-    }
-</script>
 
 
 <script>
@@ -159,4 +163,34 @@
     function closePopup() {
         document.getElementById('popup').classList.add('hidden');
     }
+
+
+    document.getElementById('search-input').addEventListener('input', function() {
+        const query = this.value;
+
+        if (query.length >= 2) {  // Start searching after at least 2 characters
+            fetch(`/search/suggestions?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const suggestionsDiv = document.getElementById('suggestions');
+                    suggestionsDiv.innerHTML = '';  // Clear previous suggestions
+
+                    if (data.length) {
+                        suggestionsDiv.classList.remove('hidden');
+                        data.forEach(item => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('px-3', 'py-2', 'cursor-pointer');
+                            suggestion.textContent = item.name + ' - ' + item.category;
+                            suggestionsDiv.appendChild(suggestion);
+                        });
+                    } else {
+                        suggestionsDiv.classList.add('hidden');
+                    }
+                });
+        } else {
+            document.getElementById('suggestions').classList.add('hidden');
+        }
+    });
+
+
 </script>

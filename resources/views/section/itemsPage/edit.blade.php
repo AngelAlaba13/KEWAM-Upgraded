@@ -56,7 +56,7 @@
 
                     <!-- Display current image if available -->
                     @if ($itemsPage->image_path)
-                        <img src="{{ asset('storage/' . $itemsPage->image_path) }}" alt="Current Image" width="100" class="mt-2">
+                        <img src='{{ asset($itemsPage->image_path) }}' alt="Current Image" width="100" class="mt-2">
                     @endif
                 </div>
             </div>
