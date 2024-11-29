@@ -59,9 +59,14 @@
                 <tbody>
                     @forelse ($categories as $category)
                     <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
-                        onclick="showPopup(event, {{ $category->id }}, '{{ $category->name }}', '{{ $category->category }}', {{ $category->quantity }}, {{ $category->price }})">
+                        onclick="showPopup(event, {{ $category->id }}, '{{ $category->name }}', '{{ $category->category }}', {{ $category->quantity }}, {{ $category->price }}, '{{ asset($category->image_path) }}')">
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->id }}</td>
-                        <td class="px-3 py-2 border border-gray-300">{{ $category->name }}</td>
+
+                        <!-- Image and Name Display -->
+                        <td class="px-2 py-1 border border-gray-300 flex items-center space-x-2 h-10">
+                            <img src="{{ asset($category->image_path) }}" alt="Image" class="w-8 h-8 object-cover">
+                            <span>{{ $category->name }}</span>
+                        </td>
                         <td class="px-3 py-2 border border-gray-300">{{ $category->category }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->quantity }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->price, 2) }}</td>
@@ -78,6 +83,7 @@
                     </tr>
                     @endforelse
                 </tbody>
+
             </table>
         </div>
         <div class="flex center justify-center mt-5 mb-4">
@@ -87,41 +93,68 @@
 </div>
 
 <!-- Pop-up -->
-<div id="popup" class="fixed inset-0  bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
+<div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
     <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/4 relative">
 
         <div class="flex justify-start items-start mb-5">
-            <button onclick="closePopup()" class="absolute top-2 right-2">
-                <img src="{{asset('imgs/x.png')}}" alt="Close">
+            <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
+                x
             </button>
         </div>
 
-        <label class="flex justify-center">Upload Product Image</label>
-            <div class="mb-5" id="popup-item-image"></div>
+        <!-- Name and Category -->
+        <p id="popup-item-name" class="text-center font-bold text-xl"></p>
+        <p id="popup-item-category" class="text-center text-xs mb-3"></p>
 
-            <p id="popup-item-name" class="flex justify-center font-bold text-xl"></p>
-
-            <p id="popup-item-category" class="flex justify-center  text-xs"></p>
-
-            <div class="flex justify-between mt-14">
-                <p id="popup-item-quantity" class="flex justify-start"></p>
-
-                <p id="popup-item-price" class="flex justify-end font-bold"></p>
+        <!-- Image Container -->
+        <div class="flex flex-col items-center">
+            <div class="flex justify-center mt-3 w-64 h-64 overflow-hidden" id="popup-item-image">
+                <img id="popup-image" src="" alt="Image" class="w-full h-full object-cover">
             </div>
+        </div>
+
+        <!-- Quantity and Price -->
+        <div class="flex justify-between mt-7">
+            <p id="popup-item-quantity" class="flex justify-start"></p>
+            <p id="popup-item-price" class="flex justify-end font-bold"></p>
+        </div>
 
     </div>
 </div>
 
+<script>
+    // Set default image if no uploaded image is provided
+    window.onload = function() {
+        const imageElement = document.getElementById('popup-image');
+        const defaultImage = 'path/to/default-image.jpg'; // Replace with the path to your default image
+
+        // Check if the image source is empty or invalid
+        if (!imageElement.src || imageElement.src === window.location.href) {
+            imageElement.src = defaultImage;
+        }
+    }
+</script>
+
 
 <script>
-    function showPopup(event, itemId, itemName, itemCategory, itemQuantity, itemPrice) {
-        if (event.target.closest('td').classList.contains('w-3')) return;
-        document.getElementById('popup-item-name').innerText = itemName;
-        document.getElementById('popup-item-category').innerText = itemCategory;
-        document.getElementById('popup-item-quantity').innerText = "x" + itemQuantity;
-        document.getElementById('popup-item-price').innerText = "₱" + itemPrice.toFixed(2);
-        document.getElementById('popup').classList.remove('hidden');
+    function showPopup(event, itemId, itemName, itemCategory, itemQuantity, itemPrice, itemImagePath) {
+    if (event.target.closest('td').classList.contains('w-3')) return;
+    document.getElementById('popup-item-name').innerText = itemName;
+    document.getElementById('popup-item-category').innerText = itemCategory;
+    document.getElementById('popup-item-quantity').innerText = "x" + itemQuantity;
+    document.getElementById('popup-item-price').innerText = "₱" + itemPrice.toFixed(2);
+
+    // Update the popup image
+    const popupImage = document.getElementById('popup-item-image');
+    if (itemImagePath) {
+        popupImage.innerHTML = `<img src="${itemImagePath}" alt="Uploaded Image" class="w-full h-auto rounded-md">`;
+    } else {
+        popupImage.innerHTML = `<p class="text-gray-500">No image uploaded.</p>`;
     }
+
+    document.getElementById('popup').classList.remove('hidden');
+}
+
 
     function closePopup() {
         document.getElementById('popup').classList.add('hidden');

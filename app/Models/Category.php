@@ -17,7 +17,7 @@ class Category extends Model
         'quantity',
         'price',
         'value',
-        'image_path',
+        'image_path', // Add this line
     ];
 
 

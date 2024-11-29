@@ -40,12 +40,12 @@ class CategoryController extends Controller
             'image' => 'nullable|image|mimes:jpeg,jpg,png|max:4096',
         ]);
 
-        $imagePath = null;
+        // Handle image upload
+    $imagePath = null;
 
-        // Handle image upload if present
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/categories', 'public');
-        }
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('uploads', 'public');
+    }
 
         // Calculate the value as quantity * price
         $value = $request->quantity * $request->price;
@@ -57,14 +57,15 @@ class CategoryController extends Controller
             'quantity' => $request->quantity,
             'price' => $request->price,
             'value' => $value,
-            'image_path' => $imagePath,
+            'image_path' => $imagePath, // Store image path
         ]);
 
         $message = "Item {$category->name} added in {$category->category} category";
         Log::create(['message' => $message]);
 
 
-        return redirect()->route('itemsPage.index')->with('status', 'Item Added Successfully');
+        return redirect()->route('itemsPage.index')
+            ->with('status', 'Item Added Successfully');
 
     }
 
