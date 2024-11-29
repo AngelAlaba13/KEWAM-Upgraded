@@ -82,7 +82,7 @@
 
                         <!-- Image and Name Display -->
                         <td class="px-2 py-1 border border-gray-300 flex items-center space-x-2 h-10">
-                            <img src="{{ asset($category->image_path) }}" alt="Image" class="w-8 h-8 object-cover mr-2">
+                            <img src="{{ asset($category->image_path) }}" alt="Image" class="w-8 h-8 object-cover mr-2 border-2 border-slate-400">
                             <span>{{ $category->name }}</span>
                         </td>
                         <td class="px-3 py-2 border border-gray-300">{{ $category->category }}</td>
@@ -127,9 +127,9 @@
         <p id="popup-item-category" class="text-center text-xs mb-3"></p>
 
         <!-- Image Container -->
-        <div class=" flex flex-col items-center">
-            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden" id="popup-item-image">
-                <img src="" alt="Image" class="w-full h-full object-cover">
+        <div class=" flex flex-col items-center ">
+            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden border-2 border-slate-500 rounded-lg shadow-lg" id="popup-item-image">
+                <img src="" alt="Image" class="w-full h-full object-cover rounded-lg shadow-lg">
             </div>
         </div>
 

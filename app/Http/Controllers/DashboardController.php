@@ -17,7 +17,7 @@ class DashboardController extends Controller
         // Count total items
         $itemCount = Category::count();  // Count total items from 'categories' table
 
-        // Debug the value of $itemCount
+        // Debug the value of $itemCoun
 
 
         $totalQuantity = Category::sum('quantity');  // Sum of all quantities from the 'quantity' column

@@ -49,15 +49,14 @@
                     @enderror
                 </div>
 
-                <div class="start">
-                    <label class=" md:ml-32">Upload Product Image</label>
-                    <input type="file" id="productImage" name="productImage" accept=".jpeg, .jpg, .png"
-                        class="mb-3 md:mb-0 md:w-72 px-3 py-2 border border-gray-400 rounded-md mt-2 md:ml-32">
-
+                <div class="start mr-5">
+                    <label class="flex justify-center mb-5">Uploaded Product Image</label>
                     <!-- Display current image if available -->
-                    @if ($itemsPage->image_path)
-                        <img src='{{ asset($itemsPage->image_path) }}' alt="Current Image" width="100" class="mt-2">
-                    @endif
+                    <div class="w-80 h-44 overflow-hidden">
+                        @if ($itemsPage->image_path)
+                            <img src='{{ asset($itemsPage->image_path) }}' alt="Current Image" class=" w-80" width="100" class="w-full h-full object-cover rounded-lg shadow-lg">
+                        @endif
+                    </div>
                 </div>
             </div>
 
