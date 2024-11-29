@@ -40,11 +40,12 @@
                     </div>
                 </form>
 
-                <a href="{{ route('section.itemsPage.search')}}">
+                <form action="{{ route('section.items') }}" method="GET">
                     <div id="suggestions" class="absolute top-11 bg-gray-300 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
 
                     </div>
-                </a>
+                </form>
+
 
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
@@ -167,22 +168,33 @@
     }
 
 
-    document.getElementById('search-input').addEventListener('input', function() {
+    // Listen to input changes for search
+    document.getElementById('search-input').addEventListener('input', function () {
         const query = this.value;
+        const suggestionsDiv = document.getElementById('suggestions');
 
-        if (query.length >= 2) {  // Start searching after at least 2 characters
+        if (query.length >= 2) {
             fetch(`/search/suggestions?query=${query}`)
                 .then(response => response.json())
                 .then(data => {
-                    const suggestionsDiv = document.getElementById('suggestions');
-                    suggestionsDiv.innerHTML = '';  // Clear previous suggestions
+                    suggestionsDiv.innerHTML = '';
 
                     if (data.length) {
                         suggestionsDiv.classList.remove('hidden');
                         data.forEach(item => {
                             const suggestion = document.createElement('div');
                             suggestion.classList.add('px-3', 'py-2', 'cursor-pointer');
-                            suggestion.textContent = item.name + ' - ' + item.category;
+                            suggestion.textContent = `${item.name} - ${item.category}`;
+
+                            // Add event listener to the suggestion for clicking
+                            suggestion.addEventListener('click', function () {
+                                // Set the input field to the suggestion value
+                                document.getElementById('search-input').value = item.name;
+
+                                // Submit the form to search with the suggestion
+                                document.querySelector('form').submit();
+                            });
+
                             suggestionsDiv.appendChild(suggestion);
                         });
                     } else {
@@ -190,9 +202,11 @@
                     }
                 });
         } else {
-            document.getElementById('suggestions').classList.add('hidden');
+            suggestionsDiv.classList.add('hidden');
         }
     });
+
+
 
 
 </script>

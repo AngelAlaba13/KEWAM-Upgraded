@@ -12,9 +12,16 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(9);
+        $query = $request->input('query');
+
+        if ($query) {
+            // Perform search if query exists
+            return $this->search($request);
+        }
+
+        $categories = Category::paginate(9); // Default items listing
         return view('section.items', [
             'categories' => $categories
         ]);
@@ -155,17 +162,13 @@ class CategoryController extends Controller
     {
         $query = $request->input('query');
 
-        if ($query) {
-            // Search for categories by name or category
-            $categories = Category::where('name', 'like', "%{$query}%")
-                ->orWhere('category', 'like', "%{$query}%")
-                ->get();
-        } else {
-            $categories = Category::all();
-        }
+        $categories = Category::where('name', 'like', "%{$query}%")
+            ->orWhere('category', 'like', "%{$query}%")
+            ->paginate(9); // Paginate search results for table display
 
-        return view('section.itemsPage.search', compact('categories'));
+        return view('section.items', compact('categories'));
     }
+
 
 
 
