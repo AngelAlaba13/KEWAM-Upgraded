@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'section.home');
+// Default home view (redirect root to /section/home)
+Route::get('/', function () {
+    return redirect()->route('section.home');
+});
 
 Route::get('/section/home', [NavigationController::class, 'home'])
     ->name('section.home');

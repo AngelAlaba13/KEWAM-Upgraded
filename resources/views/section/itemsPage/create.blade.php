@@ -41,7 +41,7 @@
 
                 <div class="start ">
                     <label class=" md:ml-32">Upload Product Image</label>
-                    <input type="file" id="productImage" name="productImage" accept=".jpeg, .jpg, .png"
+                    <input type="file" id="productImage" name="image" accept=".jpeg, .jpg, .png"
                         class="mb-3 md:mb-0 md:w-72 px-3 py-2 border border-gray-400 rounded-md mt-2 md:ml-32">
                 </div>
             </div>
