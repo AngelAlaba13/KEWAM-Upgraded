@@ -42,34 +42,26 @@ class ServicesController extends Controller
     {
         $request->validate([
             'clientName' => 'required|string|max:225',
-            'dateTime' => 'required|date|after:now',
             'address' => 'required|string|max:225',
             'contactNo' => 'required|string|max:225',
             'service' => 'required|string|max:225',
             'serviceDescription' => 'required|string|min:5|max:1000',
             'serviceProvider' => 'required|string|max:225',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png|max:4096',
+            'status' => 'required|string|max:225',
         ]);
 
-        // Handle image upload
-        $imagePath = null;
-
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('serviceUploads', 'public');
-        }
 
 
-        $service = Services::create([
+        Services::create([
             'clientName' => $request->clientName,
-            'dateTime' => $request->dateTime,
             'address' => $request->address,
             'contactNo' => $request->contactNo,
             'service' => $request->service,
             'serviceDescription' => $request->serviceDescription,
             'serviceProvider' => $request->serviceProvider,
             'price' => $request->price,
-            'image_path' => $imagePath, // Store image path
+            'status' => $request->status,
         ]);
 
         $message = "A service has been recorded";
@@ -103,40 +95,26 @@ class ServicesController extends Controller
     {
         $request->validate([
             'clientName' => 'required|string|max:225',
-            'dateTime' => 'required|date|after:now',
             'address' => 'required|string|max:225',
             'contactNo' => 'required|string|max:225',
             'service' => 'required|string|max:225',
             'serviceDescription' => 'required|string|min:5|max:1000',
             'serviceProvider' => 'required|string|max:225',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png|max:4096',
+            'status' => 'required|string|max:225',
         ]);
 
-        // Handle image upload
-        $imagePath = $services->image_path;  // Keep the existing image path if no new image is uploaded
-
-        if ($request->hasFile('image')) {
-            // Delete the old image if it exists
-            if ($services->image_path && file_exists(storage_path('app/public/' . $services->image_path))) {
-                unlink(storage_path('app/public/' . $services->image_path));
-            }
-
-            // Store the new image
-            $imagePath = $request->file('image')->store('serviceUploads', 'public');
-        }
 
         // Update the category
         $services->update([
             'clientName' => $request->clientName,
-            'dateTime' => $request->dateTime,
             'address' => $request->address,
             'contactNo' => $request->contactNo,
             'service' => $request->service,
             'serviceDescription' => $request->serviceDescription,
             'serviceProvider' => $request->serviceProvider,
             'price' => $request->price,
-            'image_path' => $imagePath, // Store image path
+            'status' => $request->status,
         ]);
 
         $message = "A service was updated";

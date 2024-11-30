@@ -14,13 +14,12 @@ class Services extends Model
 
     protected $fillable = [
         'clientName',
-        'dateTime',
         'address',
         'contactNo',
         'service',
         'serviceDescription',
         'serviceProvider',
         'price',
-        'image_path', // Add this line
+        'status',
     ];
 }

@@ -61,38 +61,27 @@
         <div class="overflow-x-auto">
             <table class="w-full border-collapse">
                 <thead>
-                    <tr class="bg-gray-200 text-xs sm:text-sm md:text-base text-gray-600 uppercase font-medium h-10">
+                    <tr class="bg-gray-200 text-xs sm:text-sm md:text-xs text-gray-600 uppercase font-medium h-10">
                         <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                         <th class="px-3 py-2 border border-gray-300">Client Name</th>
-                        <th class="px-3 py-2 border border-gray-300">Contact Number</th>
-                        <th class="w-20 px-3 py-2 border border-gray-300">Address</th>
                         <th class="px-3 py-2 border border-gray-300">Service</th>
                         <th class="px-3 py-2 border border-gray-300">Service Provider</th>
                         <th class="px-3 py-2 border border-gray-300">Price</th>
-                        <th class="px-3 py-2 border border-gray-300">Service Description</th>
+                        <th class="px-3 py-2 border border-gray-300">Status</th>
+                        <th class="px-3 py-2 border border-gray-300">Description</th>
                         <th class="w-3 px-3 py-2 border border-gray-300">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($services as $index => $service)
                     <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
-                        onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->dateTime }}', {{ $service->address }}, {{ $service->contactNo }}, {{ $service->service }}, {{ $service->serviceProvider }}, {{ $service->price }}, {{ $service->serviceDescription }}, '{{ asset($service->image_path) }}')">
-                        <!-- Display Sequential Number -->
-                        <td class="px-3 py-2 border border-gray-300 text-center">
-                            {{ $services->firstItem() + $index }} <!-- Sequential Number -->
-                        </td>
-
-                        <!-- Image and Name Display -->
-                        <td class="px-2 py-1 border border-gray-300 flex items-center space-x-2 h-10">
-                            <img src="{{ asset($service->image_path) }}" alt="Image" class="w-8 h-8 object-cover mr-2 border-2 border-slate-400">
-                            <span>{{ $service->clientName }}</span>
-                        </td>
-                        <td class="px-3 py-2 border border-gray-300">{{ $service->contactNo }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->address }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->service }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->serviceProvider }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($service->price, 2) }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->serviceDescription }}</td>
+                        onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->serviceDescription }}', '{{ $service->status }}')">
+                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $services->firstItem() + $index }}</td>
+                        <td class="px-2 py-1 border border-gray-300">{{ $service->clientName }}</td>
+                        <td class="px-3 py-2 border border-gray-300">{{ $service->service }}</td>
+                        <td class="px-3 py-2 border border-gray-300">{{ $service->serviceProvider }}</td>
+                        <td class="px-3 py-2 border border-gray-300">₱{{ number_format($service->price, 2) }}</td>
+                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->status }}</td>
                         <td class="px-3 py-2 border border-gray-300">
                             <a href="{{ route('repairPage.edit', $service->id) }}">
                                 <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-5">
@@ -101,10 +90,11 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="text-center py-4 text-gray-600">No items found.</td>
+                        <td colspan="7" class="text-center  pt-8 text-gray-600">No items found.</td>
                     </tr>
                     @endforelse
                 </tbody>
+
 
 
             </table>
@@ -120,7 +110,7 @@
     <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/3 relative">
 
         <div class="flex justify-start items-start mb-2">
-            <p class=" text-gray-500 font-medium text-2xl ml-2">Item</p>
+            <p class=" text-gray-500 font-medium text-2xl ml-2">Service</p>
             <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
                 x
             </button>
@@ -153,27 +143,21 @@
 
 <script>
 
-        function showPopup(event, itemId, clientName, clientContactNumber, clientAddress, repairService, serviceProvider, servicePrice, serviceDescription, itemImagePath) {
-        if (event.target.closest('td').classList.contains('w-3')) return;
-        document.getElementById('popup-service-clientName').innerText = clientName;
-        document.getElementById('popup-service-clientContactNumber').innerText = clientContactNumber;
-        document.getElementById('popup-service-clientAddress').innerText = clientAddress;
-        document.getElementById('popup-service-repairService').innerText = repairService;
-        document.getElementById('popup-service-serviceProvider').innerText = serviceProvider;
-        document.getElementById('popup-service-servicePrice').innerText = "₱" + servicePrice.toFixed(2);
-        document.getElementById('popup-service-serviceDescription').innerText = serviceDescription;
+function showPopup(event, itemId, clientName, clientContactNumber, clientAddress, repairService, serviceProvider, servicePrice, serviceDescription, serviceStatus) {
+    if (event.target.closest('td').classList.contains('w-3')) return;
+    document.getElementById('popup-service-clientName').innerText = clientName;
+    document.getElementById('popup-service-clientContactNumber').innerText = clientContactNumber;
+    document.getElementById('popup-service-clientAddress').innerText = clientAddress;
+    document.getElementById('popup-service-repairService').innerText = repairService;
+    document.getElementById('popup-service-serviceProvider').innerText = serviceProvider;
+    document.getElementById('popup-service-servicePrice').innerText = "₱" + parseFloat(servicePrice).toFixed(2);
+    document.getElementById('popup-service-serviceDescription').innerText = serviceDescription;
+    document.getElementById('popup-service-status').innerText = status;
 
 
-        // Update the popup image
-        const popupImage = document.getElementById('popup-service-image');
-        if (itemImagePath) {
-            popupImage.innerHTML = `<img src="${itemImagePath}" alt="Uploaded Image" class="w-full h-auto rounded-md">`;
-        } else {
-            popupImage.innerHTML = `<p class="text-gray-500">No image uploaded.</p>`;
-        }
+    document.getElementById('popup').classList.remove('hidden');
+}
 
-        document.getElementById('popup').classList.remove('hidden');
-    }
 
 
     function closePopup() {
@@ -218,9 +202,6 @@
             suggestionsDiv.classList.add('hidden');
         }
     });
-
-
-    console.log('Popup triggered');
 
 
 

@@ -92,11 +92,11 @@
 
             <div class="flex center justify-end ">
                 <div>
-                    <button type="submit" class=" bg-green-600 px-4 py-2 text-white rounded-md mr-3" style="font-size: 10px;">ADD ITEM</button>
+                    <button type="submit" class=" bg-green-600 px-4 py-2 text-white rounded-md mr-3 shadow-sm shadow-slate-500 font-semibold " style="font-size: 10px;">ADD ITEM</button>
                 </div>
 
                 <div>
-                    <button type="button" onclick="window.location.href='{{ route('section.items') }}'" class=" bg-slate-500 px-4 py-2 text-white rounded-md mr-3" style="font-size: 10px;">
+                    <button type="button" onclick="window.location.href='{{ route('section.items') }}'" class=" bg-slate-500 px-4 py-2 text-white rounded-md mr-3 shadow-sm shadow-slate-500 font-semibold " style="font-size: 10px;">
                         BACK
                     </button>
 
