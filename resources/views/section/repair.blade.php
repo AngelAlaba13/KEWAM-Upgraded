@@ -150,6 +150,7 @@
 </div>
 
 
+
 <script>
 
         function showPopup(event, itemId, clientName, clientContactNumber, clientAddress, repairService, serviceProvider, servicePrice, serviceDescription, itemImagePath) {
@@ -217,6 +218,10 @@
             suggestionsDiv.classList.add('hidden');
         }
     });
+
+
+    console.log('Popup triggered');
+
 
 
 
