@@ -3,6 +3,7 @@
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,14 +36,31 @@ Route::get('/section/items', [CategoryController::class, 'index'])
     ->name('section.items');
 Route::get('section/itemsPage.edit', [CategoryController::class, 'edit'])
     ->name('section.itemsPage.edit');
+
 Route::resource('itemsPage', CategoryController::class);
+Route::resource('repairPage', ServicesController::class);
+
+
+// Routes for repair-related actions
+Route::get('section/repairPage.create', [ServicesController::class, 'create'])
+    ->name('section.repairPage.create');
+Route::get('/section/repair', [ServicesController::class, 'index'])
+    ->name('section.repair');
+Route::get('section/repairPage.edit', [ServicesController::class, 'edit'])
+    ->name('section.repairPage.edit');
+
+
 
 // Dashboard route
 Route::get('section/home', [DashboardController::class, 'countItem'])
     ->name('section.home');
 
-// Search functionality
+// Search functionality items
 Route::get('/search/suggestions', [CategoryController::class, 'suggestions'])
+    ->name('search.suggestions'); // For the search suggestions
+
+// Search functionality repair
+Route::get('/search/suggestions', [ServicesController::class, 'suggestions'])
     ->name('search.suggestions'); // For the search suggestions
 
 // Route::get('section/itemsPage/search', [CategoryController::class, 'search'])
