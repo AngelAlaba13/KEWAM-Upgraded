@@ -112,35 +112,37 @@
 </div>
 
 <!-- Pop-up -->
-<div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
-    <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/3 relative">
+<div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
+    <div class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl shadow-2xl max-w-lg w-1/3 relative animate-fadeInUp">
 
-        <div class="flex justify-start items-start mb-2">
-            <p class=" text-gray-500 font-medium text-2xl ml-2">Item</p>
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b pb-3 mb-5">
+            <p class="text-gray-500 font-medium text-2xl">Item Details</p>
             <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
-                x
+                &times;
             </button>
         </div>
 
-        <!-- Name and Category -->
-        <p id="popup-item-name" class="text-center font-bold text-xl"></p>
-        <p id="popup-item-category" class="text-center text-xs mb-3"></p>
+        <!-- Item Name and Category -->
+        <p id="popup-item-name" class="text-center font-extrabold text-xl text-gray-800 mb-2">Item Name</p>
+        <p id="popup-item-category" class="text-center text-sm text-gray-500 italic mb-5">Item Category</p>
 
         <!-- Image Container -->
-        <div class=" flex flex-col items-center ">
-            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden border-2 border-slate-500 rounded-lg shadow-lg" id="popup-item-image">
-                <img src="" alt="Image" class="w-full h-full object-cover rounded-lg shadow-lg">
+        <div class="flex flex-col items-center">
+            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden border-2 border-zinc-400 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out" id="popup-item-image">
+                <img src="" alt="Item Image" class="w-full h-full object-cover rounded-md">
             </div>
         </div>
 
         <!-- Quantity and Price -->
-        <div class="flex justify-between mt-9">
-            <p id="popup-item-quantity" class="flex justify-start"></p>
-            <p id="popup-item-price" class="flex justify-end font-bold"></p>
+        <div class="flex justify-between mt-8 px-3">
+            <p id="popup-item-quantity" class="font-medium text-gray-700">Quantity: <span class="font-bold">0</span></p>
+            <p id="popup-item-price" class="font-medium text-gray-700">Price: <span class="font-bold text-sky-800">0.00</span></p>
         </div>
 
     </div>
 </div>
+
 
 
 <script>

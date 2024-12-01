@@ -32,7 +32,7 @@
             <div class="flex flex-col md:flex-row justify-between mb-3">
                 <div class="flex flex-col mb-5 md:mb-3">
                     <label> Client Name</label>
-                    <input type="text" name="name" class="w-full px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1 mr-72 mb-5">
+                    <input type="text" name="clientName" class="w-full px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1 mr-72 mb-5">
                     @error('name')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                         <span class=" text-dan"></span>
@@ -61,8 +61,8 @@
                     <label>Status</label>
                     <select name="status"class=" px-3 py-1 border border-gray-400 rounded-md mt-1 remove-spinner mb-5">
                         <option value="">-- Select a Status --</option>
-                        <option value="inprocess">Incomplete</option>
-                        <option value="complete">Complete</option>
+                        <option value="Incomplete">Incomplete</option>
+                        <option value="Complete">Complete</option>
                     </select>
 
                 </div>

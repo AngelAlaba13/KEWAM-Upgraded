@@ -46,8 +46,6 @@ Route::get('section/repairPage.create', [ServicesController::class, 'create'])
     ->name('section.repairPage.create');
 Route::get('/section/repair', [ServicesController::class, 'index'])
     ->name('section.repair');
-Route::get('section/repairPage.edit', [ServicesController::class, 'edit'])
-    ->name('section.repairPage.edit');
 
 
 

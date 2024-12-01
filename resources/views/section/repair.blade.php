@@ -75,13 +75,14 @@
                 <tbody>
                     @forelse ($services as $index => $service)
                     <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
-                        onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->serviceDescription }}', '{{ $service->status }}')">
+                        onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->status }}', '{{ $service->serviceDescription }}')">
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $services->firstItem() + $index }}</td>
                         <td class="px-2 py-1 border border-gray-300">{{ $service->clientName }}</td>
                         <td class="px-3 py-2 border border-gray-300">{{ $service->service }}</td>
                         <td class="px-3 py-2 border border-gray-300">{{ $service->serviceProvider }}</td>
                         <td class="px-3 py-2 border border-gray-300">₱{{ number_format($service->price, 2) }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->status }}</td>
+                        <td class="px-3 py-2 border border-gray-300">{{ $service->serviceDescription }}</td>
                         <td class="px-3 py-2 border border-gray-300">
                             <a href="{{ route('repairPage.edit', $service->id) }}">
                                 <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-5">
@@ -106,38 +107,63 @@
 </div>
 
 <!-- Pop-up -->
-<div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
+<div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
     <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/3 relative">
 
-        <div class="flex justify-start items-start mb-2">
-            <p class=" text-gray-500 font-medium text-2xl ml-2">Service</p>
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b pb-3 mb-5">
+            <p class="text-gray-500 font-medium text-2xl">Service Details</p>
             <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
-                x
+                &times;
             </button>
         </div>
 
-        <!-- Name and Category -->
+        <!-- Client Name and Details -->
         <p id="popup-service-clientName" class="text-center font-bold text-xl"></p>
-        <p id="popup-service-clientContactNumber" class="text-center text-xs mb-3"></p>
-        <p id="popup-service-clientAddress" class="text-center text-xs mb-3"></p>
-        <p id="popup-service-repairService" class="text-center text-xs mb-3"></p>
-        <p id="popup-service-serviceProvider" class="text-center text-xs mb-3"></p>
+        <p id="popup-service-clientContactNumber" class="text-center text-sm text-gray-500 mb-3"></p>
 
-        <!-- Image Container -->
-        <div class=" flex flex-col items-center ">
-            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden border-2 border-slate-500 rounded-lg shadow-lg" id="popup-service-image">
-                <img src="" alt="Image" class="w-full h-full object-cover rounded-lg shadow-lg">
+        <!-- Content -->
+        <div class="space-y-4">
+            <!-- Address -->
+            <div class="flex justify-between">
+                <p class="font-bold text-gray-700">Address:</p>
+                <p id="popup-service-clientAddress" class="text-gray-900"></p>
+            </div>
+
+            <!-- Service -->
+            <div class="flex justify-between">
+                <p class="font-bold text-gray-700">Service:</p>
+                <p id="popup-service-repairService" class="text-gray-900"></p>
+            </div>
+
+            <!-- Service Provider -->
+            <div class="flex justify-between">
+                <p class="font-bold text-gray-700">Service Provider:</p>
+                <p id="popup-service-serviceProvider" class="text-gray-900"></p>
+            </div>
+
+            <!-- Status -->
+            <div class="flex justify-between">
+                <p class="font-bold text-gray-700">Status:</p>
+                <p id="popup-service-serviceDescription" class="text-gray-900"></p>
+            </div>
+
+            <!-- Price -->
+            <div class="flex justify-between">
+                <p class="font-bold text-gray-700">Price:</p>
+                <p id="popup-service-servicePrice" class="text-gray-900"></p>
+            </div>
+
+            <!-- Service Description -->
+            <div class="flex flex-col">
+                <p class="font-bold text-gray-700 mb-1">Service Description:</p>
+                <p id="popup-service-status" class="text-gray-900"></p>
             </div>
         </div>
-
-        <!-- Quantity and Price -->
-        <div class="flex justify-between mt-9">
-            <p id="popup-service-servicePrice" class="flex justify-start"></p>
-            <p id="popup-service-serviceDescription" class="flex justify-end font-bold"></p>
-        </div>
-
     </div>
 </div>
+
+
 
 
 
@@ -152,7 +178,7 @@ function showPopup(event, itemId, clientName, clientContactNumber, clientAddress
     document.getElementById('popup-service-serviceProvider').innerText = serviceProvider;
     document.getElementById('popup-service-servicePrice').innerText = "₱" + parseFloat(servicePrice).toFixed(2);
     document.getElementById('popup-service-serviceDescription').innerText = serviceDescription;
-    document.getElementById('popup-service-status').innerText = status;
+    document.getElementById('popup-service-status').innerText = serviceStatus;
 
 
     document.getElementById('popup').classList.remove('hidden');
@@ -181,12 +207,12 @@ function showPopup(event, itemId, clientName, clientContactNumber, clientAddress
                         data.forEach(item => {
                             const suggestion = document.createElement('div');
                             suggestion.classList.add('px-3', 'py-2', 'cursor-pointer');
-                            suggestion.textContent = `${item.name} - ${item.category}`;
+                            suggestion.textContent = `${item.clientName} - ${item.service}`;
 
                             // Add event listener to the suggestion for clicking
                             suggestion.addEventListener('click', function () {
                                 // Set the input field to the suggestion value
-                                document.getElementById('search-input').value = item.name;
+                                document.getElementById('search-input').value = item.clientName;
 
                                 // Submit the form to search with the suggestion
                                 document.querySelector('form').submit();

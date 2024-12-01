@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Log;
+use Illuminate\Support\Facades\Log;
+
+// use App\Models\Log;
 
 class ServicesController extends Controller
 {
@@ -40,9 +42,12 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info('Entered store method');
+
+
         $request->validate([
             'clientName' => 'required|string|max:225',
-            'address' => 'required|string|max:225',
+            'address' => 'required|string|max:500',
             'contactNo' => 'required|string|max:225',
             'service' => 'required|string|max:225',
             'serviceDescription' => 'required|string|min:5|max:1000',
@@ -51,9 +56,11 @@ class ServicesController extends Controller
             'status' => 'required|string|max:225',
         ]);
 
+        Log::info('Validation passed');
 
 
-        Services::create([
+
+        $service = Services::create([
             'clientName' => $request->clientName,
             'address' => $request->address,
             'contactNo' => $request->contactNo,
@@ -64,8 +71,17 @@ class ServicesController extends Controller
             'status' => $request->status,
         ]);
 
+
+        Log::info('Service created successfully');
+
+
+
+
+
+
+
         $message = "A service has been recorded";
-        Log::create(['message' => $message]);
+        \App\Models\Log::create(['message' => $message]);
 
 
         return redirect()->route('repairPage.index')
@@ -83,65 +99,118 @@ class ServicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Services $services)
+    public function edit($id)
     {
-        return view('section.repairPage.edit', compact('services'));
+        $repairPage = Services::find($id);
+        if ($repairPage) {
+            return view('section.repairPage.edit', compact('repairPage')); // Ensure it's passed correctly
+        } else {
+            return redirect()->route('section.repair')->with('error', 'Repair page not found.');
+        }
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Services $services)
-    {
-        $request->validate([
-            'clientName' => 'required|string|max:225',
-            'address' => 'required|string|max:225',
-            'contactNo' => 'required|string|max:225',
-            'service' => 'required|string|max:225',
-            'serviceDescription' => 'required|string|min:5|max:1000',
-            'serviceProvider' => 'required|string|max:225',
-            'price' => 'required|numeric',
-            'status' => 'required|string|max:225',
-        ]);
+    public function update(Request $request, Services $services, $id)
+{
+    $services = Services::find($id);
+     // Log that the update method has been reached
+    //  dd('Update method reached for ID: ' . $services->id);
 
 
-        // Update the category
-        $services->update([
-            'clientName' => $request->clientName,
-            'address' => $request->address,
-            'contactNo' => $request->contactNo,
-            'service' => $request->service,
-            'serviceDescription' => $request->serviceDescription,
-            'serviceProvider' => $request->serviceProvider,
-            'price' => $request->price,
-            'status' => $request->status,
-        ]);
 
-        $message = "A service was updated";
-        Log::create(['message' => $message]);
+    // Validate incoming request
+    $request->validate([
+        'clientName' => 'required|string|max:225',
+        'address' => 'required|string|max:500',
+        'contactNo' => 'required|string|max:225',
+        'service' => 'required|string|max:225',
+        'serviceDescription' => 'required|string|min:5|max:1000',
+        'serviceProvider' => 'required|string|max:225',
+        'price' => 'required|numeric',
+        'status' => 'required|string|max:225',
+    ]);
 
-        return redirect()->route('repairPage.index')->with('status', 'Service Updated Successfully');
-    }
+    // Update the service record
+    $services->update([
+        'clientName' => $request->clientName,
+        'address' => $request->address,
+        'contactNo' => $request->contactNo,
+        'service' => $request->service,
+        'serviceDescription' => $request->serviceDescription,
+        'serviceProvider' => $request->serviceProvider,
+        'price' => $request->price,
+        'status' => $request->status,
+    ]);
+
+    // Log the update action
+    $message = "A service was updated for client {$services->clientName}";
+    \App\Models\Log::create(['message' => $message]);
+
+    // Redirect back with a success message
+    return redirect()->route('repairPage.index')->with('status', 'Service Updated Successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Services $services)
+    public function destroy(Services $services, $id)
+{
+    $services = Services::find($id);
+
+
+    // Delete the service record
+    $services->delete();
+
+    // Get the maximum ID from the services table
+    $maxId = Services::max('id');
+
+    // Reset the AUTO_INCREMENT value to the maximum ID
+    DB::statement("ALTER TABLE services AUTO_INCREMENT = {$maxId}");
+
+    // Log the deletion action
+    $message = "A service was deleted for ID: {$services->id}";
+    \App\Models\Log::create(['message' => $message]);
+
+    // Redirect back with a success message
+    return redirect()->route('repairPage.index')->with('status', 'Service deleted successfully');
+}
+
+
+
+    public function search(Request $request)
     {
-        // Delete the category record
-        $services->delete();
+        $query = $request->input('query');
 
-        // Get the maximum ID from the categories table
-        $maxId = Services::max('id');
+        $services = Services::where('clientName', 'like', "%{$query}%")
+            ->orWhere('service', 'like', "%{$query}%")
+            ->orWhere('serviceProvider', 'like', "%{$query}%")
+            ->paginate(9); // Paginate search results for table display
 
-        // Reset the AUTO_INCREMENT value to the maximum ID
-        DB::statement("ALTER TABLE services AUTO_INCREMENT = {$maxId}");
-
-
-        $message = "A service was deleted";
-        Log::create(['message' => $message]);
-
-        // Redirect back with a success message
-        return redirect()->route('repairPage.index')->with('status', 'Service deleted');
+        return view('section.repair', compact('services'));
     }
+
+
+
+
+    public function suggestions(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $services = Services::where('clientName', 'like', "%{$query}%")
+                ->orWhere('service', 'like', "%{$query}%")
+                ->orWhere('serviceProvider', 'like', "%{$query}%")
+                ->limit(5) // Limit to 5 results for suggestions
+                ->get(['clientName', 'service', 'serviceProvider']);
+        } else {
+            $services = [];
+        }
+
+        return response()->json($services);
+    }
+
 }
