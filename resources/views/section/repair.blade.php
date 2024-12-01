@@ -28,7 +28,7 @@
         <div class="flex flex-wrap sm:flex-nowrap w-full items-center justify-between space-y-4 sm:space-y-0">
             <!-- Items Label and Search Bar -->
             <div class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4">
-                <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Items</div>
+                <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Services</div>
                 <form action="{{ route('section.repair') }}" method="GET">
                     <div class="flex bg-gray-300 px-3 py-1 ml-1 w-80 shadow-inner shadow-gray-300">
                         <input type="text" name="query" id="search-input" placeholder="Search" class="w-full text-base sm:text-lg border-none outline-none bg-transparent pr-12">
@@ -74,7 +74,7 @@
                 </thead>
                 <tbody>
                     @forelse ($services as $index => $service)
-                    <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
+                    <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-sm text-gray-800 cursor-pointer hover:bg-gray-200"
                         onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->status }}', '{{ $service->serviceDescription }}')">
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $services->firstItem() + $index }}</td>
                         <td class="px-2 py-1 border border-gray-300">{{ $service->clientName }}</td>
@@ -82,10 +82,13 @@
                         <td class="px-3 py-2 border border-gray-300">{{ $service->serviceProvider }}</td>
                         <td class="px-3 py-2 border border-gray-300">₱{{ number_format($service->price, 2) }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->status }}</td>
-                        <td class="px-3 py-2 border border-gray-300">{{ $service->serviceDescription }}</td>
+                        <td class="px-3 py-2 border border-gray-300 truncate max-w-xs overflow-hidden">
+                            {{ Str::limit($service->serviceDescription, 50) }} <!-- Truncate description to 50 characters -->
+                        </td>
+
                         <td class="px-3 py-2 border border-gray-300">
                             <a href="{{ route('repairPage.edit', $service->id) }}">
-                                <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-5">
+                                <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-5 border-b border-b-slate-600 pb-1">
                             </a>
                         </td>
                     </tr>
@@ -197,7 +200,7 @@ function showPopup(event, itemId, clientName, clientContactNumber, clientAddress
         const suggestionsDiv = document.getElementById('suggestions');
 
         if (query.length >= 2) {
-            fetch(`/search/suggestions?query=${query}`)
+            fetch(`/search/service-suggestions?query=${query}`)
                 .then(response => response.json())
                 .then(data => {
                     suggestionsDiv.innerHTML = '';

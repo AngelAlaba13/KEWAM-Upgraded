@@ -91,7 +91,7 @@
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->value, 2) }}</td>
                         <td class="px-3 py-2 border border-gray-300">
                             <a href="{{ route('itemsPage.edit', $category->id) }}">
-                                <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-5">
+                                <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-6 border-b border-b-slate-600 pb-1">
                             </a>
                         </td>
                     </tr>

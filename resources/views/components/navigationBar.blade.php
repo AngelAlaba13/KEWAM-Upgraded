@@ -43,23 +43,18 @@
 
 
         <a href="{{route('section.home')}}" class="flex flex-col items-center mt-5 group">
-            <img src="{{asset('imgs/home.png')}}" alt="Home" title="Home" class="mb-1">
-            <p class="text-xs mb-10 group-hover:text-orange-700 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Home</p>
+            <img src="{{asset('imgs/home.png')}}" alt="Home" title="Home" class="mb-1 w-5 h-5">
+            <p class="text-xs mb-14 group-hover:text-orange-700 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Home</p>
         </a>
 
         <a href="{{route('section.items')}}" class="flex flex-col items-center group">
-            <img src="{{asset('imgs/products.png')}}" alt="Items" title="Items" class="mb-1">
-            <p class="text-xs mb-10 group-hover:text-orange-700 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Items</p>
+            <img src="{{asset('imgs/products.png')}}" alt="Items" title="Items"  class="mb-1 w-5 h-5">
+            <p class="text-xs mb-14 group-hover:text-orange-700 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Items</p>
         </a>
 
         <a href="{{route('section.repair')}}" class="flex flex-col items-center group">
-            <img src="{{asset('imgs/repair.png')}}" alt="Items" title="Repair Services" class="mb-1">
+            <img src="{{asset('imgs/repair.png')}}" alt="Items" title="Repair Services" class="mb-1 w-5 h-5">
             <p class="text-xs mb-10 text-center group-hover:text-orange-700 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Services</p>
-        </a>
-
-        <a href="{{route('section.report')}}" class="flex flex-col items-center group">
-            <img src="{{asset('imgs/reports.png')}}" alt="Reports" title="Reports" class="mb-1">
-            <p class="text-xs mb-10 text-center group-hover:text-orange-700 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Reports</p>
         </a>
 
     </div>

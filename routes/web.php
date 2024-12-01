@@ -50,15 +50,11 @@ Route::get('/section/repair', [ServicesController::class, 'index'])
 
 
 // Dashboard route
-Route::get('section/home', [DashboardController::class, 'countItem'])
+Route::get('section/home', [DashboardController::class, 'dashboard'])
     ->name('section.home');
 
-
-// Reports
-Route::get('/section/report', [ReportsController::class, 'charts'])
-    ->name('section.report');
-
-
+// Route::get('section/home', [DashboardController::class, 'charts'])
+//     ->name('section.home');
 
 
 
@@ -67,8 +63,12 @@ Route::get('/search/suggestions', [CategoryController::class, 'suggestions'])
     ->name('search.suggestions'); // For the search suggestions
 
 // Search functionality repair
-Route::get('/search/suggestions', [ServicesController::class, 'suggestions'])
-    ->name('search.suggestions'); // For the search suggestions
+// Route::get('/search/suggestions', [ServicesController::class, 'suggestions'])
+//     ->name('search.suggestions'); // For the search suggestions
 
 // Route::get('section/itemsPage/search', [CategoryController::class, 'search'])
 //     ->name('section.itemsPage.search'); // For displaying the search resultsearch results
+
+
+Route::get('/search/service-suggestions', [ServicesController::class, 'suggestions'])
+    ->name('search.service.suggestions');
