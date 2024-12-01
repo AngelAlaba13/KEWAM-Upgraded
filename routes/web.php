@@ -4,6 +4,7 @@ use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,10 +49,18 @@ Route::get('/section/repair', [ServicesController::class, 'index'])
     ->name('section.repair');
 
 
-
 // Dashboard route
 Route::get('section/home', [DashboardController::class, 'countItem'])
     ->name('section.home');
+
+
+// Reports
+Route::get('/section/report', [ReportsController::class, 'charts'])
+    ->name('section.report');
+
+
+
+
 
 // Search functionality items
 Route::get('/search/suggestions', [CategoryController::class, 'suggestions'])
