@@ -61,14 +61,17 @@ Route::get('section/home', [DashboardController::class, 'dashboard'])
 // Search functionality items
 Route::get('/search/suggestions', [CategoryController::class, 'suggestions'])
     ->name('search.suggestions'); // For the search suggestions
-
-// Search functionality repair
-// Route::get('/search/suggestions', [ServicesController::class, 'suggestions'])
-//     ->name('search.suggestions'); // For the search suggestions
-
-// Route::get('section/itemsPage/search', [CategoryController::class, 'search'])
-//     ->name('section.itemsPage.search'); // For displaying the search resultsearch results
-
-
 Route::get('/search/service-suggestions', [ServicesController::class, 'suggestions'])
     ->name('search.service.suggestions');
+
+// Open pdf
+Route::get('/view-pdf/serviceSheet.pdf', function(){
+        $path = storage_path("app/public/pdfs/serviceSheet.pdf");
+
+        if (file_exists($path)) {
+            return response()->file($path);
+        }
+
+        abort(404);
+    });
+

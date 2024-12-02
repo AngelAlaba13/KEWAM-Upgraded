@@ -7,7 +7,7 @@
             <div class="flex justify-start">
                 <div class="hidden md:flex">
                     <a href="{{ route('section.repair') }}">
-                        <button class="flex bg-slate-900 px-4 py-2 text-white rounded-md" style="font-size: 10px;">
+                        <button class="flex bg-slate-900 px-4 py-2 text-white rounded-md font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">
                             <img src="{{ asset('imgs/back.png') }}" alt="back to items" class="w-4 mr-2">
                             BACK
                         </button>
@@ -25,7 +25,7 @@
                 <form action="{{ route('repairPage.destroy', $repairPage->id) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="bg-red-600 px-4 py-2 text-white rounded-md mr-5" style="font-size: 10px;">DELETE</button>
+                    <button type="submit" class="bg-red-600 px-4 py-2 text-white rounded-md mr-5 font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">DELETE</button>
                 </form>
             @else
                 <p>Repair page not found. Repair Page: {{ var_dump($repairPage) }}</p>
@@ -111,12 +111,12 @@
 
             <div class="flex center justify-end">
                 <div>
-                    <button type="submit" class=" bg-green-600 px-4 py-2 text-white rounded-md mr-1" style="font-size: 10px;">UPDATE ITEM</button>
+                    <button type="submit" class=" bg-green-600 px-4 py-2 text-white rounded-md mr-1 font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">UPDATE ITEM</button>
                 </div>
 
 
                 <div>
-                    <button type="button" onclick="window.location.href='{{ route('section.repair') }}'" class="bg-slate-500 px-4 py-2 text-white rounded-md mr-1" style="font-size: 10px;">
+                    <button type="button" onclick="window.location.href='{{ route('section.repair') }}'" class="bg-slate-500 px-4 py-2 text-white rounded-md mr-1 font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">
                         BACK
                     </button>
                 </div>

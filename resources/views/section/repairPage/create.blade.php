@@ -67,7 +67,7 @@
 
                 </div>
 
-                <div class=" start md:ml-28">
+                <div class=" flex flex-col start md:ml-28">
                     <label class="">Service</label>
                     <input type="text" name="service" class="w-full px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1 mr-64 mb-5">
                     @error('service')

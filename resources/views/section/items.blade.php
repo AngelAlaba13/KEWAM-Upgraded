@@ -50,7 +50,7 @@
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
                 <a href="{{ route('section.itemsPage.create') }}">
-                    <button class="bg-slate-800 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm" style="font-size: 10px;">ADD ITEM</button>
+                    <button class="bg-slate-800 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
                 </a>
             </div>
         </div>
@@ -124,7 +124,7 @@
         </div>
 
         <!-- Item Name and Category -->
-        <p id="popup-item-name" class="text-center font-extrabold text-xl text-gray-800 mb-2">Item Name</p>
+        <p id="popup-item-name" class="text-center font-extrabold text-xl text-gray-">Item Name</p>
         <p id="popup-item-category" class="text-center text-sm text-gray-500 italic mb-5">Item Category</p>
 
         <!-- Image Container -->
@@ -135,9 +135,15 @@
         </div>
 
         <!-- Quantity and Price -->
-        <div class="flex justify-between mt-8 px-3">
-            <p id="popup-item-quantity" class="font-medium text-gray-700">Quantity: <span class="font-bold">0</span></p>
-            <p id="popup-item-price" class="font-medium text-gray-700">Price: <span class="font-bold text-sky-800">0.00</span></p>
+        <div class="flex flex-col justify-between mt-8 px-3">
+            <div class="flex">
+                <p class="font-bold">Quantity: </p>
+                <p id="popup-item-quantity" class=" text-gray-700 ml-1">Quantity: <span class="">0</span></p>
+            </div>
+            <div class="flex ">
+                <p class="font-bold">Price: </p>
+                <p id="popup-item-price" class=" text-gray-700 ml-1">Price: <span class=" text-sky-800">0.00</span></p>
+            </div>
         </div>
 
     </div>
@@ -150,8 +156,10 @@
     if (event.target.closest('td').classList.contains('w-3')) return;
     document.getElementById('popup-item-name').innerText = itemName;
     document.getElementById('popup-item-category').innerText = itemCategory;
-    document.getElementById('popup-item-quantity').innerText = "x" + itemQuantity;
-    document.getElementById('popup-item-price').innerText = "₱" + itemPrice.toFixed(2);
+    document.getElementById('popup-item-quantity').innerText = itemQuantity + " unit";
+    // document.getElementById('popup-item-price').innerText = "₱" + itemPrice.toFixed(2);
+    document.getElementById('popup-item-price').innerText = "₱" + parseFloat(itemPrice). toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2});
+
 
     // Update the popup image
     const popupImage = document.getElementById('popup-item-image');

@@ -40,7 +40,7 @@ class ServicesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Services $services)
     {
         Log::info('Entered store method');
 
@@ -60,7 +60,7 @@ class ServicesController extends Controller
 
 
 
-        $service = Services::create([
+        $services = Services::create([
             'clientName' => $request->clientName,
             'address' => $request->address,
             'contactNo' => $request->contactNo,
@@ -75,12 +75,7 @@ class ServicesController extends Controller
         Log::info('Service created successfully');
 
 
-
-
-
-
-
-        $message = "A service has been recorded";
+        $message = "A service for client {$services->clientName} has been recorded";
         \App\Models\Log::create(['message' => $message]);
 
 
@@ -172,7 +167,7 @@ class ServicesController extends Controller
     DB::statement("ALTER TABLE services AUTO_INCREMENT = {$maxId}");
 
     // Log the deletion action
-    $message = "A service was deleted for ID: {$services->id}";
+    $message = "A service for client {$services->clientName} was deleted";
     \App\Models\Log::create(['message' => $message]);
 
     // Redirect back with a success message

@@ -41,7 +41,7 @@
                 </form>
 
                 <form action="{{ route('section.repair') }}" method="GET">
-                    <div id="suggestions" class="absolute top-11 bg-gray-300 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
+                    <div id="suggestions" class="absolute top-11 bg-gray-300 border border-gray-300 z-50 hidden" style="width: 269px; left: 360px">
 
                     </div>
                 </form>
@@ -49,8 +49,14 @@
 
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
+                <a class="" href="{{ url('/view-pdf/serviceSheet.pdf') }}" target="_blank">
+                    <button class="bg-slate-800 flex px-3  ml-36 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">
+                        <img class="mr-2 w-3 h-3 mt-1" src="{{asset('imgs/download.png')}}" alt="export">
+                        <p class="">SERVICE SHEET</p></button>
+                </a>
+
                 <a href="{{ route('section.repairPage.create') }}">
-                    <button class="bg-slate-800 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm" style="font-size: 10px;">ADD ITEM</button>
+                    <button class="bg-slate-800 px-3 md:px-4 py-2 ml-2 text-white rounded-md text-xs sm:text-sm font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
                 </a>
             </div>
         </div>
@@ -77,9 +83,9 @@
                     <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-sm text-gray-800 cursor-pointer hover:bg-gray-200"
                         onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->status }}', '{{ $service->serviceDescription }}')">
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $services->firstItem() + $index }}</td>
-                        <td class="px-2 py-1 border border-gray-300">{{ $service->clientName }}</td>
-                        <td class="px-3 py-2 border border-gray-300">{{ $service->service }}</td>
-                        <td class="px-3 py-2 border border-gray-300">{{ $service->serviceProvider }}</td>
+                        <td class="px-2 py-1 border border-gray-300 truncate max-w-xs overflow-hidden">{{ Str::limit($service->clientName, 12) }}</td>
+                        <td class="px-3 py-2 border border-gray-300 truncate max-w-xs overflow-hidden">{{ Str::limit($service->service, 20) }}</td>
+                        <td class="px-3 py-2 border border-gray-300 truncate max-w-xs overflow-hidden">{{ Str::limit($service->serviceProvider, 12) }}</td>
                         <td class="px-3 py-2 border border-gray-300">₱{{ number_format($service->price, 2) }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $service->status }}</td>
                         <td class="px-3 py-2 border border-gray-300 truncate max-w-xs overflow-hidden">
@@ -109,6 +115,9 @@
     </div>
 </div>
 
+
+
+
 <!-- Pop-up -->
 <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
     <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/3 relative">
@@ -122,15 +131,15 @@
         </div>
 
         <!-- Client Name and Details -->
-        <p id="popup-service-clientName" class="text-center font-bold text-xl"></p>
+        <p id="popup-service-clientName" class="flex flex-col justify center text-center font-bold text-xl"></p>
         <p id="popup-service-clientContactNumber" class="text-center text-sm text-gray-500 mb-3"></p>
 
         <!-- Content -->
-        <div class="space-y-4">
+        <div class="flex flex-col space-y-4">
             <!-- Address -->
             <div class="flex justify-between">
                 <p class="font-bold text-gray-700">Address:</p>
-                <p id="popup-service-clientAddress" class="text-gray-900"></p>
+                <p id="popup-service-clientAddress" class="text-gray-900 ml-6"></p>
             </div>
 
             <!-- Service -->
@@ -179,7 +188,8 @@ function showPopup(event, itemId, clientName, clientContactNumber, clientAddress
     document.getElementById('popup-service-clientAddress').innerText = clientAddress;
     document.getElementById('popup-service-repairService').innerText = repairService;
     document.getElementById('popup-service-serviceProvider').innerText = serviceProvider;
-    document.getElementById('popup-service-servicePrice').innerText = "₱" + parseFloat(servicePrice).toFixed(2);
+    document.getElementById('popup-service-servicePrice').innerText = "₱" + parseFloat(servicePrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
     document.getElementById('popup-service-serviceDescription').innerText = serviceDescription;
     document.getElementById('popup-service-status').innerText = serviceStatus;
 

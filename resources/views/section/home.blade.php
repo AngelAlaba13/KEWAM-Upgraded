@@ -1,16 +1,53 @@
 <x-navigationBar></x-navigationBar>
 
-<div class="flex flex-col w-full overflow-x-hidden">
-    <div class="md:ml-16 pt-4 pb-4 border-b border-gray-300">
-        <div class="flex w-full items-center justify-between h-7">
-            <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">
+<div class="flex flex-col w-full overflow-x-hidden" id="top">
+    <div class="fixed left-0 right-0 md:ml-16 pt-4 pb-4 border-b border-gray-300 bg-zinc-300 z-40 transition-transform duration-300" id="navbar">
+        <div class="flex w-full justify-between items-center h-5">
+            <div class="ml-2 md:ml-14 md:mr-20 text-xl sm:text-2xl text-gray-500">
                 Dashboard
+            </div>
+            <div class="flex flex-row justify-end">
+                <a href="#top">
+                    <div class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-gray-700">
+                        Summary
+                    </div>
+                </a>
+                <a href="#status">
+                    <div class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-gray-700">
+                        Status
+                    </div>
+                </a>
+                <a href="#logs">
+                    <div class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-gray-700">
+                        Logs
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="flex flex-col md:ml-16 animate-fade-in">
-        <div class="text-md text-gray-600 font-medium mb-4 ml-40 mt-9"> <!-- Reduced ml-40 to ml-8 -->
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scroll Down - Hide the navbar
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scroll Up - Show the navbar
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = Math.max(scrollTop, 0); // Ensure lastScrollTop is never negative
+        });
+    </script>
+
+
+
+    <div class="flex flex-col md:ml-16 animate-fade-in z-10">
+        <div class="text-md text-gray-600 font-medium mb-4 ml-40 mt-24"> <!-- Reduced ml-40 to ml-8 -->
             Inventory Summary
         </div>
 
@@ -44,25 +81,23 @@
         </div>
     </div>
 
-    <div class="flex flex-col mt-12 mr-36 md:ml-44 ">
-        <div class="text-md text-gray-600 font-medium mb-4 ml-11"> <!-- Reduced ml-40 to ml-8 -->
-            Charts
-        </div>
+    <div class="flex flex-col mt-10 mr-32 md:ml-44 ">
 
-        <div class="flex flex-row justify-between ml-7">
+        <div class="flex flex-row justify-between ml-10 w-full">
             <div class="">
                 <div class="bg-slate-400 bg-opacity-15 shadow-md shadow-slate-400 w-96">
 
-                    <canvas id="itemChart" style="width: 100%; height: 210px;"></canvas>
+                    <canvas id="itemChart" style="width: 100%; height: 230px;"></canvas>
                 </div>
             </div>
 
             <div class="">
                 <div class="bg-slate-400 bg-opacity-15 shadow-md shadow-slate-400 w-96">
                     <!-- Smaller size for the canvas -->
-                    <canvas id="serviceChart" style="width: 100%; height: 210px;"></canvas>
+                    <canvas id="serviceChart" style="width: 100%; height: 230px;"></canvas>
                 </div>
             </div>
+            <span id="status" class=" mt-60"></span>
         </div>
 
         <div class="text-md text-gray-600 font-medium ml-11 mt-12"> <!-- Reduced ml-40 to ml-8 -->
@@ -77,8 +112,8 @@
     </div>
 
     <!-- Logs Section -->
-    <div class="text-md text-gray-600 font-medium ml-32 mb-20">
-        <p class="text-md text-gray-600 font-medium mb-4 ml-20 mt-7">Recent Activities</p>
+    <div class="text-md text-gray-600 font-medium ml-32 mb-20" id="logs">
+        <p class="text-md text-gray-600 font-medium mb-4 ml-20 mt-14">Recent Activities</p>
         <div class=" flex flex-col pl-16 pr-32">
             @if($logs->isNotEmpty())
                 <div class="max-h-[300px] overflow-y-auto">
@@ -105,7 +140,7 @@
 </div>
 
 <!-- Modal for All Logs -->
-<div id="logModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+<div id="logModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
     <div class="bg-white p-8 rounded-md shadow-lg max-w-lg w-full">
         <span class="text-xl text-gray-800 font-bold">All Logs</span>
         <ul class="mt-4 max-h-[400px] overflow-y-auto">
@@ -210,73 +245,74 @@
 
     // Service chart configuration
     const serviceCtx = document.getElementById('serviceChart');
-    new Chart(serviceCtx, {
-        type: 'bar',
-        data: {
-            labels: @json($service),  // Pass the service names dynamically
-            datasets: [{
-                label: 'Highest Service Rate',
-                data: @json($servicePrice),  // Pass the price data dynamically
-                borderWidth: 1,
-                barThickness: 25, // Set a fixed bar width for all bars
-                backgroundColor: 'green', // Set all bars to green color
-            }]
+new Chart(serviceCtx, {
+    type: 'bar',
+    data: {
+        labels: @json($service),  // Pass the service names dynamically
+        datasets: [{
+            label: 'Highest Service Rate',
+            data: @json($servicePrice),  // Pass the price data dynamically
+            borderWidth: 1,
+            barThickness: 25, // Set a fixed bar width for all bars
+            backgroundColor: 'green', // Set all bars to green color
+        }]
+    },
+    options: {
+        responsive: true,  // Ensure chart is responsive
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: {{ $ServiceAdjustedMax }}  // Use the dynamically passed max value
+            },
+            x: {
+                categoryPercentage: 0.5,  // Adjusts the space for categories
+                barPercentage: 0.5,       // Adjusts bar width within each category
+                ticks: {
+                    font: {
+                        size: 8,  // Smaller font size for the x-axis labels
+                    },
+                    rotation: 0,  // Rotate the labels vertically
+                    autoSkip: true, // Skip labels if they overlap
+                    maxRotation: 0, // Prevent labels from rotating further
+                    minRotation: 0  // Prevent labels from rotating in the other direction
+                }
+            }
         },
-        options: {
-            responsive: true,  // Ensure chart is responsive
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: {{ $ServiceAdjustedMax }}  // Use the dynamically passed max value
-                },
-                x: {
-                    categoryPercentage: 0.5,  // Adjusts the space for categories
-                    barPercentage: 0.5,       // Adjusts bar width within each category
-                    ticks: {
-                        font: {
-                            size: 8,  // Smaller font size for the x-axis labels
-                        },
-                        rotation: 0,  // Set rotation to 0 for horizontal labels
-                        autoSkip: true, // Skip labels if they overlap
-                        maxRotation: 0, // Prevent the labels from rotating
-                        minRotation: 0  // Prevent the labels from rotating
-                    }
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 13,  // Smaller font size for the legend
+                        family: "'Arial', sans-serif",
+                    },
+                    color: '#333', // Color of the legend text
+                    usePointStyle: true, // Remove the color square
+                    boxWidth: 0, // Remove the box next to the label
                 }
             },
-            plugins: {
-                legend: {
-                    labels: {
-                        font: {
-                            size: 13,  // Smaller font size for the legend
-                            family: "'Arial', sans-serif",
-                        },
-                        color: '#333', // Color of the legend text
-                        usePointStyle: true, // Remove the color square
-                        boxWidth: 0, // Remove the box next to the label
-                    }
-                },
-                tooltip: {
-                    backgroundColor: '#333', // Tooltip background color
-                    bodyColor: '#fff', // Tooltip text color
-                }
-            },
-            layout: {
-                padding: {
-                    left: 20,
-                    right: 20,
-                    top: 20,
-                    bottom: 20
-                }
-            },
-            elements: {
-                bar: {
-                    borderRadius: 3, // Optional: Rounded corners on bars
-                }
-            },
-            responsiveAnimationDuration: 1000,  // Adjust responsiveness delay
-            maintainAspectRatio: false, // Prevents aspect ratio distortion when resizing
-        }
-    });
+            tooltip: {
+                backgroundColor: '#333', // Tooltip background color
+                bodyColor: '#fff', // Tooltip text color
+            }
+        },
+        layout: {
+            padding: {
+                left: 20,
+                right: 20,
+                top: 20,
+                bottom: 20
+            }
+        },
+        elements: {
+            bar: {
+                borderRadius: 3, // Optional: Rounded corners on bars
+            }
+        },
+        responsiveAnimationDuration: 1000,  // Adjust responsiveness delay
+        maintainAspectRatio: false, // Prevents aspect ratio distortion when resizing
+    }
+});
+
 </script>
 
 
@@ -372,7 +408,7 @@ new Chart(doughnutCtx, {
     @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(-100px);
+        transform: translateY(-50px);
     }
     100% {
         opacity: 1;

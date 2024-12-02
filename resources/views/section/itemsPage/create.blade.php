@@ -32,7 +32,7 @@
             <div class="flex flex-col md:flex-row justify-between mb-3">
                 <div class=" mb-5 md:mb-3">
                     <label>Name</label>
-                    <input type="text" name="name" class="w-full px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2 mr-64">
+                    <input type="text" name="name" class="w-96 px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
                     @error('name')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                         <span class=" text-dan"></span>
@@ -46,9 +46,9 @@
                 </div>
             </div>
 
-            <div class="mb-5 md:mb-3">
+            <div class="flex flex-col mb-5 md:mb-7">
                 <label>Category</label>
-                <input type="text" name="category" class="w-full px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
+                <input type="text" name="category" class=" w-96 px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
                 @error('category')
                     <span class="text-red-500 text-xs">{{ $message }}</span>
                 @enderror
@@ -59,7 +59,7 @@
                 <div>
                   <label>Quantity</label>
                   <input type="number" name="quantity" min="1" max="9999" step="1" value="1"
-                         class=" w-16 px-3 py-1 border border-gray-400 rounded-md mt-2 mr-28 ml-1 mb-5">
+                         class=" w-16 px-3 py-1 border border-gray-400 rounded-md mt-2 mr-12 ml-1 mb-5">
                          @error('quantity')
                             <br><span class="text-red-500 text-xs">{{ $message }}</span>
                         @enderror
