@@ -39,6 +39,12 @@ Route::get('section/itemsPage.edit', [CategoryController::class, 'edit'])
     ->name('section.itemsPage.edit');
 Route::get('section/itemsPage.sell', [CategoryController::class, 'sell'])
     ->name('section.itemsPage.sell');
+    // sell item
+
+// Process the sale (when the user submits the sell form)
+Route::post('section/itemsPage/sell/{category}', [CategoryController::class, 'sellItem'])
+    ->name('itemsPage.sell.submit');
+
 
 Route::resource('itemsPage', CategoryController::class);
 Route::resource('repairPage', ServicesController::class);
@@ -76,6 +82,8 @@ Route::get('/view-pdf/serviceSheet.pdf', function(){
 
         abort(404);
     });
+
+
 
 
 // report route
