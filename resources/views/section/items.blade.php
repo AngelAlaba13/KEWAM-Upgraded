@@ -30,9 +30,9 @@
             <div class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4">
                 <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Items</div>
                 <form action="{{ route('section.items') }}" method="GET">
-                    <div class="flex bg-gray-300 px-3 py-1 ml-1 w-80 shadow-inner shadow-gray-300">
+                    <div class="flex bg-green-50 px-3 py-1 ml-1 w-80 shadow-inner shadow-gray-300">
                         <input type="text" name="query" id="search-input" placeholder="Search" class="w-full text-base sm:text-lg border-none outline-none bg-transparent pr-12">
-                        <div class=" fixed top-2 ml-64 bg-slate-500 h-9 w-14">
+                        <div class=" fixed top-2 ml-64 bg-green-400 shadow-inner shadow-gray-300 h-9 w-14">
                             <button type="submit" class=" px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm" style="font-size: 10px;">
                                 <img src="{{ asset('imgs/search.png') }}" alt="back to items" class=" w-4 mt-1">
                             </button>
@@ -41,7 +41,7 @@
                 </form>
 
                 <form action="{{ route('section.items') }}" method="GET">
-                    <div id="suggestions" class="absolute top-11 bg-gray-300 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
+                    <div id="suggestions" class="absolute top-11 bg-green-100 opacity-70 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
 
                     </div>
                 </form>
@@ -50,7 +50,7 @@
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
                 <a href="{{ route('section.itemsPage.create') }}">
-                    <button class="bg-slate-800 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
+                    <button class="bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
                 </a>
             </div>
         </div>
@@ -61,7 +61,7 @@
         <div class="overflow-x-auto">
             <table class="w-full border-collapse">
                 <thead>
-                    <tr class="bg-gray-200 text-xs sm:text-sm md:text-base text-gray-600 uppercase font-medium h-10">
+                    <tr class="bg-green-600 text-xs sm:text-xs md:text-xs text-gray-50 uppercase font-medium h-10">
                         <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                         <th class="px-3 py-2 border border-gray-300">Name</th>
                         <th class="px-3 py-2 border border-gray-300">Category</th>
@@ -73,7 +73,7 @@
                 </thead>
                 <tbody>
                     @forelse ($categories as $index => $category)
-                    <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
+                    <tr class="even:bg-green-50 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
                         onclick="showPopup(event, {{ $category->id }}, '{{ $category->name }}', '{{ $category->category }}', {{ $category->quantity }}, {{ $category->price }}, '{{ asset($category->image_path) }}')">
                         <!-- Display Sequential Number -->
                         <td class="px-3 py-2 border border-gray-300 text-center">
