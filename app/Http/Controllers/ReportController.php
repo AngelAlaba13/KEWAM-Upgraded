@@ -50,16 +50,32 @@ class ReportController extends Controller
         ]);
     }
 
-    public function exportPdf()
+    public function exportPdf(Request $request)
     {
-        // Fetch categories (no join, simple query)
-        $categories = Category::all();
+        // Apply the same filter for exporting as in the view
+    $timeFilter = $request->input('time_filter', null);
+    $categories = Category::when($timeFilter, function ($query, $timeFilter) {
+        switch ($timeFilter) {
+            case '1_month_ago':
+                return $query->where('created_at', '>=', now()->subMonth());
+            case '2_weeks_ago':
+                return $query->where('created_at', '>=', now()->subWeeks(2));
+            case '1_week_ago':
+                return $query->where('created_at', '>=', now()->subWeek());
+            case 'yesterday':
+                return $query->whereDate('created_at', '=', now()->yesterday()->toDateString());
+            case 'today':
+                return $query->whereDate('created_at', '=', now()->toDateString());
+            default:
+                return $query;
+        }
+    })->get();
 
-        // Render the view and pass the data to it
-        $pdf = Pdf::loadView('pdf.itemsReport', compact('categories'));
+    // Load the filtered categories into the PDF view
+    $pdf = Pdf::loadView('pdf.itemsReport', compact('categories'));
 
-        // Return the generated PDF as a download
-        return $pdf->download('items-report.pdf');
+    // Stream the PDF to the browser (this opens the PDF in a new tab)
+        return $pdf->stream('items-report.pdf');
     }
 
 

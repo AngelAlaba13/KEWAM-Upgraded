@@ -19,6 +19,6 @@ class NavigationController extends Controller
     }
 
     public function report(){
-        return view('section.report');
+        return view('section.reportPage.itemsReport');
     }
 }

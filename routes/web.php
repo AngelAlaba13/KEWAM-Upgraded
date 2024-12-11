@@ -27,8 +27,8 @@ Route::get('section/items', [NavigationController::class, 'items'])
     ->name('section.items');
 Route::get('section/repair', [NavigationController::class, 'repair'])
     ->name('section.repair');
-Route::get('section/report', [NavigationController::class, 'report'])
-    ->name('section.report');
+Route::get('section/reportPage/itemsReport', [NavigationController::class, 'report'])
+    ->name('section.reportPage.itemsReport');
 
 // Routes for category-related actions
 Route::get('section/itemsPage.create', [CategoryController::class, 'create'])
@@ -73,6 +73,17 @@ Route::get('/search/service-suggestions', [ServicesController::class, 'suggestio
     ->name('search.service.suggestions');
 
 // Open pdf
+Route::get('/view-pdf/serviceSheet.pdf', function(){
+        $path = storage_path("app/public/pdfs/serviceSheet.pdf");
+
+        if (file_exists($path)) {
+            return response()->file($path);
+        }
+
+        abort(404);
+    });
+
+
 Route::get('/export-pdf', [ReportController::class, 'exportPdf'])->name('export.pdf');
 
 

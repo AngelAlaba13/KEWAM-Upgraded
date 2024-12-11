@@ -57,7 +57,7 @@
             <p class="text-xs mb-14 text-center group-hover:text-green-400 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Services</p>
         </a>
 
-        <a href="{{route('section.report')}}" class="flex flex-col items-center group">
+        <a href="{{route('section.reportPage.itemsReport')}}" class="flex flex-col items-center group">
             <img src="{{asset('imgs/reports.png')}}" alt="Items" title="Report" class="mb-1 w-5 h-5">
             <p class="text-xs mb-10 text-center group-hover:text-green-400 group-active:text-green-700 group-hover:font-bold transition-colors duration-100">Report</p>
         </a>

@@ -1,7 +1,7 @@
 <x-navigationBar></x-navigationBar>
 
 <div class="flex flex-col w-full p-6">
-    <h1 class="text-2xl font-semibold text-gray-500 mb-5 ml-16">Sell Item</h1>
+    <h1 class="text-2xl font-semibold text-gray-500 mb-5 ml-24">Sell Item</h1>
 
     <!-- Display status messages -->
     @if(session('status'))
@@ -15,11 +15,11 @@
     @if($categories->count() == 0)
         <p>No items available.</p>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 ml-32 mr-16">
             @foreach ($categories as $category)
                 <div class="bg-white rounded-lg shadow-md p-4">
                     <!-- Item Image -->
-                    <div class="w-full h-48 bg-gray-200 mb-4">
+                    <div class="w-full h-40 bg-gray-200 mb-4">
                         <img src="{{ asset($category->image_path ?? 'category.png') }}"
                              alt="{{ $category->name }}"
                              class="w-full h-full object-cover rounded-md">

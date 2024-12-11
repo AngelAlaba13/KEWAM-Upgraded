@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Items Report</title>
     <style>
-
         body {
             font-family: 'DejaVu Sans', sans-serif;
             line-height: 1.5;
@@ -50,17 +49,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($categories as $index => $category)
             <tr class="bg-gray-100">
-                <td class="text-center">{{ $category->id }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td> <!-- Displaying loop index as the ID -->
                 <td class="text-left">{{ $category->name }}</td>
                 <td class="text-left">{{ $category->category }}</td>
                 <td class="text-center">{{ $category->quantity }}</td>
                 <td class="text-center">{{ $category->sold_quantity }}</td>
                 <td class="text-left">&#8369;{{ number_format($category->price, 2) }}</td>
                 <td class="text-left">&#8369;{{ number_format($category->value, 2) }}</td>
-
-
             </tr>
             @endforeach
         </tbody>
