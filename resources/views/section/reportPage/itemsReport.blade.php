@@ -48,7 +48,7 @@
 
 
         <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
-            <a href="{{ route('section.itemsPage.create') }}">
+            <a href="{{ route('export.pdf') }}">
                 <button class="bg-lime-500 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">PRINT NOW</button>
             </a>
         </div>
@@ -64,16 +64,17 @@
                         <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                         <th class="px-3 py-2 border border-gray-300">Name</th>
                         <th class="px-3 py-2 border border-gray-300">Category</th>
+                        <th class="px-3 py-2 border border-gray-300">Remaining</th>
                         <th class="w-28 px-3 py-2 border border-gray-300">Sold Item</th>
                         <th class="px-3 py-2 border border-gray-300">Price</th>
-                        <th class="px-3 py-2 border border-gray-300">Total</th>
+                        <th class="px-3 py-2 border border-gray-300">Profit</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($categories as $index => $category)
-                    <tr class="even:bg-slate-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
-                        onclick="showPopup(event, {{ $category->id }}, '{{ $category->name }}', '{{ $category->category }}', {{ $category->quantity }}, {{ $category->price }}, '{{ asset($category->image_path) }}')">
-                        <!-- Display Sequential Number -->
+                    <tr class="even:bg-slate-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200">
+
+                        {{-- <!-- Display Sequential Number --> --}}
                         <td class="px-3 py-2 border border-gray-300 text-center">
                             {{ $categories->firstItem() + $index }} <!-- Sequential Number -->
                         </td>
@@ -85,6 +86,7 @@
                         </td>
                         <td class="px-3 py-2 border border-gray-300">{{ $category->category }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->quantity }}</td>
+                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->sold_quantity }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->price, 2) }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->value, 2) }}</td>
                     </tr>
@@ -103,45 +105,6 @@
         </div>
     </div>
 </div>
-
-<!-- Pop-up -->
-<div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
-    <div class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl shadow-2xl max-w-lg w-1/3 relative animate-fadeInUp">
-
-        <!-- Header -->
-        <div class="flex justify-between items-center border-b pb-3 mb-5">
-            <p class="text-gray-500 font-medium text-2xl">Item Details</p>
-            <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
-                &times;
-            </button>
-        </div>
-
-        <!-- Item Name and Category -->
-        <p id="popup-item-name" class="text-center font-extrabold text-xl text-gray-">Item Name</p>
-        <p id="popup-item-category" class="text-center text-sm text-gray-500 italic mb-5">Item Category</p>
-
-        <!-- Image Container -->
-        <div class="flex flex-col items-center">
-            <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden border-2 border-zinc-400 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out" id="popup-item-image">
-                <img src="" alt="Item Image" class="w-full h-full object-cover rounded-md">
-            </div>
-        </div>
-
-        <!-- Quantity and Price -->
-        <div class="flex flex-col justify-between mt-8 px-3">
-            <div class="flex">
-                <p class="font-bold">Quantity: </p>
-                <p id="popup-item-quantity" class=" text-gray-700 ml-1">Quantity: <span class="">0</span></p>
-            </div>
-            <div class="flex ">
-                <p class="font-bold">Price: </p>
-                <p id="popup-item-price" class=" text-gray-700 ml-1">Price: <span class=" text-sky-800">0.00</span></p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 
 
 <script>

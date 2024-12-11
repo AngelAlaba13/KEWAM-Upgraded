@@ -73,15 +73,8 @@ Route::get('/search/service-suggestions', [ServicesController::class, 'suggestio
     ->name('search.service.suggestions');
 
 // Open pdf
-Route::get('/view-pdf/serviceSheet.pdf', function(){
-        $path = storage_path("app/public/pdfs/serviceSheet.pdf");
+Route::get('/export-pdf', [ReportController::class, 'exportPdf'])->name('export.pdf');
 
-        if (file_exists($path)) {
-            return response()->file($path);
-        }
-
-        abort(404);
-    });
 
 
 

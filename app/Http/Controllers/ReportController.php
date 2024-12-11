@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Carbon\Carbon;  // Import Carbon for date manipulation
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
@@ -49,6 +50,19 @@ class ReportController extends Controller
         ]);
     }
 
-    // Other methods like search would go here...
+    public function exportPdf()
+    {
+        // Fetch categories (no join, simple query)
+        $categories = Category::all();
+
+        // Render the view and pass the data to it
+        $pdf = Pdf::loadView('pdf.itemsReport', compact('categories'));
+
+        // Return the generated PDF as a download
+        return $pdf->download('items-report.pdf');
+    }
+
+
+
 }
 

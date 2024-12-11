@@ -202,34 +202,41 @@ class CategoryController extends Controller
     }
 
     public function sellItem(Request $request, Category $category)
-{
-    // Get the updated quantity from the form submission
-    $quantityToSell = $request->input('quantity');
+    {
+        // Get the updated quantity from the form submission
+        $quantityToSell = $request->input('quantity');
 
-    // Validate the input to ensure it's a valid number
-    if (!is_numeric($quantityToSell) || $quantityToSell < 1) {
+        // Validate the input to ensure it's a valid number
+        if (!is_numeric($quantityToSell) || $quantityToSell < 1) {
+            return redirect()->route('section.itemsPage.sell')
+                ->with('status', 'Invalid quantity.');
+        }
+
+        // Ensure there's enough stock to sell
+        if ($category->quantity < $quantityToSell) {
+            return redirect()->route('section.itemsPage.sell')
+                ->with('status', 'Not enough stock to sell.');
+        }
+
+        // Decrease quantity and increase sold quantity
+        $category->quantity -= $quantityToSell;
+        $category->sold_quantity += $quantityToSell; // Increment sold quantity
+
+        // Recalculate value (quantity * price)
+        $category->value = $category->quantity * $category->price;
+
+        // Save the updated category
+        $category->save();
+
+        // Log the sale (optional)
+        $message = "Sold {$quantityToSell} {$category->name}. Remaining stock: {$category->quantity}";
+        Log::create(['message' => $message]);
+
+        // Return a success message
         return redirect()->route('section.itemsPage.sell')
-            ->with('status', 'Invalid quantity.');
+            ->with('status', "Successfully sold {$quantityToSell} {$category->name}");
     }
 
-    // Ensure there's enough stock to sell
-    if ($category->quantity < $quantityToSell) {
-        return redirect()->route('section.itemsPage.sell')
-            ->with('status', 'Not enough stock to sell.');
-    }
-
-    // Update the item's quantity in the database
-    $category->quantity -= $quantityToSell; // Decrease the quantity
-    $category->save(); // Save the updated category
-
-    // Log the sale (optional)
-    $message = "Sold {$quantityToSell} {$category->name}. Remaining stock: {$category->quantity}";
-    Log::create(['message' => $message]);
-
-    // Return a success message
-    return redirect()->route('section.itemsPage.sell')
-        ->with('status', "Successfully sold {$quantityToSell} of {$category->name}.");
-}
 
 
 
