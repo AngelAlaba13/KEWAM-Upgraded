@@ -129,6 +129,7 @@
                 &times;
             </button>
         </div>
+        {{--  --}}
 
         <!-- Client Name and Details -->
         <p id="popup-service-clientName" class="flex flex-col justify center text-center font-bold text-xl"></p>
