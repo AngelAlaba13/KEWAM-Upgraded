@@ -188,4 +188,10 @@ class CategoryController extends Controller
         return response()->json($categories);
     }
 
+    public function sell(){
+
+        return view('section.itemsPage.sell');
+
+    }
+
 }

@@ -48,9 +48,15 @@
 
 
             </div>
+            <div class="w-full md:w-auto flex pb-2 justify-end pr-3">
+                <a href="{{ route('section.itemsPage.sell') }}">
+                    <button class="bg-yellow-400 px-3 md:px-4 py-2 text-black rounded-md text-xs sm:text-sm font-bold shadow-sm shadow-slate-500" style="font-size: 12px;">SELL ITEM</button>
+                </a>
+            </div>
+
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
                 <a href="{{ route('section.itemsPage.create') }}">
-                    <button class="bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
+                    <button class="bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500" style="font-size: 12px;">ADD ITEM</button>
                 </a>
             </div>
         </div>

@@ -23,40 +23,55 @@
         };
     </script>
 
-    <!-- Table and Search Section -->
-    <div class="flex flex-wrap items-center justify-start pt-4 ml-16 pb-3 md:ml-16 md:pt-2 md:pb-2 md:h-14 md:border-b md:border-gray-300">
-        <div class="flex flex-wrap sm:flex-nowrap w-full items-center justify-between space-y-4 sm:space-y-0">
-            <!-- Items Label and Search Bar -->
-            <div class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4">
-                <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Items Report</div>
+ <!-- Table and Search Section -->
+<div class="flex flex-wrap items-center justify-start pt-4 ml-16 pb-3 md:ml-16 md:pt-2 md:pb-2 md:h-14 md:border-b md:border-gray-300">
 
-            </div>
-            <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
-                <a href="{{ route('section.itemsPage.create') }}">
-                    <button class="bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
-                </a>
-            </div>
+    <!-- Header Section: Title and Filter -->
+    <div class="flex flex-wrap sm:flex-nowrap w-full items-center justify-between space-y-4 sm:space-y-0">
+
+        <!-- Title: Items Report -->
+        <div class="flex items-center space-x-4">
+            <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Items Report</div>
+        </div>
+
+        <!-- Filter Form with Automatic Submission -->
+        <form method="GET" action="{{ route('section.reportPage.itemsReport') }}" class="flex items-center space-x-4 mr-56">
+            <label for="time-filter" class="text-md font-medium text-gray-500">Filter by:</label>
+            <select id="time-filter" name="time_filter" class="border p-2 rounded-md text-green-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent w-52 h-9" onchange="this.form.submit()">
+                <option class=" bg-slate-100" value="1_month_ago" {{ request('time_filter') == '1_month_ago' ? 'selected' : '' }}>1 Month Ago</option>
+                <option value="2_weeks_ago" {{ request('time_filter') == '2_weeks_ago' ? 'selected' : '' }}>2 Weeks Ago</option>
+                <option value="1_week_ago" {{ request('time_filter') == '1_week_ago' ? 'selected' : '' }}>1 Week Ago</option>
+                <option value="yesterday" {{ request('time_filter') == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
+                <option value="today" {{ request('time_filter') == 'today' ? 'selected' : '' }}>Today</option>
+            </select>
+        </form>
+
+
+        <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
+            <a href="{{ route('section.itemsPage.create') }}">
+                <button class="bg-lime-500 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">PRINT NOW</button>
+            </a>
         </div>
     </div>
+</div>
 
     <!-- Table Section -->
     <div class="ml-5 mb-7 mr-5 md:ml-28 md:mr-14 mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full border-collapse">
                 <thead>
-                    <tr class="bg-green-600 text-xs sm:text-xs md:text-xs text-gray-50 uppercase font-medium h-10">
+                    <tr class="bg-slate-500 text-xs sm:text-xs md:text-xs text-gray-50 uppercase font-medium h-10">
                         <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                         <th class="px-3 py-2 border border-gray-300">Name</th>
                         <th class="px-3 py-2 border border-gray-300">Category</th>
-                        <th class="w-20 px-3 py-2 border border-gray-300">Quantity</th>
+                        <th class="w-28 px-3 py-2 border border-gray-300">Sold Item</th>
                         <th class="px-3 py-2 border border-gray-300">Price</th>
-                        <th class="px-3 py-2 border border-gray-300">Value</th>
-                        <th class="w-3 px-3 py-2 border border-gray-300">Actions</th>
+                        <th class="px-3 py-2 border border-gray-300">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($categories as $index => $category)
-                    <tr class="even:bg-green-50 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
+                    <tr class="even:bg-slate-100 odd:bg-white text-xs sm:text-sm md:text-base text-gray-800 cursor-pointer hover:bg-gray-200"
                         onclick="showPopup(event, {{ $category->id }}, '{{ $category->name }}', '{{ $category->category }}', {{ $category->quantity }}, {{ $category->price }}, '{{ asset($category->image_path) }}')">
                         <!-- Display Sequential Number -->
                         <td class="px-3 py-2 border border-gray-300 text-center">
@@ -72,11 +87,6 @@
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->quantity }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->price, 2) }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->value, 2) }}</td>
-                        <td class="px-3 py-2 border border-gray-300">
-                            <a href="{{ route('itemsPage.edit', $category->id) }}">
-                                <img src="{{ asset('imgs/edit.png') }}" alt="Edit" class="ml-6 border-b border-b-slate-600 pb-1">
-                            </a>
-                        </td>
                     </tr>
                     @empty
                     <tr>

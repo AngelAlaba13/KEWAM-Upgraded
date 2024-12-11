@@ -37,6 +37,8 @@ Route::get('/section/items', [CategoryController::class, 'index'])
     ->name('section.items');
 Route::get('section/itemsPage.edit', [CategoryController::class, 'edit'])
     ->name('section.itemsPage.edit');
+Route::get('section/itemsPage.sell', [CategoryController::class, 'sell'])
+    ->name('section.itemsPage.sell');
 
 Route::resource('itemsPage', CategoryController::class);
 Route::resource('repairPage', ServicesController::class);
