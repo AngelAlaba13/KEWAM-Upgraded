@@ -4,7 +4,7 @@ use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicesController;
-use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,3 +75,7 @@ Route::get('/view-pdf/serviceSheet.pdf', function(){
         abort(404);
     });
 
+
+// report route
+Route::get('section/reportPage/itemsReport', [ReportController::class, 'report'])
+    ->name('section.reportPage.itemsReport');
