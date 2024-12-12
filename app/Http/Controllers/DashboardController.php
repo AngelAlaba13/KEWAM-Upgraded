@@ -22,6 +22,8 @@ class DashboardController extends Controller
     $totalQuantity = Category::sum('quantity');
     $totalValue = Category::sum('value');
 
+    $SoldItems = Category::sum('sold_quantity');
+
     // Fetch all logs and delete old logs
     Log::where('created_at', '<', Carbon::now()->subWeeks(2))->delete();
     $logs = Log::latest()->get();
@@ -50,7 +52,7 @@ class DashboardController extends Controller
     $incompleteCount = $status->filter(fn($s) => $s === 'Incomplete')->count();
 
     return view('section.home', compact(
-        'categoryCount', 'itemCount', 'totalQuantity', 'totalValue', 'logs',
+        'categoryCount', 'itemCount', 'totalQuantity', 'totalValue', 'SoldItems', 'logs',
         'itemlabels', 'itemdata', 'itemAdjustedMax', 'servicePrice',
         'service', 'status', 'ServiceAdjustedMax', 'completeCount', 'incompleteCount'
     ));

@@ -66,7 +66,7 @@
                         <th class="px-3 py-2 border border-gray-300">Remaining</th>
                         <th class="w-28 px-3 py-2 border border-gray-300">Sold Item</th>
                         <th class="px-3 py-2 border border-gray-300">Price</th>
-                        <th class="px-3 py-2 border border-gray-300">Profit</th>
+                        <th class="px-3 py-2 border border-gray-300">Total Price Sold</th>
                     </tr>
                 </thead>
                 <tbody>

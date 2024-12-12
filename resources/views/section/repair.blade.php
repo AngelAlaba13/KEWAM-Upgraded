@@ -30,9 +30,9 @@
             <div class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4">
                 <div class="ml-2 md:ml-20 md:mr-28 text-xl sm:text-2xl text-gray-500">Services</div>
                 <form action="{{ route('section.repair') }}" method="GET">
-                    <div class="flex bg-gray-300 px-3 py-1 ml-1 w-80 shadow-inner shadow-gray-300">
+                    <div class="flex bg-green-50 px-3 py-1 ml-1 w-80 shadow-inner shadow-gray-300">
                         <input type="text" name="query" id="search-input" placeholder="Search" class="w-full text-base sm:text-lg border-none outline-none bg-transparent pr-12">
-                        <div class=" fixed top-2 ml-64 bg-slate-500 h-9 w-14">
+                        <div class=" fixed top-2 ml-64 bg-green-400 h-9 w-14">
                             <button type="submit" class=" px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm" style="font-size: 10px;">
                                 <img src="{{ asset('imgs/search.png') }}" alt="back to items" class=" w-4 mt-1">
                             </button>
@@ -41,7 +41,7 @@
                 </form>
 
                 <form action="{{ route('section.repair') }}" method="GET">
-                    <div id="suggestions" class="absolute top-11 bg-gray-300 border border-gray-300 z-50 hidden" style="width: 269px; left: 360px">
+                    <div id="suggestions" class="absolute top-11 bg-green-100 border border-gray-300 z-50 hidden" style="width: 269px; left: 360px">
 
                     </div>
                 </form>
@@ -50,13 +50,13 @@
             </div>
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
                 <a class="" href="{{ url('/view-pdf/serviceSheet.pdf') }}" target="_blank">
-                    <button class="bg-slate-800 flex px-3  ml-36 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">
+                    <button class="flex flex-row bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500" style="font-size: 12px;">
                         <img class="mr-2 w-3 h-3 mt-1" src="{{asset('imgs/download.png')}}" alt="export">
                         <p class="">SERVICE SHEET</p></button>
                 </a>
 
                 <a href="{{ route('section.repairPage.create') }}">
-                    <button class="bg-slate-800 px-3 md:px-4 py-2 ml-2 text-white rounded-md text-xs sm:text-sm font-semibold shadow-sm shadow-slate-500" style="font-size: 10px;">ADD ITEM</button>
+                    <button class="bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500" style="font-size: 12px;">ADD CLIENT</button>
                 </a>
             </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="overflow-x-auto">
             <table class="w-full border-collapse">
                 <thead>
-                    <tr class="bg-gray-200 text-xs sm:text-sm md:text-xs text-gray-600 uppercase font-medium h-10">
+                    <tr class="bg-green-600 text-xs sm:text-sm md:text-xs text-white uppercase font-medium h-10">
                         <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                         <th class="px-3 py-2 border border-gray-300">Client Name</th>
                         <th class="px-3 py-2 border border-gray-300">Service</th>
@@ -80,7 +80,7 @@
                 </thead>
                 <tbody>
                     @forelse ($services as $index => $service)
-                    <tr class="even:bg-gray-100 odd:bg-white text-xs sm:text-sm md:text-sm text-gray-800 cursor-pointer hover:bg-gray-200"
+                    <tr class="even:bg-green-50 odd:bg-white text-xs sm:text-sm md:text-sm text-gray-800 cursor-pointer hover:bg-gray-200"
                         onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->status }}', '{{ $service->serviceDescription }}')">
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $services->firstItem() + $index }}</td>
                         <td class="px-2 py-1 border border-gray-300 truncate max-w-xs overflow-hidden">{{ Str::limit($service->clientName, 12) }}</td>

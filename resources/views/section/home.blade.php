@@ -62,7 +62,7 @@
             <div class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
                 <img src="{{ asset('imgs/category.png') }}" alt="Quantity" class="w-10 h-11 mb-5">
                 <p class="text-3xl font-bold">{{ $categoryCount }}</p>
-                <p class="text-gray-600 font-medium mb-2">Categories</p>
+                <p class="text-gray-600 font-medium mb-2">Item Categories</p>
             </div>
 
             <div class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
@@ -73,8 +73,8 @@
 
             <div class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
                 <img src="{{ asset('imgs/value.png') }}" alt="Quantity" class="w-9 h-9 mb-6">
-                <p class="text-xl font-bold">₱{{ number_format($totalValue, 2) }}</p>
-                <p class="text-gray-600 font-medium">Total Value</p>
+                <p class="text-3xl font-bold">{{$SoldItems }}</p>
+                <p class="text-gray-600 font-medium">Sold Items</p>
             </div>
 
 
