@@ -15,7 +15,7 @@
             </div>
 
             <div class=" ml-20 md:ml-12 text-xl text-gray-500">
-                Add Item
+                Add Book
             </div>
 
         </div>
@@ -25,7 +25,7 @@
     <div class="ml-5 mr-5 pl-12 pr-12 mb-7 pb-9 pt-8 md:ml-28 md:mr-14 mt-10 bg-zinc-200 rounded-xl overflow-hidden shadow-lg block  border-b-2 border-r-2 border-slate-400">
 
         <div class="flex center justify-center mb-10">
-            <p class=" text-gray-500 text-3xl font-medium">ADD ITEM</p>
+            <p class=" text-gray-500 text-3xl font-medium">ADD Book</p>
         </div>
         <form action="{{ route('itemsPage.store')}}" method="POST" enctype="multipart/form-data">
             @csrf

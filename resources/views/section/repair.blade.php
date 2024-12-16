@@ -120,7 +120,7 @@
 
 <!-- Pop-up -->
 <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
-    <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/3 relative">
+    <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/2 relative">
 
         <!-- Header -->
         <div class="flex justify-between items-center border-b pb-3 mb-5">
@@ -135,7 +135,7 @@
         <p id="popup-service-clientContactNumber" class="text-center text-sm text-gray-500 mb-3"></p>
 
         <!-- Content -->
-        <div class="flex flex-col space-y-4">
+        <div class="flex flex-col space-y-4 mb-1">
             <!-- Address -->
             <div class="flex justify-between">
                 <p class="font-bold text-gray-700">Address:</p>
@@ -171,6 +171,10 @@
                 <p class="font-bold text-gray-700 mb-1">Service Description:</p>
                 <p id="popup-service-status" class="text-gray-900"></p>
             </div>
+
+            <div class="flex justify-center">
+                <button onclick="generatePDF()" class="bg-yellow-400 mt-3 text-gray-800 px-4 py-2 rounded-md w-full shadow-md shadow-slate-400 font-bold">PRINT</button>
+            </div>
         </div>
     </div>
 </div>
@@ -197,12 +201,9 @@ function showPopup(event, itemId, clientName, clientContactNumber, clientAddress
     document.getElementById('popup').classList.remove('hidden');
 }
 
-
-
     function closePopup() {
         document.getElementById('popup').classList.add('hidden');
     }
-
 
     // Listen to input changes for search
     document.getElementById('search-input').addEventListener('input', function () {
@@ -242,9 +243,52 @@ function showPopup(event, itemId, clientName, clientContactNumber, clientAddress
         }
     });
 
+</script>
 
+<script>
+    function generatePDF() {
+    // Get data from the popup
+    const clientName = document.getElementById('popup-service-clientName').innerText;
+    const clientContact = document.getElementById('popup-service-clientContactNumber').innerText;
+    const clientAddress = document.getElementById('popup-service-clientAddress').innerText;
+    const service = document.getElementById('popup-service-repairService').innerText;
+    const serviceProvider = document.getElementById('popup-service-serviceProvider').innerText;
+    const price = document.getElementById('popup-service-servicePrice').innerText;
+    const description = document.getElementById('popup-service-serviceDescription').innerText;
+    const status = document.getElementById('popup-service-status').innerText;
 
+    // Send data to the backend via POST request
+    fetch('{{ route('generatePDF') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+        },
+        body: JSON.stringify({
+            clientName,
+            clientContact,
+            clientAddress,
+            service,
+            serviceProvider,
+            price,
+            description,
+            status
+        })
+    })
+    .then(response => response.blob())
+    .then(blob => {
+        // Create an object URL for the PDF blob
+        const url = URL.createObjectURL(blob);
 
+        // Open the PDF in a new tab
+        const newTab = window.open();
+        newTab.document.location = url;
+
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 </script>
+
+
 

@@ -86,6 +86,8 @@ Route::get('/view-pdf/serviceSheet.pdf', function(){
 
 Route::get('/export-pdf', [ReportController::class, 'exportPdf'])->name('export.pdf');
 
+Route::post('/generate-pdf', [ServicesController::class, 'generatePDF'])->name('generatePDF');
+
 
 
 

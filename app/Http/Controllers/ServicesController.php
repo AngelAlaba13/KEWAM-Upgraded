@@ -6,6 +6,8 @@ use App\Models\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 // use App\Models\Log;
 
@@ -206,6 +208,39 @@ class ServicesController extends Controller
         }
 
         return response()->json($services);
+    }
+
+
+    public function generatePDF(Request $request)
+    {
+        // Data from the request
+        $data = $request->all();
+
+        // Initialize DOMPDF
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isPhpEnabled', true);
+        $dompdf = new Dompdf($options);
+
+        // Create the HTML content for the PDF
+        $html = view('pdf.servicesReportPDF', compact('data'))->render();
+
+        // Load the HTML content into DOMPDF
+        $dompdf->loadHtml($html);
+
+        // (Optional) Set paper size
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the PDF (first pass)
+        $dompdf->render();
+
+        // Output the generated PDF (force download)
+        return response()->stream(function() use ($dompdf) {
+            echo $dompdf->output();
+        }, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="service-details.pdf"',
+        ]);
     }
 
 }
