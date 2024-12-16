@@ -70,7 +70,6 @@
             font-size: 13px;
         }
 
-
         .details {
             text-align: center;
             font-size: 13px;
