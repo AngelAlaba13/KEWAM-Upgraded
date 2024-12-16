@@ -18,7 +18,8 @@ class Category extends Model
         'price',
         'value',
         'image_path', // Add this line
-        'sold_quantity'
+        'sold_quantity',
+        'total_price_sold'
     ];
 
 

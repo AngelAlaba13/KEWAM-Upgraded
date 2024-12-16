@@ -46,6 +46,13 @@ class ReportController extends Controller
     // Sort the results in descending order by created_at
     $categories = $categories->orderBy('created_at', 'desc')->paginate(9);
 
+    $categories->getCollection()->transform(function ($category) {
+        // Calculate total_price_sold only if sold_quantity and price are valid
+        $category->total_price_sold = $category->sold_quantity * $category->price;
+        return $category;
+    });
+
+
     return view('section.reportPage.itemsReport', [
         'categories' => $categories
     ]);

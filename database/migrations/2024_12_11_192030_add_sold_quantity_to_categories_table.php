@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->integer('sold_quantity')->default(0);
+            // $table->integer('sold_quantity')->default(0);
+            $table->integer('total_price_sold')->default(0);
         });
     }
 

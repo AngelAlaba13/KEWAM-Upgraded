@@ -47,6 +47,11 @@
             </form>
 
             <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
+                <a href="{{ route('section.home')}}#status" >
+                    <button class="bg-orange-500 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold
+                mr-2 shadow-sm shadow-slate-500" style="font-size: 10px;">SALES CHART</button>
+                </a>
+
                 <a href="{{ route('export.pdf', ['time_filter' => request('time_filter')]) }}" target="_blank">
                     <button class="bg-lime-500 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-semibold mr-3 shadow-sm shadow-slate-500" style="font-size: 10px;">PRINT NOW</button>
                 </a>
@@ -64,9 +69,9 @@
                         <th class="px-3 py-2 border border-gray-300">Name</th>
                         <th class="px-3 py-2 border border-gray-300">Category</th>
                         <th class="px-3 py-2 border border-gray-300">Remaining</th>
-                        <th class="w-28 px-3 py-2 border border-gray-300">Sold Item</th>
                         <th class="px-3 py-2 border border-gray-300">Price</th>
-                        <th class="px-3 py-2 border border-gray-300">Total Price Sold</th>
+                        <th class="w-28 px-3 py-2 border border-gray-300">Sold Item</th>
+                        <th class="px-3 py-2 border border-gray-300">Total Price of Sold Items</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,9 +86,10 @@
                         </td>
                         <td class="px-3 py-2 border border-gray-300">{{ $category->category }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->quantity }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->sold_quantity }}</td>
                         <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->price, 2) }}</td>
-                        <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->value, 2) }}</td>
+                        <td class="px-3 py-2 border border-gray-300 text-center">{{ $category->sold_quantity }}</td>
+                        <td class="px-3 py-2 border border-gray-300 text-left">₱{{ number_format($category->total_price_sold, 2) }}</td>
+
                     </tr>
                     @empty
                     <tr>

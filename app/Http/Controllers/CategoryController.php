@@ -225,6 +225,8 @@ class CategoryController extends Controller
         // Recalculate value (quantity * price)
         $category->value = $category->quantity * $category->price;
 
+        $category->total_price_sold = $category->sold_quantity * $category->price;
+
         // Save the updated category
         $category->save();
 

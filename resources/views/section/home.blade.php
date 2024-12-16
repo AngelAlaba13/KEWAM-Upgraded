@@ -100,15 +100,30 @@
             <span id="status" class=" mt-60"></span>
         </div>
 
-        <div class="text-md text-gray-600 font-medium ml-11 mt-12"> <!-- Reduced ml-40 to ml-8 -->
-            Status of Services
-        </div>
-        <div class="flex">
-            <div class=" ml-10 mt-3">
-                <!-- Doughnut chart canvas -->
-                <canvas id="doughnutChart" style="width: 70%; height: 200px;"></canvas>
+        {{-- <div class="text-md text-gray-600 font-medium ml-11 mt-12"> <!-- Reduced ml-40 to ml-8 --> --}}
+            {{-- Status of Services --}}
+        {{-- </div> --}}
+
+        <div class="flex flex-row justify-start ml-10 mt-10 w-full">
+            <div class="">
+                <p class=" ml-20 mt-7 text-sm">Status of Service</p>
+                <div class=" mr-10">
+                    <!-- Doughnut chart canvas -->
+                    <canvas id="doughnutChart" style="width: 70%; height: 200px;"></canvas>
+                </div>
+            </div>
+            <div class="">
+                <div class="bg-slate-400 bg-opacity-15 shadow-md shadow-slate-400">
+                    <!-- Smaller size for the canvas -->
+                    <canvas id="salesChart" style="width: 100%; height: 269px;"></canvas>
+                </div>
             </div>
         </div>
+
+
+
+
+
     </div>
 
     <!-- Logs Section -->
@@ -401,6 +416,7 @@ new Chart(doughnutCtx, {
     }
 });
 
+
 </script>
 
 
@@ -421,4 +437,87 @@ new Chart(doughnutCtx, {
 }
 
 </style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const itemCtx = document.getElementById('salesChart');
+
+    // Chart data passed from the controller
+    const salesData = @json($sales_data);  // Converts PHP array to JavaScript object
+    const labels = @json($labels);         // Converts PHP array to JavaScript array
+
+    // Prepare the dataset for the chart
+    const chartData = {
+        labels: labels,
+        datasets: [{
+            label: 'Sales',
+            data: labels.map(label => salesData[label] || 0),  // Map the data to the labels
+            borderWidth: 1,
+            fill: false, // This removes the fill for the line chart
+            borderColor: 'orange',  // Set the line color to orange
+            tension: 0.1  // Makes the line less curved
+        }]
+    };
+
+    // Chart configuration
+    new Chart(itemCtx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            responsive: true,
+            animation: {
+                duration: 1200,  // Time for the animation (1 second)
+                easing: 'easeOut ', // Easing function for a bounce effect
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: Math.max(...Object.values(salesData)) + 50000  // Dynamic max value
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 10, // Adjust size of x-axis labels
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 13,
+                            family: "'Arial', sans-serif",
+                        },
+                        color: '#333',
+                        usePointStyle: true,
+                        boxWidth: 0,
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#333',
+                    bodyColor: '#fff',
+                }
+            },
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                    bottom: 20
+                }
+            },
+            elements: {
+                line: {
+                    borderWidth: 2,  // Adjust line width
+                }
+            },
+            responsiveAnimationDuration: 1000,
+            maintainAspectRatio: false,
+        }
+    });
+});
+</script>
+
 

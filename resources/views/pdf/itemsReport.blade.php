@@ -126,7 +126,8 @@
                 <td class="text-center">{{ $category->quantity }}</td>
                 <td class="text-center">{{ $category->sold_quantity }}</td>
                 <td class="text-left">&#8369;{{ number_format($category->price, 2) }}</td>
-                <td class="text-left">&#8369;{{ number_format($category->value, 2) }}</td>
+                <td class="text-left">&#8369;{{ number_format($category->total_price_sold, 2) }}</td>
+
             </tr>
             @endforeach
         </tbody>
