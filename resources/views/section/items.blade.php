@@ -19,7 +19,7 @@
             setTimeout(() => {
                 successMessage.classList.remove('opacity-100', 'pointer-events-auto');
                 successMessage.classList.add('opacity-0', 'pointer-events-none');
-            }, 3000); // 3000ms = 3 seconds
+            }, 5000); // 3000ms = 3 seconds
         };
     </script>
 
@@ -41,7 +41,7 @@
                 </form>
 
                 <form action="{{ route('section.items') }}" method="GET">
-                    <div id="suggestions" class="absolute top-11 bg-green-100 opacity-70 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
+                    <div id="suggestions" class="absolute top-11 bg-green-100 opacity-90 border border-gray-300 z-50 hidden" style="width: 269px; left: 334px">
 
                     </div>
                 </form>

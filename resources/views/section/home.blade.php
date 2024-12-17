@@ -4,7 +4,7 @@
     <div class="fixed left-0 right-0 md:ml-16 pt-4 pb-4 border-b border-gray-300 bg-gray-200 z-40 transition-transform duration-300" id="navbar">
         <div class="flex w-full justify-between items-center h-5">
             <div class="ml-2 md:ml-14 md:mr-20 text-xl sm:text-2xl text-gray-500">
-                Dashboard
+                KEWAM Computer Repair and Services
             </div>
             <div class="flex flex-row justify-end">
                 <a href="#top">
