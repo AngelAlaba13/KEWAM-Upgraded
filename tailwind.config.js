@@ -9,7 +9,9 @@ module.exports = {
     extend: {
         colors: {
             'table': '',
-            'navigation': ''
+            'navigation': '',
+            headerColor : '#A61010'
+            
         }
     },
   },
