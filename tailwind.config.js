@@ -10,7 +10,7 @@ module.exports = {
         colors: {
             'table': '',
             'navigation': '',
-            headerColor : '#A61010'
+            headerColor : '#820C0C'
             
         }
     },
