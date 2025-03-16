@@ -54,8 +54,9 @@
                     </div>
 
                     <form action="{{ route('section.repair') }}" method="GET">
-                        <div id="suggestions" class="absolute top-11 bg-green-100 border border-gray-300 z-50 hidden"
-                            style="width: 269px; left: 360px">
+                        <div id="suggestions"
+                            class="absolute top-[50px] bg-red-100 opacity-90 borderborder-gray-300 z-50 hidden"
+                            style="width: 266px; left: 356px">
 
                         </div>
                     </form>
