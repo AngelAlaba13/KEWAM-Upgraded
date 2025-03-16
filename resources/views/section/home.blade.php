@@ -96,6 +96,33 @@
 
     {{-- sales chart --}}
 
+    <div
+        class="absolute w-[520px] h-[480px] 
+        bg-[rgb(255,41,41)] 
+        rounded-full blur-[200px] z-[1] 
+        top-[410%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+    bg-[rgb(255,41,41)] 
+    rounded-full blur-[150px] z-[1] 
+    top-[480%] left-[17%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    <div
+        class="absolute w-[320px] h-[280px] 
+        bg-[rgb(255,41,41)] 
+        rounded-full blur-[170px] z-[1] 
+        top-[500%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+    bg-[rgb(37,7,7)] 
+    rounded-full blur-[340px] z-[1] 
+    top-[520%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
     <div class="absolute inset-0 z-1 pointer-events-none">
         <div class="absolute w-full h-full">
             <!-- Stars (Multiple instances for depth) -->
