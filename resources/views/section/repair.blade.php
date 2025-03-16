@@ -65,10 +65,10 @@
                 <div class="w-full md:w-auto flex  justify-end mr-4 pr-3">
                     <a class="" href="{{ url('/view-pdf/serviceSheet.pdf') }}" target="_blank">
                         <button
-                            class="flex flex-row bg-yellow-500 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500"
+                            class="flex flex-row px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 border-[0.5px] border-white shadow-sm shadow-slate-500"
                             style="font-size: 12px;">
                             <img class="mr-2 w-3 h-3 mt-1" src="{{ asset('imgs/download.png') }}" alt="export">
-                            <p class="" style="font-size: 13px;">SERVICE SHEET</p>
+                            <p class="" style="font-size: 12px;">SERVICE SHEET</p>
                         </button>
                     </a>
 
@@ -82,11 +82,14 @@
         </div>
 
         <!-- Table Section -->
-        <div class="ml-5 mb-7 mr-5 md:ml-28 md:mr-14 mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
+        <div
+            class="ml-5 mb-7 mr-5 md:ml-28 md:mr-14 mt-8 bg-white rounded-lg shadow-lg overflow-hidden border-[0.5px] border-black z-40">
+
             <div class="overflow-x-auto">
                 <table class="w-full border-collapse">
                     <thead>
-                        <tr class="bg-green-600 text-xs sm:text-sm md:text-xs text-white uppercase font-medium h-10">
+                        <tr
+                            class="bg-gradient-to-r from-red-400 to-red-600 text-xs sm:text-sm md:text-xs text-white uppercase font-medium h-10">
                             <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                             <th class="px-3 py-2 border border-gray-300">Client Name</th>
                             <th class="px-3 py-2 border border-gray-300">Service</th>
@@ -99,7 +102,7 @@
                     </thead>
                     <tbody>
                         @forelse ($services as $index => $service)
-                            <tr class="even:bg-green-50 odd:bg-white text-xs sm:text-sm md:text-sm text-gray-800 cursor-pointer hover:bg-gray-200"
+                            <tr class="even:bg-red-50 odd:bg-white text-xs sm:text-sm md:text-sm text-gray-800 cursor-pointer hover:bg-gray-200"
                                 onclick="showPopup(event, {{ $service->id }}, '{{ $service->clientName }}', '{{ $service->contactNo }}', '{{ $service->address }}', '{{ $service->service }}', '{{ $service->serviceProvider }}', {{ $service->price }}, '{{ $service->status }}', '{{ $service->serviceDescription }}')">
                                 <td class="px-3 py-2 border border-gray-300 text-center">
                                     {{ $services->firstItem() + $index }}</td>

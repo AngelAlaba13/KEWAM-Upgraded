@@ -88,7 +88,7 @@
                 <table class="w-full border-collapse">
                     <thead>
                         <tr
-                            class="bg-gradient-to-r from-red-500 to-red-300 text-xs sm:text-xs md:text-xs text-gray-50 uppercase font-medium h-10">
+                            class="bg-gradient-to-r from-red-600 to-red-400 text-xs sm:text-xs md:text-xs text-gray-50 uppercase font-medium h-10">
                             <th class="w-10 px-3 py-2 border border-gray-300">ID</th>
                             <th class="px-3 py-2 border border-gray-300">Name</th>
                             <th class="px-3 py-2 border border-gray-300">Category</th>
