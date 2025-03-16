@@ -370,16 +370,17 @@
             Recent Activities</p>
 
         <div class="flex flex-col items-center justify-center">
-            <div class=" flex flex-col p-40 bg-slate-300">
+            <div
+                class=" flex flex-col pl-12 pr-12 w-[65rem] pt-10 pb-10 m-10 mb-5 rounded-3xl bg-white bg-opacity-15 border-[0.5px]">
                 @if ($logs->isNotEmpty())
                     <div class="max-h-[300px] overflow-y-auto">
                         <ul>
                             @foreach ($logs->take(5) as $log)
                                 <!-- Show only 5 logs initially -->
                                 <li
-                                    class="bg-red-800 text-white text-sm pt-2 pb-2 pl-4 mb-3 shadow border-b border-gray-400 flex justify-between items-center">
+                                    class="bg-red-800 text-white text-sm pt-2 pb-2 pl-4 mb-3 shadow border-b border-white flex justify-between items-center">
                                     <span>{{ $log->message }}</span>
-                                    <span class="text-xs text-gray-400 pr-4">
+                                    <span class="text-xs text-gray-300 pr-4">
                                         {{ $log->created_at->format('d M Y \a\t h:i A') }}
                                     </span>
                                 </li>
@@ -392,7 +393,7 @@
             </div>
             @if ($logs->count() > 5)
                 <!-- Check if there are more than 5 logs -->
-                <button id="showMoreBtn" class=" text-sm mt-2 underline text-blue-600 hover:underline">Show
+                <button id="showMoreBtn" class=" text-sm underline text-white hover:underline mb-20">Show
                     More
                     Logs</button>
             @endif
@@ -410,7 +411,7 @@
         <ul class="mt-4 max-h-[400px] overflow-y-auto">
             @foreach ($logs as $log)
                 <li
-                    class="bg-slate-400 bg-opacity-25 text-gray-600 text-sm pt-2 pb-2 pl-4 mb-3 shadow border-b border-gray-400 flex justify-between items-center">
+                    class="bg-red-400 bg-opacity-25 text-gray-600 text-sm pt-2 pb-2 pl-4 mb-3 shadow border-b border-gray-400 flex justify-between items-center">
                     <span>{{ $log->message }}</span>
                     <span class="text-xs text-gray-400 pr-2">
                         {{ $log->created_at->format('d M Y \a\t h:i A') }}
@@ -418,7 +419,7 @@
                 </li>
             @endforeach
         </ul>
-        <button onclick="closeModal()" class="mt-4 w-full bg-red-500 text-white py-2 rounded-md">Close</button>
+        <button onclick="closeModal()" class="mt-4 w-full bg-red-600 text-white py-2 rounded-md">Close</button>
     </div>
 </div>
 
