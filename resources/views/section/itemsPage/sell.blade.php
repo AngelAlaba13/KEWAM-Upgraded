@@ -9,8 +9,8 @@
 
     <div
         class="absolute w-[420px] h-[380px] 
-         bg-[#ffa7a7] 
-         rounded-full blur-[155px] z-[1] animate-pulse
+         bg-[hsl(0,100%,73%)] 
+         rounded-full blur-[205px] z-[1] animate-pulse
          top-[60%] left-[35%] translate-x-[-100%] translate-y-[10%]">
     </div>
 
