@@ -28,8 +28,7 @@
         <!-- Table and Search Section -->
         <div
             class="flex flex-wrap items-center justify-start pt-4 ml-16 pb-3 md:ml-16 md:pt-2 md:pb-2 md:h-16 md:border-b md:border-gray-300 bg-red-800 z-50">
-            <div
-                class="flex flex-wrap sm:flex-nowrap w-full items-center justify-between space-y-4 sm:space-y-0 bg-slate-400">
+            <div class="flex flex-wrap sm:flex-nowrap w-full items-center justify-between space-y-4 sm:space-y-0 ">
                 <!-- Items Label and Search Bar -->
                 <div
                     class="flex border-b border-gray-300 pb-2 md:flex-grow md:mr-28 sm:w-auto md:items-center md:justify-start md:border-none space-x-4 ">
@@ -63,20 +62,20 @@
 
 
                 </div>
-                <div class="w-full md:w-auto flex pb-2 justify-end mr-4 pr-3">
+                <div class="w-full md:w-auto flex  justify-end mr-4 pr-3">
                     <a class="" href="{{ url('/view-pdf/serviceSheet.pdf') }}" target="_blank">
                         <button
-                            class="flex flex-row bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500"
+                            class="flex flex-row bg-yellow-500 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500"
                             style="font-size: 12px;">
                             <img class="mr-2 w-3 h-3 mt-1" src="{{ asset('imgs/download.png') }}" alt="export">
-                            <p class="">SERVICE SHEET</p>
+                            <p class="" style="font-size: 13px;">SERVICE SHEET</p>
                         </button>
                     </a>
 
                     <a href="{{ route('section.repairPage.create') }}">
                         <button
-                            class="bg-green-600 px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500"
-                            style="font-size: 12px;">ADD CLIENT</button>
+                            class="bg-white px-3 md:px-4 py-2 text-black rounded-md text-xs sm:text-sm font-bold mr-3 shadow-sm shadow-slate-500"
+                            style="font-size: 13px;">ADD CLIENT</button>
                     </a>
                 </div>
             </div>
