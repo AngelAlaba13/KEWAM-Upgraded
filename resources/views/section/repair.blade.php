@@ -42,7 +42,7 @@
                                 <input type="text" name="query" id="search-input" placeholder="Search"
                                     class="w-full text-base border-none outline-none bg-transparent pl-2">
 
-                                <div class=" fixed top-2 ml-64 bg-green-400 h-9 w-14">
+                                <div class=" fixed ml-[265px] bg-red-400 h-[38px] w-14">
                                     <button type="submit"
                                         class=" px-3 md:px-4 py-2 text-white rounded-md text-xs sm:text-sm"
                                         style="font-size: 10px;">
