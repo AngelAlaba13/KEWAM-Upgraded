@@ -2,7 +2,7 @@
 
 
 <div class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]">
-    <!-- Blurred Circle -->
+    <!-- Blurred Circsssle -->
     <div
         class="absolute w-[470px] h-[400px] 
              bg-[#ff3b3b] 
