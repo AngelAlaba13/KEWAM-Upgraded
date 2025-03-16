@@ -1,31 +1,104 @@
 <x-navigationBar></x-navigationBar>
 
 
-<div class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]">
+<div x-data="starField()" class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]">
     <!-- Blurred Circsssle -->
     <div
-        class="absolute w-[470px] h-[400px] 
+        class="absolute w-[420px] h-[380px] 
              bg-[#ff3b3b] 
              rounded-full blur-[200px] z-[1] 
-             top-[30%] left-[80%] translate-x-[-50%] translate-y-[-50%]">
+             top-[0%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[#b92f2f] 
-             rounded-full blur-[120px] z-[1] 
-             top-[120%] left-[20%] translate-x-[-50%] translate-y-[-50%]">
+             bg-[rgb(241,53,53)] 
+             rounded-full blur-[170px] z-[1] 
+             top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
-    <div
+    {{-- <div
         class="absolute w-[420px] h-[380px] 
              bg-[rgb(255,10,10)] 
              rounded-full blur-[200px] z-[1] 
              top-[120%] left-[20%] translate-x-[-50%] translate-y-[-50%]">
-    </div>
+    </div> --}}
     <div
         class="absolute w-[420px] h-[380px] 
              bg-[#ff3f3f] 
              rounded-full blur-[120px] z-[1] 
              top-[170%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+             bg-[rgb(97,9,9)] 
+             rounded-full blur-[200px] z-[1] 
+             top-[60%] left-[5%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[440px] h-[390px] 
+             bg-[rgb(118,27,27)] 
+             rounded-full blur-[120px] z-[1] 
+             top-[20%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute w-full h-full">
+            <!-- Stars (Multiple instances for depth) -->
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[17%] top-[45%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 animate-twinkle left-[30%] top-[40%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 animate-twinkle left-[34%] top-[45%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 animate-twinkle left-[35%] top-[60%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-70 animate-twinkle left-[50%] top-[20%]">
+            </div>
+            <div class="absolute w-[4px] h-[4px] bg-white rounded-full opacity-60 animate-pulse left-[70%] top-[70%]">
+            </div>
+
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[90%] top-[10%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-80 animate-twinkle left-[90%] top-[30%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-30 animate-twinkle left-[85%] top-[40%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[78%] top-[55%]">
+            </div>
+
+
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[20%] top-[90%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-40 animate-pulse left-[30%] top-[90%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[20%] top-[20%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[20%] top-[60%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[10%] top-[40%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-pulse left-[60%] top-[60%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[33%] top-[55%]">
+            </div>
+
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[60%] top-[37%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[90%] top-[60%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 animate-pulse left-[70%] top-[50%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[65%] top-[25%]">
+            </div>
+
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-40 animate-pulse left-[40%] top-[35%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[29%] top-[25%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[73%] top-[30%]">
+            </div>
+        </div>
     </div>
 
     {{-- <div
@@ -79,25 +152,115 @@
 
 
         <div class="flex flex-col md:ml-16 animate-fade-in z-20">
-            <div class="flex flex-row justify-evenly mt-56 h-44  p-14 pl-44 pr-44 ">
-                <div class="flex flex-row items-center justify-center rounded-full border-[0.5px] p-3 pt-10 pb-10">
+            <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider">
+                EXPLORE
+            </div>
+            {{-- <div class="flex flex-row justify-evenly mt-10 h-44  p-14 pl-44 pr-44 ">
+                <div class="flex flex-row items-center justify-center rounded-full border-[0.5px] p-3 pt-8 pb-8">
                     <div
-                        class="flex items-center justify-center w-44 h-14 rounded-full border-[3px] p-4  text-white border-white">
+                        class="flex items-center justify-center w-44 h-12 rounded-full border-[3px] p-4  text-white border-white">
                         Home
                     </div>
-                    <div class="flex items-center justify-center w-44 ml-8 h-14 rounded-full text-white ">
+                    <div class="flex items-center justify-center w-44 ml-8 h-12 rounded-full text-white ">
                         Items
                     </div>
-                    <div class="flex items-center justify-center w-44 ml-8 h-14 rounded-full text-white">
+                    <div class="flex items-center justify-center w-44 ml-8 h-12 rounded-full text-white">
                         Services
                     </div>
 
-                    <div class="flex items-center justify-center w-44 ml-8 h-14 rounded-full text-white ">
+                    <div class="flex items-center justify-center w-44 ml-8 h-12 rounded-full text-white ">
                         Report
                     </div>
                 </div>
 
+            </div> --}}
+
+
+            <div x-data="{
+                active: 'home',
+                positions: { home: 'left-3', items: 'left-[14rem]', services: 'left-[27rem]', report: 'left-[40rem]' },
+                loading: false,
+                redirect(url) {
+                    this.loading = true;
+                    setTimeout(() => { window.location.href = url; }, 2500); // 2.5 seconds before redirect
+                }
+            }" class="flex flex-row justify-evenly mt-10 h-44 p-14 pl-44 pr-44 relative">
+
+                <!-- Futuristic Loading Overlay -->
+                <div x-show="loading"
+                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 transition-opacity duration-300">
+                    <div class="flex flex-col items-center relative">
+                        <!-- Neon Loader Rings -->
+                        <div class="relative w-20 h-20">
+                            <div
+                                class="absolute inset-0 w-full h-full border-4 border-white-300 border-opacity-60 rounded-full animate-ping">
+                            </div>
+                            <div
+                                class="absolute inset-0 w-full h-full border-4 border-red-500 border-opacity-90 rounded-full animate-spin">
+                            </div>
+                            <div
+                                class="absolute inset-0 w-full h-full border-4 border-green-300 border-opacity-50 rounded-full animate-pulse">
+                            </div>
+                        </div>
+
+                        <!-- Glitching Futuristic Text -->
+                        <p class="mt-6 text-lg font-mono text-white relative">
+                            <span class="animate-pulse">LOADING</span>
+                            <span class="absolute inset-0 text-red-50 opacity-70 animate-glitch">LOADING</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="relative flex flex-row items-center justify-center rounded-full border-[0.3px] p-3 pt-8 pb-8 border-white">
+
+                    <!-- Sliding Border -->
+                    <div class="absolute h-12 w-44 rounded-full border-[3px] border-white transition-all duration-500 z-30"
+                        :class="positions[active]">
+                    </div>
+
+                    <!-- Navigation Items -->
+                    <a href="#" @click.prevent="active = 'home'; redirect('{{ route('section.home') }}')">
+                        <div class="relative flex items-center justify-center w-44 h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
+                            hover:bg-red-800 hover:text-white"
+                            :class="active === 'home' ? 'bg-red-800 text-white' : ''">
+                            Home
+                        </div>
+                    </a>
+
+                    <a href="#" @click.prevent="active = 'items'; redirect('{{ route('section.items') }}')">
+                        <div class="relative flex items-center justify-center w-44 ml-8 h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
+                            hover:bg-red-800 hover:text-white"
+                            :class="active === 'items' ? 'bg-red-800 text-white' : ''">
+                            Items
+                        </div>
+                    </a>
+
+                    <a href="#" @click.prevent="active = 'services'; redirect('{{ route('section.repair') }}')">
+                        <div class="relative flex items-center justify-center w-44 ml-8 h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
+                            hover:bg-red-800 hover:text-white"
+                            :class="active === 'services' ? 'bg-red-800 text-white' : ''">
+                            Services
+                        </div>
+                    </a>
+
+                    <a href="#"
+                        @click.prevent="active = 'report'; redirect('{{ route('section.reportPage.itemsReport') }}')">
+                        <div class="relative flex items-center justify-center w-44 ml-8 h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
+                            hover:bg-red-800 hover:text-white"
+                            :class="active === 'report' ? ' bg-red-800 text-white' : ''">
+                            Report
+                        </div>
+                    </a>
+
+                </div>
             </div>
+
+
+
+
+
+
 
 
             <div class="text-md text-white font-medium mb-4 ml-40 mt-10 "> <!-- Reduced ml-40 to ml-8 -->
@@ -204,7 +367,8 @@
                     </div>
                     @if ($logs->count() > 5)
                         <!-- Check if there are more than 5 logs -->
-                        <button id="showMoreBtn" class=" text-sm mt-2 underline text-blue-600 hover:underline">Show More
+                        <button id="showMoreBtn" class=" text-sm mt-2 underline text-blue-600 hover:underline">Show
+                            More
                             Logs</button>
                     @endif
                 @else
