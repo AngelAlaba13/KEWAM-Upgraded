@@ -1,4 +1,4 @@
-<x-navigationBar></x-navigationBar>
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 <div x-data="starField()" class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]">
@@ -11,28 +11,49 @@
     </div>
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[#ff5d5d] 
+             bg-[#ff7c7c] 
              rounded-full blur-[175px] z-[1] 
              top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[#ff3f3f] 
-             rounded-full blur-[120px] z-[1] 
-             top-[170%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
+             bg-[#ff6666ac] 
+             rounded-full blur-[200px] z-[1] 
+             top-[120%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[rgb(97,9,9)] 
+             bg-[hsl(0,60%,40%)] 
              rounded-full blur-[200px] z-[1] 
              top-[60%] left-[5%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
+        class="absolute w-[280px] h-[230px] 
+             bg-[hsl(0,100%,58%)] 
+             rounded-full blur-[90px] z-[1] 
+             top-[10%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    {{-- here --}}
+    <div
+        class="absolute w-[420px] h-[380px] 
+             bg-[rgb(255,87,87)] 
+             rounded-full blur-[200px] z-[1] 
+             top-[150%] left-[20%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    {{-- second page --}}
+    <div
+        class="absolute w-[320px] h-[280px] 
+         bg-[hsl(0,100%,85%)] 
+         rounded-full blur-[200px] z-[1] 
+         top-[120%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
         class="absolute w-[440px] h-[390px] 
-             bg-[rgb(118,27,27)] 
+             bg-[#9522228a] 
              rounded-full blur-[120px] z-[1] 
              top-[20%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
     </div>
@@ -97,9 +118,9 @@
     </div>
 
     <div class="flex flex-col w-full overflow-x-hidden" id="top">
-        <div class="fixed left-0 right-0 md:ml-16 pt-6 pb-6 z-30 transition-transform duration-300  " id="navbar">
+        <div class="fixed left-0 right-0 pt-6 pb-6 z-30 transition-transform duration-300  " id="navbar">
             <div class="flex w-full justify-between items-center h-5 ">
-                <div class="ml-2 md:ml-14 md:mr-20 text-xl sm:text-2xl text-white">
+                <div class="ml-2 md:ml-10 md:mr-20 text-xl sm:text-2xl text-white">
                     KEWAM Computer Repair and Services
                 </div>
                 <div class="flex flex-row justify-end">
@@ -141,7 +162,7 @@
         </script>
 
 
-        <div class="flex flex-col md:ml-16 animate-fade-in z-20">
+        <div class="flex flex-col animate-fade-in z-20">
             <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider">
                 EXPLORE
             </div>
@@ -233,41 +254,48 @@
 
 
 
-            <div class="text-md text-white font-medium mb-4 ml-40 mt-36 "> <!-- Reduced ml-40 to ml-8 -->
+            <div class="flex justify-center mt-32 font-bold font-mono text-white text-5xl tracking-wider ">
+                <!-- Reduced ml-40 to ml-8 -->
                 Inventory Summary
             </div>
 
-            <div class="flex w-full px-24 justify-evenly mt-3  z-20">
+            <div class="flex items-center justify-evenly mt-14 z-20 p-3">
                 <!-- Inventory Cards -->
-                <div
-                    class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                    <img src="{{ asset('imgs/item.png') }}" alt="Quantity" class="w-9 h-9 mb-5">
-                    <p class="text-3xl font-bold">{{ $itemCount }}</p>
-                    <p class="text-gray-600 font-medium">Items</p>
+                <div class="flex flex-row items-center justify-evenly h-[20rem] w-[78rem] rounded-[2rem]">
+                    <div
+                        class="bg-white flex flex-col items-center justify-center w-64 h-56 border-r-2 border-r-slate-300  rounded-xl hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                        <img src="{{ asset('imgs/item.png') }}" alt="Quantity" class="w-9 h-9 mb-5">
+                        <p class="text-3xl font-bold">{{ $itemCount }}</p>
+                        <p class="text-gray-600 font-medium">Items</p>
+                    </div>
+
+                    <div
+                        class="bg-white flex flex-col items-center justify-center w-64 h-56 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                        <img src="{{ asset('imgs/category.png') }}" alt="Quantity" class="w-10 h-11 mb-5">
+                        <p class="text-3xl font-bold">{{ $categoryCount }}</p>
+                        <p class="text-gray-600 font-medium mb-2">Item Categories</p>
+                    </div>
+
+                    <div
+                        class="bg-white flex flex-col items-center justify-center w-64 h-56 border-r-2 border-r-slate-300  rounded-xl hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                        <img src="{{ asset('imgs/quantity.png') }}" alt="Quantity" class="w-9 h-9 mb-6">
+                        <p class="text-3xl font-bold">{{ $totalQuantity }}</p>
+                        <p class="text-gray-600 font-medium">Quantity</p>
+                    </div>
+
+                    <div
+                        class="bg-white flex flex-col items-center justify-center w-64 h-56 border-r-2 border-r-slate-300  rounded-xl hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                        <img src="{{ asset('imgs/value.png') }}" alt="Quantity" class="w-9 h-9 mb-6">
+                        <p class="text-3xl font-bold">{{ $SoldItems }}</p>
+                        <p class="text-gray-600 font-medium">Sold Items</p>
+                    </div>
                 </div>
 
-                <div
-                    class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                    <img src="{{ asset('imgs/category.png') }}" alt="Quantity" class="w-10 h-11 mb-5">
-                    <p class="text-3xl font-bold">{{ $categoryCount }}</p>
-                    <p class="text-gray-600 font-medium mb-2">Item Categories</p>
-                </div>
 
-                <div
-                    class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                    <img src="{{ asset('imgs/quantity.png') }}" alt="Quantity" class="w-9 h-9 mb-6">
-                    <p class="text-3xl font-bold">{{ $totalQuantity }}</p>
-                    <p class="text-gray-600 font-medium">Quantity</p>
-                </div>
-
-                <div
-                    class="bg-slate-400 bg-opacity-15 flex flex-col items-center justify-center w-44 h-40 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                    <img src="{{ asset('imgs/value.png') }}" alt="Quantity" class="w-9 h-9 mb-6">
-                    <p class="text-3xl font-bold">{{ $SoldItems }}</p>
-                    <p class="text-gray-600 font-medium">Sold Items</p>
-                </div>
-
-
+            </div>
+            <div class="flex justify-center text-center mt-1 font-bold font-mono text-white text-2xl tracking-wider ">
+                <!-- Reduced ml-40 to ml-8 -->
+                These are the latest <br> in your shop
             </div>
         </div>
 
