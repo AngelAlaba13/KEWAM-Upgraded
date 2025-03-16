@@ -254,7 +254,7 @@
 
 
 
-            <div class="flex justify-center mt-32 font-bold font-mono text-white text-5xl tracking-wider ">
+            <div class="flex justify-center mt-32 font-bold font-mono text-white text-6xl tracking-wider ">
                 <!-- Reduced ml-40 to ml-8 -->
                 Inventory Summary
             </div>
@@ -270,7 +270,7 @@
                     </div>
 
                     <div
-                        class="bg-white flex flex-col items-center justify-center w-64 h-56 border-r-2 border-r-slate-300 rounded-md shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                        class="bg-white flex flex-col items-center justify-center w-64 h-56 border-r-2 border-r-slate-300 rounded-xl shadow-slate-400 shadow-sm hover:bg-slate-200 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
                         <img src="{{ asset('imgs/category.png') }}" alt="Quantity" class="w-10 h-11 mb-5">
                         <p class="text-3xl font-bold">{{ $categoryCount }}</p>
                         <p class="text-gray-600 font-medium mb-2">Item Categories</p>
@@ -299,7 +299,12 @@
             </div>
         </div>
 
-        <div class="flex flex-col mt-10 mr-32 md:ml-44 z-20">
+        <div class="flex justify-center mt-44 font-bold font-mono text-white text-6xl tracking-wider bg-slate-300">
+            <!-- Reduced ml-40 to ml-8 -->
+            STOCKS & SERVICES
+        </div>
+
+        <div class="flex flex-col mt-10 mr-32 md:ml-44 z-20 bg-slate-300">
 
             <div class="flex flex-row justify-between ml-10 w-full">
                 <div class="">
