@@ -11,16 +11,11 @@
     </div>
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[rgb(241,53,53)] 
-             rounded-full blur-[170px] z-[1] 
+             bg-[#ff5d5d] 
+             rounded-full blur-[175px] z-[1] 
              top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
-    {{-- <div
-        class="absolute w-[420px] h-[380px] 
-             bg-[rgb(255,10,10)] 
-             rounded-full blur-[200px] z-[1] 
-             top-[120%] left-[20%] translate-x-[-50%] translate-y-[-50%]">
-    </div> --}}
+
     <div
         class="absolute w-[420px] h-[380px] 
              bg-[#ff3f3f] 
@@ -42,7 +37,7 @@
              top-[20%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
-    <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute inset-0 z-1 pointer-events-none">
         <div class="absolute w-full h-full">
             <!-- Stars (Multiple instances for depth) -->
             <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[17%] top-[45%]">
@@ -101,13 +96,8 @@
         </div>
     </div>
 
-    {{-- <div
-    class="background w-[590px]  h-[400px] bg-[hsl(0,79%,56%)] rounded-[100%] absolute z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] blur-[200px]">
-
-</div> --}}
-
     <div class="flex flex-col w-full overflow-x-hidden" id="top">
-        <div class="fixed left-0 right-0 md:ml-16 pt-6 pb-6 z-40 transition-transform duration-300  " id="navbar">
+        <div class="fixed left-0 right-0 md:ml-16 pt-6 pb-6 z-30 transition-transform duration-300  " id="navbar">
             <div class="flex w-full justify-between items-center h-5 ">
                 <div class="ml-2 md:ml-14 md:mr-20 text-xl sm:text-2xl text-white">
                     KEWAM Computer Repair and Services
@@ -155,26 +145,6 @@
             <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider">
                 EXPLORE
             </div>
-            {{-- <div class="flex flex-row justify-evenly mt-10 h-44  p-14 pl-44 pr-44 ">
-                <div class="flex flex-row items-center justify-center rounded-full border-[0.5px] p-3 pt-8 pb-8">
-                    <div
-                        class="flex items-center justify-center w-44 h-12 rounded-full border-[3px] p-4  text-white border-white">
-                        Home
-                    </div>
-                    <div class="flex items-center justify-center w-44 ml-8 h-12 rounded-full text-white ">
-                        Items
-                    </div>
-                    <div class="flex items-center justify-center w-44 ml-8 h-12 rounded-full text-white">
-                        Services
-                    </div>
-
-                    <div class="flex items-center justify-center w-44 ml-8 h-12 rounded-full text-white ">
-                        Report
-                    </div>
-                </div>
-
-            </div> --}}
-
 
             <div x-data="{
                 active: 'home',
@@ -188,7 +158,7 @@
 
                 <!-- Futuristic Loading Overlay -->
                 <div x-show="loading"
-                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 transition-opacity duration-300">
+                    class="fixed inset-0 flex z-50 items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
                     <div class="flex flex-col items-center relative">
                         <!-- Neon Loader Rings -->
                         <div class="relative w-20 h-20">
@@ -212,10 +182,10 @@
                 </div>
 
                 <div
-                    class="relative flex flex-row items-center justify-center rounded-full border-[0.3px] p-3 pt-8 pb-8 border-white">
+                    class="relative flex flex-row items-center justify-center rounded-full border-[0.3px] p-3 pl-4 pt-8 pb-8 border-white z-40">
 
                     <!-- Sliding Border -->
-                    <div class="absolute h-12 w-44 rounded-full border-[3px] border-white transition-all duration-500 z-30"
+                    <div class="absolute h-12 w-44 rounded-full border-[3px] border-white transition-all duration-500 z-40"
                         :class="positions[active]">
                     </div>
 
@@ -263,7 +233,7 @@
 
 
 
-            <div class="text-md text-white font-medium mb-4 ml-40 mt-10 "> <!-- Reduced ml-40 to ml-8 -->
+            <div class="text-md text-white font-medium mb-4 ml-40 mt-36 "> <!-- Reduced ml-40 to ml-8 -->
                 Inventory Summary
             </div>
 
@@ -320,9 +290,6 @@
                 <span id="status" class=" mt-60"></span>
             </div>
 
-            {{-- <div class="text-md text-gray-600 font-medium ml-11 mt-12"> <!-- Reduced ml-40 to ml-8 --> --}}
-            {{-- Status of Services --}}
-            {{-- </div> --}}
 
             <div class="flex flex-row justify-start ml-10 mt-10 w-full">
                 <div class="">
