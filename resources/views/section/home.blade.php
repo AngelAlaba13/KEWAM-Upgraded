@@ -58,6 +58,44 @@
              top-[20%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
+    {{-- stocks and services --}}
+    <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[hsl(0,100%,84%)] 
+         rounded-full blur-[210px]  z-[1] 
+         top-[220%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+        bg-[rgb(255,36,36)] 
+        rounded-full blur-[210px]  z-[1] 
+        top-[300%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+        bg-[rgb(139,28,28)] 
+        rounded-full blur-[200px] z-[1] 
+        top-[240%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+     bg-[#ff6868] 
+     rounded-full blur-[230px] z-[1] 
+     top-[300%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+        bg-[rgb(255,41,41)] 
+        rounded-full blur-[200px] z-[1] 
+        top-[390%] left-[87%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    {{-- sales chart --}}
+
     <div class="absolute inset-0 z-1 pointer-events-none">
         <div class="absolute w-full h-full">
             <!-- Stars (Multiple instances for depth) -->
@@ -299,7 +337,7 @@
             </div>
         </div>
 
-        <div class="flex justify-center mt-44 font-bold font-mono text-white text-6xl tracking-wider ">
+        <div class="flex justify-center mt-44 font-bold font-mono text-white text-6xl tracking-wider z-20">
             <!-- Reduced ml-40 to ml-8 -->
             STOCKS & SERVICES
         </div>
@@ -348,11 +386,11 @@
         </div>
 
         <div
-            class="flex justify-center items-center font-bold font-mono text-white text-5xl tracking-wider mt-48 mb-10">
+            class="flex justify-center items-center font-bold font-mono text-white text-5xl tracking-wider mt-48 mb-10 z-10">
             SALES CHART
         </div>
 
-        <div class="flex flex-row justify-center mt-5">
+        <div class="flex flex-row justify-center mt-5 z-10">
             <div class="">
                 <div class="bg-white shadow-md shadow-slate-400 w-[70rem] h-[30rem] rounded-2xl">
                     <!-- Smaller size for the canvas -->
