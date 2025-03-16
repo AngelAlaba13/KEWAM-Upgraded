@@ -6,7 +6,7 @@
     <div
         class="absolute w-[420px] h-[380px] 
              bg-[#ff3b3b] 
-             rounded-full blur-[200px] z-[1] 
+             rounded-full blur-[210px] z-[1] animate-pulse 
              top-[0%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
     <div
@@ -19,14 +19,14 @@
     <div
         class="absolute w-[420px] h-[380px] 
              bg-[#ff6666ac] 
-             rounded-full blur-[200px] z-[1] 
+             rounded-full blur-[200px] z-[1] animate-pulse
              top-[120%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
         class="absolute w-[420px] h-[380px] 
              bg-[hsl(0,60%,40%)] 
-             rounded-full blur-[200px] z-[1] 
+             rounded-full blur-[200px] z-[1] animate-pulse 
              top-[60%] left-[5%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
@@ -69,7 +69,7 @@
     <div
         class="absolute w-[420px] h-[380px] 
         bg-[rgb(255,36,36)] 
-        rounded-full blur-[210px]  z-[1] 
+        rounded-full blur-[210px]  z-[1]  animate-pulse
         top-[300%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
@@ -83,7 +83,7 @@
     <div
         class="absolute w-[320px] h-[280px] 
      bg-[#ff6868] 
-     rounded-full blur-[230px] z-[1] 
+     rounded-full blur-[230px] z-[1]  
      top-[300%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
@@ -98,15 +98,15 @@
 
     <div
         class="absolute w-[520px] h-[480px] 
-        bg-[rgb(255,41,41)] 
-        rounded-full blur-[200px] z-[1] 
-        top-[410%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        bg-[#fe8585] 
+        rounded-full blur-[280px] z-[1] animate-pulse
+        top-[420%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
         class="absolute w-[320px] h-[280px] 
     bg-[rgb(255,41,41)] 
-    rounded-full blur-[150px] z-[1] 
+    rounded-full blur-[150px] z-[1] animate-pulse
     top-[480%] left-[17%] translate-x-[-50%] translate-y-[-50%]">
     </div>
     <div
@@ -117,10 +117,10 @@
     </div>
 
     <div
-        class="absolute w-[420px] h-[380px] 
+        class="absolute w-[420px] h-[330px] 
     bg-[rgb(37,7,7)] 
-    rounded-full blur-[340px] z-[1] 
-    top-[520%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
+    rounded-full blur-[390px] z-[1] animate-bounce
+    top-[530%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div class="absolute inset-0 z-1 pointer-events-none">
@@ -128,79 +128,91 @@
             <!-- Stars (Multiple instances for depth) -->
             <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[17%] top-[45%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 animate-twinkle left-[30%] top-[40%]">
+            <div
+                class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-twinkle left-[30%] top-[40%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 animate-twinkle left-[34%] top-[45%]">
+            <div
+                class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-twinkle left-[32%] top-[45%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-40 animate-twinkle left-[35%] top-[60%]">
+            <div
+                class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-twinkle left-[35%] top-[60%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-70 animate-twinkle left-[50%] top-[20%]">
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[50%] top-[20%]">
             </div>
-            <div class="absolute w-[4px] h-[4px] bg-white rounded-full opacity-60 animate-pulse left-[70%] top-[70%]">
+            <div class="absolute w-[4px] h-[4px] bg-white rounded-full opacity-100 animate-pulse left-[65%] top-[53%]">
             </div>
 
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[90%] top-[10%]">
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[80%] top-[20%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-80 animate-twinkle left-[90%] top-[30%]">
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[90%] top-[30%]">
             </div>
             <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-30 animate-twinkle left-[85%] top-[40%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[78%] top-[55%]">
+            <div
+                class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-twinkle left-[68%] top-[57%]">
             </div>
-
-
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[20%] top-[90%]">
+            <div class="absolute w-[4px] h-[4px] bg-white rounded-full opacity-40 animate-pulse left-[20%] top-[90%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-40 animate-pulse left-[30%] top-[90%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[47%] top-[55%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[20%] top-[20%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 animate-pulse left-[17%] top-[26%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[20%] top-[60%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 animate-pulse left-[20%] top-[60%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[10%] top-[40%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-60 animate-pulse left-[10%] top-[40%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-pulse left-[60%] top-[60%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[55%] top-[53%]">
             </div>
             <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[33%] top-[55%]">
             </div>
 
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[60%] top-[37%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[60%] top-[35%]">
             </div>
             <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[90%] top-[60%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 animate-pulse left-[70%] top-[50%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[70%] top-[50%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[65%] top-[25%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-70 animate-pulse left-[65%] top-[28%]">
             </div>
 
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-40 animate-pulse left-[40%] top-[35%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[40%] top-[35%]">
             </div>
-            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[29%] top-[25%]">
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-50 animate-pulse left-[29%] top-[25%]">
             </div>
-            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-50 animate-twinkle left-[73%] top-[30%]">
+            <div
+                class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-twinkle left-[68%] top-[37%]">
             </div>
         </div>
     </div>
 
-    <div class="flex flex-col w-full overflow-x-hidden" id="top">
+    <div class="flex flex-col w-full overflow-x-hidden">
         <div class="fixed left-0 right-0 pt-6 pb-6 z-30 transition-transform duration-300  " id="navbar">
             <div class="flex w-full justify-between items-center h-5 ">
                 <div class="ml-2 md:ml-10 md:mr-20 text-xl sm:text-2xl text-white">
                     KEWAM Computer Repair and Services
                 </div>
                 <div class="flex flex-row justify-end">
+                    <a href="#topper">
+                        <div
+                            class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white hover:text-yellow-500">
+                            Top
+                        </div>
+                    </a>
                     <a href="#top">
-                        <div class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white">
+                        <div
+                            class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white hover:text-yellow-500">
                             Summary
                         </div>
                     </a>
                     <a href="#status">
-                        <div class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white">
+                        <div
+                            class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white hover:text-yellow-500">
                             Status
                         </div>
                     </a>
                     <a href="#logs">
-                        <div class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white">
+                        <div
+                            class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white hover:text-yellow-500">
                             Logs
                         </div>
                     </a>
@@ -227,8 +239,8 @@
         </script>
 
 
-        <div class="flex flex-col animate-fade-in z-20">
-            <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider">
+        <div id="topper" class="flex flex-col animate-fade-in z-20">
+            <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider ">
                 EXPLORE
             </div>
 
@@ -238,7 +250,7 @@
                 loading: false,
                 redirect(url) {
                     this.loading = true;
-                    setTimeout(() => { window.location.href = url; }, 2500); // 2.5 seconds before redirect
+                    setTimeout(() => { window.location.href = url; }, 2500); // 1.5 seconds before redirect
                 }
             }" class="flex flex-row justify-evenly mt-10 h-44 p-14 pl-44 pr-44 relative">
 
@@ -318,7 +330,7 @@
 
 
 
-
+            <span id="top"></span>
             <div class="flex justify-center mt-36 font-bold font-mono text-white text-6xl tracking-wider ">
                 <!-- Reduced ml-40 to ml-8 -->
                 Inventory Summary
@@ -369,7 +381,7 @@
             STOCKS & SERVICES
         </div>
 
-        <div class="flex flex-col mt-20 z-20 ">
+        <div class="flex flex-col mt-20 z-20 mb-48 ">
 
             <div
                 class="flex justify-start items-center font-bold font-mono text-white text-2xl tracking-wider pl-44 mb-10">
@@ -409,15 +421,19 @@
                     </div>
                 </div>
             </div>
-            <span id="status" class= ""></span>
+
+
         </div>
 
+
+
+        <span id="status"></span>
         <div
-            class="flex justify-center items-center font-bold font-mono text-white text-5xl tracking-wider mt-48 mb-10 z-10">
-            SALES CHART
+            class="flex justify-center items-center font-bold font-mono text-white text-5xl tracking-wider pt-20 mb-10 z-20">
+            Sales Chart
         </div>
 
-        <div class="flex flex-row justify-center mt-5 z-10">
+        <div class="flex flex-row justify-center mt-5 z-20">
             <div class="">
                 <div class="bg-white shadow-md shadow-slate-400 w-[70rem] h-[30rem] rounded-2xl">
                     <!-- Smaller size for the canvas -->
