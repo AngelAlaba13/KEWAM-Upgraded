@@ -370,10 +370,27 @@
 
 
             </div>
-            <div class="flex justify-center text-center mt-1 font-bold font-mono text-white text-2xl tracking-wider ">
-                <!-- Reduced ml-40 to ml-8 -->
-                These are the latest <br> in your shop
+            <div class="flex justify-center text-center mt-1 font-bold font-mono text-white text-2xl tracking-wider">
+                <span x-data="{ text: '', fullText: 'These are the latest in your shop', index: 0, deleting: false }" x-init="let interval = setInterval(() => {
+                    if (!deleting && index < fullText.length) {
+                        text += fullText[index];
+                        index++;
+                    } else if (deleting && index > 0) {
+                        text = text.slice(0, -1);
+                        index--;
+                    }
+                
+                    if (index === fullText.length) {
+                        setTimeout(() => deleting = true, 2000); // Pause before deleting
+                    } else if (index === 0 && deleting) {
+                        deleting = false;
+                    }
+                }, 60)" x-text="text">
+                </span>
+                <span class="animate-ping">|</span>
             </div>
+
+
         </div>
 
         <div class="flex justify-center mt-44 font-bold font-mono text-white text-6xl tracking-wider z-20">
