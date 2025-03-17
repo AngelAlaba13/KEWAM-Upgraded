@@ -11,9 +11,15 @@
     </div>
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[#ff7c7c] 
+             bg-[rgb(255,142,142)] 
              rounded-full blur-[175px] z-[1] 
              top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    <div
+        class="absolute w-[120px] h-[80px] 
+         bg-[rgb(255,246,246)] 
+         rounded-full blur-[85px] z-[1] animate-pulse
+         top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
@@ -39,9 +45,9 @@
     {{-- here --}}
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[rgb(255,87,87)] 
+             bg-[#ff9797] 
              rounded-full blur-[200px] z-[1] 
-             top-[150%] left-[20%] translate-x-[-50%] translate-y-[-50%]">
+             top-[150%] left-[10%] translate-x-[-50%] translate-y-[-50%]">
     </div>
     {{-- second page --}}
     <div

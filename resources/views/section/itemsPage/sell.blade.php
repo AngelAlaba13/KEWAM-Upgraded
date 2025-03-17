@@ -10,6 +10,20 @@
 
     <div
         class="absolute w-[420px] h-[380px] 
+     bg-[#ff4949] 
+     rounded-full blur-[330px] z-[1] animate-bounce
+     top-[3%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[620px] h-[480px] 
+ bg-[rgb(239,62,62)] 
+ rounded-full blur-[170px] z-[1]
+ top-[0%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
          bg-[hsl(0,100%,63%)] 
          rounded-full blur-[175px] z-[1] animate-pulse
          top-[0%] left-[85%] translate-x-[-100%] translate-y-[10%]">
