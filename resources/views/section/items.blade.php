@@ -184,7 +184,6 @@
 
         </div>
     </div>
-    {{-- fixed --}}
 
 
     <script>
