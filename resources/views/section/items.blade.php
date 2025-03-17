@@ -203,7 +203,7 @@
             const popupImage = document.getElementById('popup-item-image');
             if (itemImagePath) {
                 popupImage.innerHTML =
-                    `<img src="${itemImagePath}" alt="Uploaded Image" class="w-full object-cover h-auto rounded-md">`;
+                    `<img src="${itemImagePath}" alt="Uploaded Image" class="w-full object-contain bg-white h-auto rounded-md">`;
             } else {
                 popupImage.innerHTML = `<p class="text-gray-500">No image uploaded.</p>`;
             }
