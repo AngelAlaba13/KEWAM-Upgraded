@@ -476,9 +476,9 @@
                             @foreach ($logs->take(5) as $log)
                                 <!-- Show only 5 logs initially -->
                                 <li
-                                    class="bg-red-800 text-white text-sm pt-2 pb-2 pl-4 mb-3 shadow border-b border-white flex justify-between items-center">
+                                    class="bg-red-200 text-black text-sm pt-2 pb-2 pl-4 mb-3 shadow border-b border-white flex justify-between items-center">
                                     <span>{{ $log->message }}</span>
-                                    <span class="text-xs text-gray-300 pr-4">
+                                    <span class="text-xs text-gray-600 pr-4">
                                         {{ $log->created_at->format('d M Y \a\t h:i A') }}
                                     </span>
                                 </li>
