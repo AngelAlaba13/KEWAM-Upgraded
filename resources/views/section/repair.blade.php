@@ -150,12 +150,12 @@
     <!-- Pop-up -->
     <div id="popup"
         class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
-        <div class="bg-white p-5 rounded-lg shadow-lg max-w-lg w-1/2 relative">
+        <div class="bg-white p-5 rounded-xl shadow-lg max-w-lg w-1/2 relative">
 
             <!-- Header -->
             <div class="flex justify-between items-center border-b pb-3 mb-5">
                 <p class="text-gray-500 font-medium text-2xl">Service Details</p>
-                <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
+                <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-3xl">
                     &times;
                 </button>
             </div>
