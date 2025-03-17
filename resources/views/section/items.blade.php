@@ -197,7 +197,7 @@
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
-            // 
+
 
             // Update the popup image
             const popupImage = document.getElementById('popup-item-image');
