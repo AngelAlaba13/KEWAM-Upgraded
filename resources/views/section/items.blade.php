@@ -173,6 +173,8 @@
     </div>
 </div>
 
+{{-- ito --}}
+
 <script>
     function showPopup(event, itemId, itemName, itemCategory, itemQuantity, itemPrice, itemImagePath) {
         if (event.target.closest('td').classList.contains('w-3')) return;
