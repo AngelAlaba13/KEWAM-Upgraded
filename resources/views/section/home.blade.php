@@ -9,7 +9,7 @@
              rounded-full blur-[210px] z-[1] animate-pulse 
              top-[0%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
-    {{--  --}}
+
     <div
         class="absolute w-[420px] h-[380px] 
              bg-[rgb(255,142,142)] 
