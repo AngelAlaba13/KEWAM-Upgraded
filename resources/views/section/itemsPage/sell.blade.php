@@ -43,7 +43,7 @@
         <!-- Display status messages -->
         @if (session('status'))
             <div
-                class=" bg-green-200 text-green-900 rounded-md p-4 fixed top-16 left-1/2 transform -translate-x-1/2 z-50 opacity-100 pointer-events-auto transition-opacity duration-300 status-message">
+                class=" bg-green-200 text-green-900 rounded-md p-4 fixed top-6 left-1/2 transform -translate-x-1/2 z-50 opacity-100 pointer-events-auto transition-opacity duration-300 status-message">
                 {{ session('status') }}
             </div>
         @endif
