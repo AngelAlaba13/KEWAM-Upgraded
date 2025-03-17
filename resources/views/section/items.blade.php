@@ -146,23 +146,23 @@
     <div id="popup"
         class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center transition-opacity duration-300 ease-in-out">
         <div
-            class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl shadow-2xl max-w-lg w-1/3 relative animate-fadeInUp">
+            class="bg-gradient-to-b from-white to-red-100 p-6 rounded-xl shadow-2xl max-w-lg w-1/3 relative animate-fadeInUp">
 
             <!-- Header -->
             <div class="flex justify-between items-center border-b pb-3 mb-5">
-                <p class="text-gray-500 font-medium text-2xl">Item Details</p>
+                <p class="text-red-500 text-opacity-70 font-medium text-lg">Item Details</p>
                 <button onclick="closePopup()" class="absolute top-2 right-5 font-bold text-xl">
                     &times;
                 </button>
             </div>
 
             <!-- Item Name and Category -->
-            <p id="popup-item-name" class="text-center font-extrabold text-xl text-gray-">Item Name</p>
-            <p id="popup-item-category" class="text-center text-sm text-gray-500 italic mb-5">Item Category</p>
+            <p id="popup-item-name" class="text-center font-bold text-2xl text-gray-">Item Name</p>
+            <p id="popup-item-category" class="text-center text-sm text-black italic mb-5">Item Category</p>
 
             <!-- Image Container -->
             <div class="flex flex-col items-center">
-                <div class="flex justify-center mt-3 w-80 h-52 overflow-hidden border-2 border-zinc-400 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                <div class="flex justify-center mt-2 w-80 h-[250px] overflow-hidden border-2 border-zinc-400 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     id="popup-item-image">
                     <img src="" alt="Item Image" class="w-full h-full object-cover rounded-md">
                 </div>
@@ -176,7 +176,8 @@
                 </div>
                 <div class="flex ">
                     <p class="font-bold">Price: </p>
-                    <p id="popup-item-price" class=" text-gray-700 ml-1">Price: <span class=" text-sky-800">0.00</span>
+                    <p id="popup-item-price" class=" text-green-600 ml-1 font-semibold">Price: <span
+                            class=" text-sky-800">0.00</span>
                     </p>
                 </div>
             </div>
