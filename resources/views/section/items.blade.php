@@ -171,7 +171,9 @@
         </div>
 
     </div>
-</div <script>
+</div>
+
+<script>
     function showPopup(event, itemId, itemName, itemCategory, itemQuantity, itemPrice, itemImagePath) {
         if (event.target.closest('td').classList.contains('w-3')) return;
         document.getElementById('popup-item-name').innerText = itemName;
