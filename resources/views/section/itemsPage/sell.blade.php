@@ -1,8 +1,28 @@
 <x-navigationBar></x-navigationBar>
 <div class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]  min-h-screen w-full">
+    <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[hsl(0,100%,63%)] 
+         rounded-full blur-[175px] z-[1] animate-pulse
+         top-[0%] left-[85%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[#ffa7a7] 
+         rounded-full blur-[155px] z-[1] animate-pulse
+         top-[60%] left-[35%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+         bg-[rgb(255,37,37)] 
+         rounded-full blur-[100px] z-[1] animate-pulse
+         top-[80%] left-[95%] translate-x-[-100%] translate-y-[10%]">
+    </div>
 
 
-    <div class="flex flex-col w-full p-6">
+    <div class="flex flex-col w-full p-6 z-50">
         <h1 class="text-2xl font-semibold text-white mb-16 ml-24">Sell Item</h1>
 
         <!-- Display status messages -->
@@ -18,31 +38,33 @@
         @if ($categories->count() == 0)
             <p>No items available.</p>
         @else
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 ml-32 mr-16">
+            <div class="grid grid-cols-4 gap-12 ml-[150px] mr-[125px] z-50">
                 @foreach ($categories as $category)
-                    <div class="bg-white rounded-lg shadow-md p-4">
+                    <div class="bg-gradient-to-b from-white to-red-200 rounded-xl shadow-md p-4 w-[290px]">
+
+
                         <!-- Item Image -->
-                        <div class="w-full h-40 bg-gray-200 mb-4">
+                        <div class=" w-full h-[140px] bg-white mb-3">
                             <img src="{{ asset($category->image_path ?? 'category.png') }}" alt="{{ $category->name }}"
-                                class="w-full h-full object-cover rounded-md border-[0.5px]">
+                                class="w-full h-full object-contain rounded-md border-2 border-gray-300">
                         </div>
 
                         <!-- Item Info -->
-                        <h2 class="text-lg font-semibold text-gray-800">{{ $category->name }}</h2>
-                        <p class="text-sm text-gray-500">Category: {{ $category->category }}</p>
-                        <p class="text-md font-semibold text-gray-700 mt-2">Price:
+                        <h2 class="text-lg font-semibold text-gray-800 underline pb-1">{{ $category->name }}</h2>
+                        <p class="text-xs text-gray-500">Category: {{ $category->category }}</p>
+                        <p class="text-sm font-semibold text-gray-700 mt-5">Price:
                             ₱{{ number_format($category->price, 2) }}</p>
-                        <p class="text-md text-gray-500 mt-1">Available Stock: {{ $category->quantity }}</p>
+                        <p class="text-xs text-gray-500 mt-1">Available Stock: {{ $category->quantity }}</p>
 
                         <!-- Quantity Control -->
-                        <div class="flex items-center justify-center my-4">
-                            <button class="bg-gray-300 px-3 py-1 rounded-md text-xl" data-id="{{ $category->id }}"
-                                data-action="decrease">-</button>
+                        <div class="flex items-center justify-center my-4 mt-7">
+                            <button class="bg-red-500 text-white px-3 rounded-md text-xl border-[0.5px] border-gray-400"
+                                data-id="{{ $category->id }}" data-action="decrease">-</button>
                             <input id="quantity-{{ $category->id }}" type="number" value="1" min="1"
                                 max="{{ $category->quantity }}"
                                 class="w-16 mx-4 text-center border border-gray-300 rounded-md" readonly>
-                            <button class="bg-gray-300 px-3 py-1 rounded-md text-xl" data-id="{{ $category->id }}"
-                                data-action="increase">+</button>
+                            <button class="bg-red-500 text-white px-3 rounded-md text-xl border-[0.5px] border-gray-400"
+                                data-id="{{ $category->id }}" data-action="increase">+</button>
                         </div>
 
                         <!-- Sell Button -->
@@ -51,7 +73,7 @@
                             <input type="hidden" name="quantity" id="hidden-quantity-{{ $category->id }}"
                                 value="1">
                             <button type="submit"
-                                class="bg-green-600 px-4 py-2 text-white font-bold rounded-md text-center w-full block">
+                                class="bg-green-600 px-4 py-2 text-white text-sm font-bold rounded-md text-center w-full block">
                                 Sell Item
                             </button>
                         </form>

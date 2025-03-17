@@ -117,7 +117,7 @@
     </div>
 
     <div
-        class="absolute w-[420px] h-[330px] 
+        class="absolute w-[420px] h-[280px] 
     bg-[rgb(37,7,7)] 
     rounded-full blur-[390px] z-[1] animate-bounce
     top-[530%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
@@ -463,13 +463,13 @@
     </div>
 
     <!-- Logs Section -->
-    <div class="text-md text-white font-medium" id="logs">
-        <p class="flex justify-center items-center font-bold font-mono text-white text-5xl tracking-wider mt-40">
+    <div class="text-md text-white font-medium z-50" id="logs">
+        <p class="flex justify-center items-center font-bold font-mono text-white text-5xl tracking-wider mt-40 z-50">
             Recent Activities</p>
 
         <div class="flex flex-col items-center justify-center">
             <div
-                class=" flex flex-col pl-12 pr-12 w-[65rem] pt-10 pb-10 m-10 mb-5 rounded-3xl bg-white bg-opacity-15 border-[0.5px]">
+                class=" flex flex-col pl-12 pr-12 w-[65rem] pt-10 pb-10 m-10 mb-5 rounded-3xl bg-white bg-opacity-15 border-[0.5px] z-50">
                 @if ($logs->isNotEmpty())
                     <div class="max-h-[300px] overflow-y-auto">
                         <ul>
