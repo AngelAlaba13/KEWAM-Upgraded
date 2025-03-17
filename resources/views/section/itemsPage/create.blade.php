@@ -1,114 +1,220 @@
 <x-navigationBar>
 </x-navigationBar>
-
-
-<div class="flex flex-col w-full">
-
-    <div class="md:ml-24 pt-4 pb-4 border-b border-gray-300">
-        <div class=" flex w-full items-center justify-start h-7">
-            <div class="hidden md:flex">
-                <a href="{{ route(('section.items'))}}">
-                    <button class=" flex bg-slate-900 px-4 py-2 text-white rounded-md" style="font-size: 10px;">
-                        <img src="{{ asset('imgs/back.png')}}" alt="back to items" class=" w-4 mr-2">
-                        BACK</button>
-                </a>
-            </div>
-
-            <div class=" ml-20 md:ml-12 text-xl text-gray-500">
-                Add Item
-            </div>
-
-        </div>
-
+<div class="bg-gradient-to-b from-[hsl(0,59%,43%)] to-[#5c0a0a]  min-h-screen w-screen">
+    <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[rgb(255,101,101)] 
+         rounded-full blur-[220px] z-[1] 
+         top-[72%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    <div
+        class="absolute w-[220px] h-[180px] 
+     bg-[rgb(254,110,110)] 
+     rounded-full blur-[80px] z-[1] 
+     top-[80%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
-    <div class="ml-5 mr-5 pl-12 pr-12 mb-7 pb-9 pt-8 md:ml-28 md:mr-14 mt-10 bg-zinc-200 rounded-xl overflow-hidden shadow-lg block  border-b-2 border-r-2 border-slate-400">
+    <div
+        class="absolute w-[320px] h-[290px] 
+     bg-[hsl(0,100%,63%)] 
+     rounded-full blur-[80px] z-[1] animate-pulse
+     top-[20%] left-[89%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
 
-        <div class="flex center justify-center mb-10">
-            <p class=" text-gray-500 text-3xl font-medium">ADD ITEM</p>
+    <div
+        class="absolute w-[220px] h-[190px] 
+ bg-[hsl(0,100%,74%)] 
+ rounded-full blur-[60px] z-[1] animate-pulse
+ top-[20%] left-[89%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    <div
+        class="absolute w-[120px] h-[80px] 
+         bg-[#ff4646] 
+         rounded-full blur-[110px] z-[1] 
+         top-[82%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div class="flex flex-row h-screen w-screen z-50">
+        <div class="relative h-screen w-[50%] z-50">
+            {{-- <img src="{{ asset('imgs/kewamShop.jpg') }}" alt="Kewam Shop" class=" h-screen w-screen object-none">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/0 to-gray/60"></div> --}}
+            <div class="flex justify-center text-center mt-28 font-bold font-mono text-white text-6xl tracking-wider">
+                <span x-data="{ text: '', fullText: 'Add Item to Your Shop', index: 0, deleting: false }" x-init="let interval = setInterval(() => {
+                    if (!deleting && index < fullText.length) {
+                        text += fullText[index];
+                        index++;
+                    } else if (deleting && index > 0) {
+                        text = text.slice(0, -1);
+                        index--;
+                    }
+                
+                    if (index === fullText.length) {
+                        setTimeout(() => deleting = true, 2000); // Pause before deleting
+                    } else if (index === 0 && deleting) {
+                        deleting = false;
+                    }
+                }, 60)" x-text="text">
+                </span>
+                <span class="animate-ping">|</span>
+            </div>
+
+            <div class="flex justify-center text-center mt-28 font-bold font-mono text-white text-3xl tracking-wider">
+                <span class="mr-6">New </span>
+                <span x-data="{
+                    words: ['Laptop', 'PC Parts', 'Computer', 'Item', 'Cellphone'],
+                    text: '',
+                    index: 0,
+                    charIndex: 0,
+                    deleting: false,
+                    speed: 100,
+                    init() {
+                        this.loop();
+                    },
+                    loop() {
+                        setInterval(() => {
+                            let currentWord = this.words[this.index];
+                
+                            if (!this.deleting && this.charIndex < currentWord.length) {
+                                this.text += currentWord[this.charIndex];
+                                this.charIndex++;
+                            } else if (this.deleting && this.charIndex > 0) {
+                                this.text = this.text.slice(0, -1);
+                                this.charIndex--;
+                            }
+                
+                            if (this.charIndex === currentWord.length && !this.deleting) {
+                                setTimeout(() => this.deleting = true, 2000); // Pause before deleting
+                            } else if (this.charIndex === 0 && this.deleting) {
+                                this.deleting = false;
+                                this.index = (this.index + 1) % this.words.length; // Cycle through words
+                            }
+                        }, this.speed);
+                    }
+                }" x-text="text">
+                </span>
+                <span class="animate-ping">|</span>
+            </div>
+
+
         </div>
-        <form action="{{ route('itemsPage.store')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="flex flex-col md:flex-row justify-between mb-3">
-                <div class=" mb-5 md:mb-3">
-                    <label>Name</label>
-                    <input type="text" name="name" class="w-96 px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
-                    @error('name')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        <span class=" text-dan"></span>
-                    @enderror
-                </div>
 
-                <div class="start ">
-                    <label class=" md:ml-32">Upload Product Image</label>
-                    <input type="file" id="productImage" name="image" accept=".jpeg, .jpg, .png"
-                        class="mb-3 md:mb-0 md:w-72 px-3 py-2 border border-gray-400 rounded-md mt-2 md:ml-32">
-                </div>
-            </div>
+        <div class="flex flex-col w-[50%] z-50">
 
-            <div class="flex flex-col mb-5 md:mb-7">
-                <label>Category</label>
-                <input type="text" name="category" class=" w-96 px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
-                @error('category')
-                    <span class="text-red-500 text-xs">{{ $message }}</span>
-                @enderror
+            <div class="ml-10 pt-4 pb-4 ">
+                <div class=" flex w-full items-center justify-start h-7">
+                    <div class="hidden md:flex">
+                        <a href="{{ route('section.items') }}">
+                            <button class=" flex bg-white px-4 py-2 text-black font-bold rounded-md"
+                                style="font-size: 10px;">
+                                <img src="{{ asset('imgs/back.png') }}" alt="back to items" class=" w-4 mr-2">
+                                BACK</button>
+                        </a>
+                    </div>
+
+
+                </div>
 
             </div>
 
-            <div class="flex flex-col md:flex-row md:justify-start mb-3">
-                <div>
-                  <label>Quantity</label>
-                  <input type="number" name="quantity" min="1" max="9999" step="1" value="1"
-                         class=" w-16 px-3 py-1 border border-gray-400 rounded-md mt-2 mr-12 ml-1 mb-5">
-                         @error('quantity')
-                            <br><span class="text-red-500 text-xs">{{ $message }}</span>
+            <div
+                class="flex flex-col items-center justify-center border-[1px] bg-white bg-opacity-10 border-white/50 m-28 mt-10 mb-10 p-24 pt-10 pb-10 rounded-[35px]">
+                <p class=" text-white text-xl font-medium">Add Item</p>
+                <form action="{{ route('itemsPage.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="flex flex-col mt-8">
+                        <label class="text-white">Name</label>
+                        <input type="text" name="name"
+                            class="w-[415px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
+                        @error('name')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                            <span class=" text-dan"></span>
                         @enderror
-                </div>
-
-                <div>
-                  <label>Price</label>
-                  <input type="number" name="price" min="0" step="0.01" value="0"
-                         class="w-40 px-3 py-1 border border-gray-400 rounded-md mt-2 ml-1 remove-spinner mb-5">
-                         @error('price')
-                            <br><span class="text-red-500 text-xs">{{ $message }}</span>
-                         @enderror
-                </div>
-
-                <style>
-                  /* Remove spinner for price input only */
-                  input.remove-spinner::-webkit-outer-spin-button,
-                  input.remove-spinner::-webkit-inner-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                  }
-
-                  input.remove-spinner {
-                    -moz-appearance: textfield;
-                  }
-                </style>
-
-              </div>
+                    </div>
 
 
-            <div class="flex center justify-end ">
-                <div>
-                    <button type="submit" class=" bg-green-600 px-4 py-2 text-white rounded-md mr-3 shadow-sm shadow-slate-500 font-semibold " style="font-size: 10px;">ADD ITEM</button>
-                </div>
-
-                <div>
-                    <button type="button" onclick="window.location.href='{{ route('section.items') }}'" class=" bg-slate-500 px-4 py-2 text-white rounded-md mr-3 shadow-sm shadow-slate-500 font-semibold " style="font-size: 10px;">
-                        BACK
-                    </button>
 
 
-                </div>
+                    <div class="flex flex-col mt-5">
+                        <label class="text-white">Category</label>
+                        <input type="text" name="category"
+                            class=" w-[415px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2">
+                        @error('category')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+
+                    </div>
+
+                    <div class="flex flex-col md:flex-row md:justify-start mt-5">
+                        <div>
+                            <label class="text-white ">Quantity</label>
+                            <input type="number" name="quantity" min="1" max="9999" step="1"
+                                value="1"
+                                class=" w-[120px] px-3 py-1 border border-gray-400 rounded-md mt-2 mr-10 ml-1 ">
+                            @error('quantity')
+                                <br><span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="text-white">Price</label>
+                            <input type="number" name="price" min="0" step="0.01" value="0"
+                                class="w-[210px] px-3 py-1 border border-gray-400 rounded-md mt-2 ml-1 remove-spinner">
+                            @error('price')
+                                <br><span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <style>
+                            /* Remove spinner for price input only */
+                            input.remove-spinner::-webkit-outer-spin-button,
+                            input.remove-spinner::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+
+                            input.remove-spinner {
+                                -moz-appearance: textfield;
+                            }
+                        </style>
+
+                    </div>
+
+                    <div class="flex flex-col mt-5">
+                        <label class="text-white ">Upload Product Image</label>
+                        <input type="file" id="productImage" name="image" accept=".jpeg, .jpg, .png"
+                            class=" md:w-[415px] px-3 py-1 border bg-white bg-opacity-20 border-gray-400 rounded-md mt-2">
+                    </div>
+
+
+                    <div class="flex center justify-end mt-14">
+                        <div>
+                            <button type="submit"
+                                class=" bg-green-600 shadow-inner px-4 py-2 text-white rounded-md mr-3 shadow-white font-bold "
+                                style="font-size: 12px;">ADD ITEM</button>
+                        </div>
+
+                        <div>
+                            <button type="button" onclick="window.location.href='{{ route('section.items') }}'"
+                                class=" bg-white px-4 py-2 text-black rounded-md mr-3 shadow-sm shadow-slate-500 font-bold "
+                                style="font-size: 12px;">
+                                BACK
+                            </button>
+
+
+                        </div>
+                    </div>
+
+
+                </form>
             </div>
 
 
-        </form>
+        </div>
+
     </div>
+
+
+
+
 </div>
-
-
-
-
