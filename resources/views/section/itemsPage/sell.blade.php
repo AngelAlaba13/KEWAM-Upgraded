@@ -1,5 +1,13 @@
 <x-navigationBar></x-navigationBar>
 <div class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]  min-h-screen w-full">
+
+    <div
+        class="absolute w-[220px] h-[180px] 
+         bg-[#ff6a6a] 
+         rounded-full blur-[95px] z-[1] animate-pulse
+         top-[3%] left-[10%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
     <div
         class="absolute w-[420px] h-[380px] 
          bg-[hsl(0,100%,63%)] 
@@ -12,6 +20,13 @@
          bg-[hsl(0,100%,73%)] 
          rounded-full blur-[205px] z-[1] animate-pulse
          top-[60%] left-[35%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[rgb(255,69,69)] 
+         rounded-full blur-[270px] z-[1] animate-pulse
+         top-[60%] left-[65%] translate-x-[-100%] translate-y-[10%]">
     </div>
 
     <div
