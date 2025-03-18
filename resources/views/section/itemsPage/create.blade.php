@@ -4,13 +4,33 @@
     <div
         class="absolute w-[420px] h-[380px] 
          bg-[rgb(255,101,101)] 
-         rounded-full blur-[220px] z-[1] 
+         rounded-full blur-[260px] z-[1] animate-bounce
+         top-[2%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    <div
+        class="absolute w-[320px] h-[280px] 
+         bg-[hsl(0,100%,64%)] 
+         rounded-full blur-[70px] z-[1] animate-pulse
+         top-[2%] left-[5%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+     bg-[hsl(0,100%,64%)] 
+     rounded-full blur-[280px] z-[1] animate-pulse
+     top-[70%] left-[5%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[hsl(0,100%,63%)] 
+         rounded-full blur-[320px] z-[1] 
          top-[72%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
     <div
         class="absolute w-[220px] h-[180px] 
      bg-[rgb(254,110,110)] 
-     rounded-full blur-[80px] z-[1] 
+     rounded-full blur-[110px] z-[1] animate-pulse
      top-[80%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
@@ -36,32 +56,16 @@
 
     <div class="flex flex-row h-screen w-screen z-50">
         <div class="relative h-screen w-[50%] z-50">
-            {{-- <img src="{{ asset('imgs/kewamShop.jpg') }}" alt="Kewam Shop" class=" h-screen w-screen object-none">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/0 to-gray/60"></div> --}}
-            <div class="flex justify-center text-center mt-28 font-bold font-mono text-white text-6xl tracking-wider">
-                <span x-data="{ text: '', fullText: 'Add Item to Your Shop', index: 0, deleting: false }" x-init="let interval = setInterval(() => {
-                    if (!deleting && index < fullText.length) {
-                        text += fullText[index];
-                        index++;
-                    } else if (deleting && index > 0) {
-                        text = text.slice(0, -1);
-                        index--;
-                    }
-                
-                    if (index === fullText.length) {
-                        setTimeout(() => deleting = true, 2000); // Pause before deleting
-                    } else if (index === 0 && deleting) {
-                        deleting = false;
-                    }
-                }, 60)" x-text="text">
-                </span>
-                <span class="animate-ping">|</span>
+            <div class="flex justify-start text-start mt-52 ml-[180px] font-bold text-white text-6xl tracking-wider ">
+                KEWAM Computer and Services Shop
             </div>
 
-            <div class="flex justify-center text-center mt-28 font-bold font-mono text-white text-3xl tracking-wider">
-                <span class="mr-6">New </span>
+
+            <div
+                class="flex justify-start text-start ml-[180px] mt-7 font-bold font-mono text-white text-2xl tracking-wider">
+                <span class="mr-3">New </span>
                 <span x-data="{
-                    words: ['Laptop', 'PC Parts', 'Computer', 'Item', 'Cellphone'],
+                    words: ['Laptop', 'PC Parts', 'Computer', 'Item', 'Cellphone', 'Girlfriend?'],
                     text: '',
                     index: 0,
                     charIndex: 0,
@@ -100,24 +104,10 @@
 
         <div class="flex flex-col w-[50%] z-50">
 
-            <div class="ml-10 pt-4 pb-4 ">
-                <div class=" flex w-full items-center justify-start h-7">
-                    <div class="hidden md:flex">
-                        <a href="{{ route('section.items') }}">
-                            <button class=" flex bg-white px-4 py-2 text-black font-bold rounded-md"
-                                style="font-size: 10px;">
-                                <img src="{{ asset('imgs/back.png') }}" alt="back to items" class=" w-4 mr-2">
-                                BACK</button>
-                        </a>
-                    </div>
 
-
-                </div>
-
-            </div>
 
             <div
-                class="flex flex-col items-center justify-center border-[1px] bg-white bg-opacity-10 border-white/50 m-28 mt-10 mb-10 p-24 pt-10 pb-10 rounded-[35px]">
+                class="flex flex-col items-center justify-center border-[1px] bg-white bg-opacity-10 border-white/50 m-28 mt-[80px] mb-10 p-24 pt-10 pb-10 rounded-[35px]">
                 <p class=" text-white text-xl font-medium">Add Item</p>
                 <form action="{{ route('itemsPage.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -180,10 +170,10 @@
 
                     </div>
 
-                    <div class="flex flex-col mt-5">
+                    <div class="flex flex-col mt-6">
                         <label class="text-white ">Upload Product Image</label>
                         <input type="file" id="productImage" name="image" accept=".jpeg, .jpg, .png"
-                            class=" md:w-[415px] px-3 py-1 border bg-white bg-opacity-20 border-gray-400 rounded-md mt-2">
+                            class=" md:w-[415px] px-3 py-2 border bg-white bg-opacity-20 border-gray-400 text-white rounded-md mt-3">
                     </div>
 
 
