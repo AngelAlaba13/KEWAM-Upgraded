@@ -56,7 +56,7 @@
 
     <div class="flex flex-row h-screen w-screen z-50">
         <div class="relative h-screen w-[50%] z-50">
-            <div class="flex justify-start text-start mt-52 ml-[180px] font-bold text-white text-6xl tracking-wider ">
+            <div class="flex justify-start text-start mt-72 ml-[180px] font-bold text-white text-6xl tracking-wider ">
                 KEWAM Computer and Services Shop
             </div>
 
