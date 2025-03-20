@@ -1,6 +1,6 @@
 <x-navigationBar>
 </x-navigationBar>
-<div class="bg-gradient-to-b from-[hsl(0,59%,43%)] to-[#5c0a0a]  min-h-screen w-screen">
+<div class="bg-gradient-to-r from-[#a13737] to-[#821111]  min-h-screen w-screen">
     <div
         class="absolute w-[420px] h-[380px] 
          bg-[rgb(255,101,101)] 
@@ -124,9 +124,10 @@
                                     <div class="flex flex-col">
                                         <label class="text-white"> Client Name</label>
                                         <input type="text" name="clientName"
-                                            class="w-[340px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black">
-                                        @error('name')
-                                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                                            class="w-[340px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1  mb-5">
+                                        @error('clientName')
+                                            <span class="text-red-500 text-xs"
+                                                style="margin-top: -16px;">{{ $message }}</span>
                                             <span class=" text-dan"></span>
                                         @enderror
                                     </div>
@@ -136,7 +137,8 @@
                                         <input type="text" name="contactNo"
                                             class="w-[270px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1  mb-5">
                                         @error('contactNo')
-                                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                                            <span class="text-red-500 text-xs"
+                                                style="margin-top: -16px;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -147,7 +149,8 @@
                                         <input type="text" name="address"
                                             class="w-[340px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1  mb-5">
                                         @error('address')
-                                            <span class="text-red-500 text-xs ">{{ $message }}</span>
+                                            <span class="text-red-500 text-xs "
+                                                style="margin-top: -16px;">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -157,7 +160,8 @@
                                             value="0"
                                             class="w-[270px] px-3 py-1 border border-gray-400 rounded-md remove-spinner mt-1 mb-5">
                                         @error('price')
-                                            <br><span class="text-red-500 text-xs">{{ $message }}</span>
+                                            <span class="text-red-500 text-xs"
+                                                style="margin-top: -16px;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -168,7 +172,8 @@
                                         <input type="text" name="service"
                                             class="w-[340px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1 mb-5">
                                         @error('service')
-                                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                                            <span class="text-red-500 text-xs"
+                                                style="margin-top: -16px;">{{ $message }}</span>
                                             <span class=" text-dan"></span>
                                         @enderror
                                     </div>
@@ -178,7 +183,8 @@
                                         <input type="text" name="serviceProvider"
                                             class="w-[270px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-1 mb-5">
                                         @error('serviceProvider')
-                                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                                            <span class="text-red-500 text-xs"
+                                                style="margin-top: -16px;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -215,14 +221,14 @@
                             <div class="flex center justify-end mt-4 mb-10">
                                 <div>
                                     <button type="submit"
-                                        class=" bg-green-600 px-4 py-2 text-white font-semibold rounded-md mr-3 shadow-sm shadow-slate-500"
+                                        class=" bg-green-600 px-4 py-2 text-white font-semibold rounded-md mr-3 shadow-inner shadow-white"
                                         style="font-size: 10px;">ADD SERVICE</button>
                                 </div>
 
                                 <div>
                                     <button type="button"
                                         onclick="window.location.href='{{ route('section.repair') }}'"
-                                        class=" bg-slate-500 px-4 py-2 text-white rounded-md mr-3 shadow-sm shadow-slate-500 font-semibold "
+                                        class=" bg-white px-4 py-2 text-black rounded-md mr-3 shadow-sm shadow-slate-500 font-semibold "
                                         style="font-size: 10px;">
                                         BACK
                                     </button>
@@ -235,6 +241,7 @@
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
