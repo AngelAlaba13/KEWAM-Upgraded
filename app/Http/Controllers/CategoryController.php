@@ -21,7 +21,7 @@ class CategoryController extends Controller
             return $this->search($request);
         }
 
-        $categories = Category::orderBy('created_at', 'desc')->paginate(8); // Default items listing
+        $categories = Category::orderBy('created_at', 'desc')->paginate(7); // Default items listing
         return view('section.items', [
             'categories' => $categories
         ]);
@@ -30,7 +30,8 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){
+    public function create()
+    {
         return view('section.itemsPage.create');
     }
 
@@ -73,15 +74,12 @@ class CategoryController extends Controller
 
         return redirect()->route('itemsPage.index')
             ->with('status', 'Item Added Successfully');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $itemsPage)
-    {
-    }
+    public function show(Category $itemsPage) {}
 
 
     public function edit(Category $itemsPage)
@@ -190,7 +188,8 @@ class CategoryController extends Controller
 
 
 
-    public function sell(Category $category){
+    public function sell(Category $category)
+    {
 
         // Fetch all categories from the database
         $categories = Category::all();
@@ -198,7 +197,6 @@ class CategoryController extends Controller
 
 
         return view('section.itemsPage.sell', compact('categories'));
-
     }
 
     public function sellItem(Request $request, Category $category)
@@ -238,11 +236,4 @@ class CategoryController extends Controller
         return redirect()->route('section.itemsPage.sell')
             ->with('status', "Successfully sold {$quantityToSell} {$category->name}");
     }
-
-
-
-
-
-
-
 }

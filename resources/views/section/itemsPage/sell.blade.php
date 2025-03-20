@@ -1,5 +1,5 @@
 <x-navigationBar></x-navigationBar>
-<div class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]  min-h-screen w-full">
+<div class="bg-gradient-to-r from-[#9e3636] to-[#821111]  min-h-screen w-full">
 
     <div
         class="absolute w-[220px] h-[180px] 

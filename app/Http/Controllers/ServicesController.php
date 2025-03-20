@@ -25,7 +25,7 @@ class ServicesController extends Controller
             return $this->search($request);
         }
 
-        $services = Services::paginate(9); // Default items listing
+        $services = Services::paginate(11); // Default items listing
         return view('section.repair', [
             'services' => $services
         ]);
@@ -111,70 +111,70 @@ class ServicesController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Services $services, $id)
-{
-    $services = Services::find($id);
-     // Log that the update method has been reached
-    //  dd('Update method reached for ID: ' . $services->id);
+    {
+        $services = Services::find($id);
+        // Log that the update method has been reached
+        //  dd('Update method reached for ID: ' . $services->id);
 
 
 
-    // Validate incoming request
-    $request->validate([
-        'clientName' => 'required|string|max:225',
-        'address' => 'required|string|max:500',
-        'contactNo' => 'required|string|max:225',
-        'service' => 'required|string|max:225',
-        'serviceDescription' => 'required|string|min:5|max:1000',
-        'serviceProvider' => 'required|string|max:225',
-        'price' => 'required|numeric',
-        'status' => 'required|string|max:225',
-    ]);
+        // Validate incoming request
+        $request->validate([
+            'clientName' => 'required|string|max:225',
+            'address' => 'required|string|max:500',
+            'contactNo' => 'required|string|max:225',
+            'service' => 'required|string|max:225',
+            'serviceDescription' => 'required|string|min:5|max:1000',
+            'serviceProvider' => 'required|string|max:225',
+            'price' => 'required|numeric',
+            'status' => 'required|string|max:225',
+        ]);
 
-    // Update the service record
-    $services->update([
-        'clientName' => $request->clientName,
-        'address' => $request->address,
-        'contactNo' => $request->contactNo,
-        'service' => $request->service,
-        'serviceDescription' => $request->serviceDescription,
-        'serviceProvider' => $request->serviceProvider,
-        'price' => $request->price,
-        'status' => $request->status,
-    ]);
+        // Update the service record
+        $services->update([
+            'clientName' => $request->clientName,
+            'address' => $request->address,
+            'contactNo' => $request->contactNo,
+            'service' => $request->service,
+            'serviceDescription' => $request->serviceDescription,
+            'serviceProvider' => $request->serviceProvider,
+            'price' => $request->price,
+            'status' => $request->status,
+        ]);
 
-    // Log the update action
-    $message = "A service was updated for client {$services->clientName}";
-    \App\Models\Log::create(['message' => $message]);
+        // Log the update action
+        $message = "A service was updated for client {$services->clientName}";
+        \App\Models\Log::create(['message' => $message]);
 
-    // Redirect back with a success message
-    return redirect()->route('repairPage.index')->with('status', 'Service Updated Successfully');
-}
+        // Redirect back with a success message
+        return redirect()->route('repairPage.index')->with('status', 'Service Updated Successfully');
+    }
 
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Services $services, $id)
-{
-    $services = Services::find($id);
+    {
+        $services = Services::find($id);
 
 
-    // Delete the service record
-    $services->delete();
+        // Delete the service record
+        $services->delete();
 
-    // Get the maximum ID from the services table
-    $maxId = Services::max('id');
+        // Get the maximum ID from the services table
+        $maxId = Services::max('id');
 
-    // Reset the AUTO_INCREMENT value to the maximum ID
-    DB::statement("ALTER TABLE services AUTO_INCREMENT = {$maxId}");
+        // Reset the AUTO_INCREMENT value to the maximum ID
+        DB::statement("ALTER TABLE services AUTO_INCREMENT = {$maxId}");
 
-    // Log the deletion action
-    $message = "A service for client {$services->clientName} was deleted";
-    \App\Models\Log::create(['message' => $message]);
+        // Log the deletion action
+        $message = "A service for client {$services->clientName} was deleted";
+        \App\Models\Log::create(['message' => $message]);
 
-    // Redirect back with a success message
-    return redirect()->route('repairPage.index')->with('status', 'Service deleted successfully');
-}
+        // Redirect back with a success message
+        return redirect()->route('repairPage.index')->with('status', 'Service deleted successfully');
+    }
 
 
 
@@ -235,12 +235,11 @@ class ServicesController extends Controller
         $dompdf->render();
 
         // Output the generated PDF (force download)
-        return response()->stream(function() use ($dompdf) {
+        return response()->stream(function () use ($dompdf) {
             echo $dompdf->output();
         }, 200, [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'attachment; filename="service-details.pdf"',
         ]);
     }
-
 }

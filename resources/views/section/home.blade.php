@@ -1,7 +1,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-<div x-data="starField()" class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]">
+<div x-data="starField()" class="bg-gradient-to-r from-[hsl(0,46%,48%)] to-[#821111]">
     <!-- Blurred Circsssle -->
     <div
         class="absolute w-[420px] h-[380px] 
