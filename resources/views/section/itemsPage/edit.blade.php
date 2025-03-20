@@ -54,7 +54,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                        class=" bg-red-600 px-5 py-2 text-white rounded-md mr-5 font-bold shadow-inner shadow-white"
+                        class=" bg-red-600 px-5 py-2 text-white rounded-md mr-7 font-bold shadow-inner shadow-white"
                         style="font-size: 11px;">DELETE</button>
                 </form>
 
@@ -63,10 +63,10 @@
         </div>
 
         <div
-            class="pl-12 pr-12 mb-7 pb-9 pt-8 md:ml-32 mr-[70px] mt-8 bg-white bg-opacity-15 rounded-[30px] overflow-hidden block  border-[0.5px] border-opacity-60 border-white  z-50">
+            class="pl-12 pr-12 mb-7 pb-9 pt-8 md:ml-32 mr-[70px] mt-8 bg-white bg-opacity-80 rounded-[30px] overflow-hidden block  border-[0.5px] border-opacity-60 border-white  z-50">
 
             <div class="flex center justify-center mb-12">
-                <p class=" text-white text-3xl font-medium">EDIT ITEM</p>
+                <p class=" text-black text-3xl font-medium">EDIT ITEM</p>
             </div>
 
             <form action="{{ route('itemsPage.update', $itemsPage->id) }}" method="POST" enctype="multipart/form-data">
@@ -75,7 +75,7 @@
                 <div class="flex flex-row mb-10 mt-12  z-50">
                     <div class="flex flex-col w-[450px] justify-start mb-3 ml-10  z-50">
                         <div class="flex flex-col mb-10">
-                            <label class="text-white">Name</label>
+                            <label class="text-black">Name</label>
                             <input type="text" name="name"
                                 class="w-[395px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2 mr-20"
                                 value="{{ $itemsPage->name }}">
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class=" flex flex-col mb-10">
-                            <label class="text-white">Category</label>
+                            <label class="text-black">Category</label>
                             <input type="text" name="category"
                                 class="w-[395px] px-4 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-2"
                                 value="{{ $itemsPage->category }}">
@@ -96,7 +96,7 @@
 
                         <div class="flex flex-col md:flex-row md:justify-start mb-3">
                             <div>
-                                <label class="text-white">Quantity</label>
+                                <label class="text-black">Quantity</label>
                                 <input type="number" name="quantity" min="1" max="9999" step="1"
                                     value="{{ $itemsPage->quantity }}"
                                     class=" w-16 px-3 py-1 border border-gray-400 rounded-md mt-2 mr-14 ml-1 mb-5">
@@ -106,7 +106,7 @@
                             </div>
 
                             <div>
-                                <label class="text-white">Price</label>
+                                <label class="text-black">Price</label>
                                 <input type="number" name="price" min="0" step="0.01"
                                     value="{{ $itemsPage->price }}"
                                     class="w-40 px-3 py-1 border border-gray-400 rounded-md mt-2 ml-1 remove-spinner mb-5">
@@ -133,7 +133,7 @@
                     </div>
 
                     <div class="">
-                        <label class="flex mb-3 text-white">Uploaded Product Image</label>
+                        <label class="flex mb-3 text-black">Uploaded Product Image</label>
                         <!-- Display current image if available -->
                         <div class="overflow-hidden rounded-xl">
                             @if ($itemsPage->image_path)

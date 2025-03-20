@@ -290,13 +290,13 @@
                     class="relative flex flex-row items-center justify-center rounded-full border-[0.3px] p-3 pl-4 pt-8 pb-8 border-white z-40">
 
                     <!-- Sliding Border -->
-                    <div class="absolute h-12 w-44 rounded-full border-[3px] border-white transition-all duration-500 z-40"
+                    <div class="absolute h-12 w-[177px] rounded-full border-[3px] border-white transition-all duration-500 z-40"
                         :class="positions[active]">
                     </div>
 
                     <!-- Navigation Items -->
                     <a href="#" @click.prevent="active = 'home'; redirect('{{ route('section.home') }}')">
-                        <div class="relative flex items-center justify-center w-44 h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
+                        <div class="relative flex items-center justify-center w-[174px] h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
                             hover:bg-red-800 hover:text-white"
                             :class="active === 'home' ? 'bg-red-800 text-white' : ''">
                             Home

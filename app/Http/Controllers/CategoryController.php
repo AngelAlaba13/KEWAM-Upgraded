@@ -21,7 +21,7 @@ class CategoryController extends Controller
             return $this->search($request);
         }
 
-        $categories = Category::orderBy('created_at', 'desc')->paginate(7); // Default items listing
+        $categories = Category::orderBy('created_at', 'desc')->paginate(11); // Default items listing
         return view('section.items', [
             'categories' => $categories
         ]);
