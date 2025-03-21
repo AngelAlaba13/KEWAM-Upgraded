@@ -200,6 +200,8 @@
             </div>
             <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-pulse left-[82%] top-[85%]">
             </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-80 animate-pulse left-[95%] top-[10%]">
+            </div>
             <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-pulse left-[14%] top-[14%]">
             </div>
 
