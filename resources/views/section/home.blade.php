@@ -189,6 +189,21 @@
             <div
                 class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-twinkle left-[68%] top-[37%]">
             </div>
+            {{--  --}}
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[37%] top-[44%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[48%] top-[30%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[53%] top-[37%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[58%] top-[10%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-pulse left-[82%] top-[85%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-pulse left-[14%] top-[14%]">
+            </div>
+
+
         </div>
     </div>
 
