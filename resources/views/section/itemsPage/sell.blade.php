@@ -9,17 +9,38 @@
     </div>
 
     <div
+        class="absolute w-[220px] h-[180px] 
+         bg-[rgb(255,143,143)] 
+         rounded-full blur-[95px] z-[1] animate-pulse
+         top-[3%] left-[10%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
         class="absolute w-[420px] h-[380px] 
      bg-[#ff4949] 
-     rounded-full blur-[330px] z-[1] animate-bounce
+     rounded-full blur-[230px] z-[1] animate-bounce
+     top-[3%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+     bg-[hsl(0,100%,75%)] 
+     rounded-full blur-[100px] z-[1] animate-bounce
      top-[3%] left-[60%] translate-x-[-100%] translate-y-[10%]">
     </div>
 
     <div
         class="absolute w-[620px] h-[480px] 
- bg-[rgb(239,62,62)] 
- rounded-full blur-[170px] z-[1]
- top-[0%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+        bg-[rgb(239,62,62)] 
+        rounded-full blur-[170px] z-[1]
+        top-[0%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[620px] h-[480px] 
+        bg-[rgb(255,119,119)] 
+        rounded-full blur-[80px] z-[1]
+        top-[30%] left-[60%] translate-x-[-100%] translate-y-[10%]">
     </div>
 
     <div
