@@ -123,12 +123,12 @@
         top-[500%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
-    <div
+    {{-- <div
         class="absolute w-[420px] h-[280px] 
     bg-[rgb(37,7,7)] 
     rounded-full blur-[390px] z-[1] animate-bounce
     top-[530%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
-    </div>
+    </div> --}}
 
     <div class="absolute inset-0 z-1 pointer-events-none">
         <div class="absolute w-full h-full">
