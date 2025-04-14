@@ -57,11 +57,8 @@
                         class=" bg-red-600 px-5 py-2 text-white rounded-md mr-7 font-bold shadow-inner shadow-white"
                         style="font-size: 11px;">DELETE</button>
                 </form>
-
             </div>
-
         </div>
-
         <div
             class="pl-12 pr-12 mb-7 pb-9 pt-8 md:ml-32 mr-[70px] mt-8 bg-white bg-opacity-80 rounded-[30px] overflow-hidden block  border-[0.5px] border-opacity-60 border-white  z-50">
 
