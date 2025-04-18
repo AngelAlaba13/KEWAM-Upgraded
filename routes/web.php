@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,17 @@ Route::get('/', function () {
     return redirect()->route('section.login');
 });
 
-Route::get('/section/login', [NavigationController::class, 'login'])
+//login Routes
+Route::get('section/register', [AuthController::class, 'showRegisterForm'])
+    ->name('section.register');
+Route::post('section/register', [AuthController::class, 'section.register']);
+Route::get('section/login', [AuthController::class, 'showLoginForm'])
     ->name('section.login');
+Route::post('section/login', [LoginController::class, 'login']);
+Route::post('section/logout', [AuthController::class, 'section.logout'])
+    ->name('section.logout');
+
+//Navigation Routes
 Route::get('/section/home', [NavigationController::class, 'home'])
     ->name('section.home');
 Route::get('section/items', [NavigationController::class, 'items'])
