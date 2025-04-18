@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,21 +23,41 @@ Route::get('/', function () {
     return redirect()->route('section.login');
 });
 
-//login Routes
-Route::get('section/registration', [AuthController::class, 'showRegistrationForm'])
-    ->name('section.registration');
-Route::post('section/registration', [AuthController::class, 'register']);
-Route::get('section/login', [AuthController::class, 'showLoginForm'])
-    ->name('section.login');
-Route::post('section/login', [AuthController::class, 'login']);
-Route::post('section/logout', [AuthController::class, 'logout'])
-    ->name('section.logout');
+// Authentication Routes
+Route::prefix('section')->group(function () {
+    // Registration Routes
+    Route::get('registration', [AuthController::class, 'showRegistrationForm'])->name('section.registration');
+    Route::post('registration', [AuthController::class, 'register']);
+
+    // Login Routes
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('section.login');
+    Route::post('login', [AuthController::class, 'login']);
+
+    // Logout Route
+    Route::post('logout', [AuthController::class, 'logout'])->name('section.logout');
+});
+
+// Email Verification Routes
+Route::get('/email/verify', function () {
+    return view('section.verification'); // Ensure this view exists
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill(); // Mark the user's email as verified
+    return redirect()->route('section.home'); // Redirect to the home page after verification
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Illuminate\Http\Request $request) {
+    $request->user()->sendEmailVerificationNotification(); // Resend the verification email
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 
 
 //Navigation Routes
 Route::get('/section/home', [NavigationController::class, 'home'])
     ->name('section.home')
-    ->middleware('auth');
+    ->middleware(['auth', 'verified']);
 
 Route::get('section/items', [NavigationController::class, 'items'])
     ->name('section.items')
@@ -94,8 +115,7 @@ Route::get('/section/repair', [ServicesController::class, 'index'])
 // Dashboard route
 Route::get('section/home', [DashboardController::class, 'dashboard'])
     ->name('section.home')
-    ->middleware('auth');
-
+    ->middleware(['auth', 'verified']);
 // Route::get('section/home', [DashboardController::class, 'charts'])
 //     ->name('section.home');
 

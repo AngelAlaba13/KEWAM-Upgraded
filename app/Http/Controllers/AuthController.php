@@ -23,14 +23,16 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'role' => $request->role,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('section.login')->with('success', 'Registration successful. Please log in.');
+        $user->sendEmailVerificationNotification();
+
+        return redirect()->route('verification.notice')->with('success', 'Registration successful. Please verify your email.');
     }
 
     public function showLoginForm()
