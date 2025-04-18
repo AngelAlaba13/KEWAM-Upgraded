@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,3 +98,5 @@ Route::post('/generate-pdf', [ServicesController::class, 'generatePDF'])->name('
 // report route
 Route::get('section/reportPage/itemsReport', [ReportController::class, 'report'])
     ->name('section.reportPage.itemsReport');
+
+Route::post('section/login', [LoginController::class, 'login']);
