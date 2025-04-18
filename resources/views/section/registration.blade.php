@@ -25,6 +25,6 @@
 
     <div>
         <label for="conPassword">Confirm Password</label>
-        <input type="conpassword" name="conpasssword" id="conpassword" required>
+        <input type="password" name="conpasssword" id="conpassword" required>
     </div>
 </form>
