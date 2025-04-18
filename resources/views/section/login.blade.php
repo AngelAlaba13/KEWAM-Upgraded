@@ -12,3 +12,7 @@
     <button type="submit">Login</button>
 
 </form>
+
+<a href="{{ route('section.registration') }}">
+    <button type="button">Register</button>
+</a>

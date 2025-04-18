@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('section.register');
+        return view('section.registration');
     }
 
     public function register(Request $request)
@@ -46,7 +46,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('section.home')->with('success', 'Login successful');
+            return redirect()->intended(route('section.home'))->with('success', 'Login successful');
         }
 
         return back()->withErrors([

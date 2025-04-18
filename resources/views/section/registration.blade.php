@@ -1,6 +1,6 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-<form action="{{ route('section.register') }}" method="POST">
+<form action="{{ route('section.registration') }}" method="POST">
     @csrf
 
     <div>
@@ -20,12 +20,12 @@
 
     <div>
         <label for="password">Password</label>
-        <input type="password" name="passsword" id="password" required>
+        <input type="password" name="password" id="password" required>
     </div>
 
     <div>
         <label for="conPassword">Confirm Password</label>
-        <input type="password" name="conpasssword" id="conpassword" required>
+        <input type="password" name="password_confirmation" id="conpassword" required>
     </div>
 
     <button type="submit">Register</button>

@@ -23,13 +23,13 @@ Route::get('/', function () {
 });
 
 //login Routes
-Route::get('section/register', [AuthController::class, 'showRegisterForm'])
-    ->name('section.register');
-Route::post('section/register', [AuthController::class, 'section.register']);
+Route::get('section/registration', [AuthController::class, 'showRegistrationForm'])
+    ->name('section.registration');
+Route::post('section/registration', [AuthController::class, 'register']);
 Route::get('section/login', [AuthController::class, 'showLoginForm'])
     ->name('section.login');
 Route::post('section/login', [AuthController::class, 'login']);
-Route::post('section/logout', [AuthController::class, 'section.logout'])
+Route::post('section/logout', [AuthController::class, 'logout'])
     ->name('section.logout');
 
 
