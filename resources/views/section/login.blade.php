@@ -2,6 +2,7 @@
 
 <form action="{{ route('section.login') }}" method="POST">
     @csrf
+
     <label for="email">Email</label>
     <input type="email" name="email" id="email" required>
 

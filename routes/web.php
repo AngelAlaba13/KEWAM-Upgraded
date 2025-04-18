@@ -5,7 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,50 +28,73 @@ Route::get('section/register', [AuthController::class, 'showRegisterForm'])
 Route::post('section/register', [AuthController::class, 'section.register']);
 Route::get('section/login', [AuthController::class, 'showLoginForm'])
     ->name('section.login');
-Route::post('section/login', [LoginController::class, 'login']);
+Route::post('section/login', [AuthController::class, 'login']);
 Route::post('section/logout', [AuthController::class, 'section.logout'])
     ->name('section.logout');
 
+
 //Navigation Routes
 Route::get('/section/home', [NavigationController::class, 'home'])
-    ->name('section.home');
+    ->name('section.home')
+    ->middleware('auth');
+
 Route::get('section/items', [NavigationController::class, 'items'])
-    ->name('section.items');
+    ->name('section.items')
+    ->middleware('auth');
+
 Route::get('section/repair', [NavigationController::class, 'repair'])
-    ->name('section.repair');
+    ->name('section.repair')
+    ->middleware('auth');
+
 Route::get('section/reportPage/itemsReport', [NavigationController::class, 'report'])
-    ->name('section.reportPage.itemsReport');
+    ->name('section.reportPage.itemsReport')
+    ->middleware('auth');
 
 // Routes for category-related actions
 Route::get('section/itemsPage.create', [CategoryController::class, 'create'])
-    ->name('section.itemsPage.create');
+    ->name('section.itemsPage.create')
+    ->middleware('auth');
+
 Route::get('/section/items', [CategoryController::class, 'index'])
-    ->name('section.items');
+    ->name('section.items')
+    ->middleware('auth');
+
 Route::get('section/itemsPage.edit', [CategoryController::class, 'edit'])
-    ->name('section.itemsPage.edit');
+    ->name('section.itemsPage.edit')
+    ->middleware('auth');
+
 Route::get('section/itemsPage.sell', [CategoryController::class, 'sell'])
-    ->name('section.itemsPage.sell');
+    ->name('section.itemsPage.sell')
+    ->middleware('auth');
 // sell item
 
 // Process the sale (when the user submits the sell form)
 Route::post('section/itemsPage/sell/{category}', [CategoryController::class, 'sellItem'])
-    ->name('itemsPage.sell.submit');
+    ->name('itemsPage.sell.submit')
+    ->middleware('auth');
 
 
-Route::resource('itemsPage', CategoryController::class);
-Route::resource('repairPage', ServicesController::class);
+Route::resource('itemsPage', CategoryController::class)
+    ->middleware('auth');
+
+Route::resource('repairPage', ServicesController::class)
+    ->middleware('auth');
 
 
 // Routes for repair-related actions
 Route::get('section/repairPage.create', [ServicesController::class, 'create'])
-    ->name('section.repairPage.create');
+    ->name('section.repairPage.create')
+    ->middleware('auth');
+
 Route::get('/section/repair', [ServicesController::class, 'index'])
-    ->name('section.repair');
+    ->name('section.repair')
+    ->middleware('auth');
 
 
 // Dashboard route
 Route::get('section/home', [DashboardController::class, 'dashboard'])
-    ->name('section.home');
+    ->name('section.home')
+    ->middleware('auth');
 
 // Route::get('section/home', [DashboardController::class, 'charts'])
 //     ->name('section.home');
@@ -81,9 +103,12 @@ Route::get('section/home', [DashboardController::class, 'dashboard'])
 
 // Search functionality items
 Route::get('/search/suggestions', [CategoryController::class, 'suggestions'])
-    ->name('search.suggestions'); // For the search suggestions
+    ->name('search.suggestions')
+    ->middleware('auth');
+
 Route::get('/search/service-suggestions', [ServicesController::class, 'suggestions'])
-    ->name('search.service.suggestions');
+    ->name('search.service.suggestions')
+    ->middleware('auth');
 
 // Open pdf
 Route::get('/view-pdf/serviceSheet.pdf', function () {
@@ -97,9 +122,9 @@ Route::get('/view-pdf/serviceSheet.pdf', function () {
 });
 
 
-Route::get('/export-pdf', [ReportController::class, 'exportPdf'])->name('export.pdf');
+Route::get('/export-pdf', [ReportController::class, 'exportPdf'])->name('export.pdf')->middleware('auth');
 
-Route::post('/generate-pdf', [ServicesController::class, 'generatePDF'])->name('generatePDF');
+Route::post('/generate-pdf', [ServicesController::class, 'generatePDF'])->name('generatePDF')->middleware('auth');
 
 
 
@@ -107,6 +132,5 @@ Route::post('/generate-pdf', [ServicesController::class, 'generatePDF'])->name('
 
 // report route
 Route::get('section/reportPage/itemsReport', [ReportController::class, 'report'])
-    ->name('section.reportPage.itemsReport');
-
-Route::post('section/login', [LoginController::class, 'login']);
+    ->name('section.reportPage.itemsReport')
+    ->middleware('auth');

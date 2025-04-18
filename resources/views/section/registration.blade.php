@@ -27,4 +27,6 @@
         <label for="conPassword">Confirm Password</label>
         <input type="password" name="conpasssword" id="conpassword" required>
     </div>
+
+    <button type="submit">Register</button>
 </form>
