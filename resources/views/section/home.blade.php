@@ -236,10 +236,18 @@
                     </a>
                     <a href="#logs">
                         <div
-                            class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white hover:text-yellow-500">
+                            class="ml-2 md:ml-2 md:mr-12     text-md sm:text-md font-bold text-white hover:text-yellow-500">
                             Logs
                         </div>
                     </a>
+
+                    <a href="{{ route('section.login') }}" method="POST">
+                        <div
+                            class="ml-2 md:ml-2 md:mr-5 text-xs sm:text-xs mt-[-10px] text-white hover:text-yellow-500">
+                            Logout
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </div>
