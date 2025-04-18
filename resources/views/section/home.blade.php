@@ -267,6 +267,8 @@
             <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider ">
                 EXPLORE
             </div>
+
+
             <script>
                 (function() {
                     if (!window.chatbase || window.chatbase("getState") !== "initialized") {
@@ -299,6 +301,8 @@
                     }
                 })();
             </script>
+
+
 
             <div x-data="{
                 active: 'home',

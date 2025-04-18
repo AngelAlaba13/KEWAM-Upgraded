@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 // Default home view (redirect root to /section/home)
 Route::get('/', function () {
-    return redirect()->route('section.home');
+    return redirect()->route('section.login');
 });
 
+Route::get('/section/login', [NavigationController::class, 'login'])
+    ->name('section.login');
 Route::get('/section/home', [NavigationController::class, 'home'])
     ->name('section.home');
 Route::get('section/items', [NavigationController::class, 'items'])
@@ -39,7 +41,7 @@ Route::get('section/itemsPage.edit', [CategoryController::class, 'edit'])
     ->name('section.itemsPage.edit');
 Route::get('section/itemsPage.sell', [CategoryController::class, 'sell'])
     ->name('section.itemsPage.sell');
-    // sell item
+// sell item
 
 // Process the sale (when the user submits the sell form)
 Route::post('section/itemsPage/sell/{category}', [CategoryController::class, 'sellItem'])
@@ -73,15 +75,15 @@ Route::get('/search/service-suggestions', [ServicesController::class, 'suggestio
     ->name('search.service.suggestions');
 
 // Open pdf
-Route::get('/view-pdf/serviceSheet.pdf', function(){
-        $path = storage_path("app/public/pdfs/serviceSheet.pdf");
+Route::get('/view-pdf/serviceSheet.pdf', function () {
+    $path = storage_path("app/public/pdfs/serviceSheet.pdf");
 
-        if (file_exists($path)) {
-            return response()->file($path);
-        }
+    if (file_exists($path)) {
+        return response()->file($path);
+    }
 
-        abort(404);
-    });
+    abort(404);
+});
 
 
 Route::get('/export-pdf', [ReportController::class, 'exportPdf'])->name('export.pdf');
