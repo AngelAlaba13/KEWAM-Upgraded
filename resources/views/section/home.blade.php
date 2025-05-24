@@ -1,7 +1,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-<div x-data="starField()" class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]">
+<div x-data="starField()" class="bg-gradient-to-r from-[hsl(0,46%,48%)] to-[#821111]">
     <!-- Blurred Circsssle -->
     <div
         class="absolute w-[420px] h-[380px] 
@@ -9,11 +9,18 @@
              rounded-full blur-[210px] z-[1] animate-pulse 
              top-[0%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
+
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[#ff7c7c] 
+             bg-[rgb(255,142,142)] 
              rounded-full blur-[175px] z-[1] 
              top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
+    <div
+        class="absolute w-[120px] h-[80px] 
+         bg-[rgb(255,246,246)] 
+         rounded-full blur-[85px] z-[1] animate-pulse
+         top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
     <div
@@ -39,9 +46,9 @@
     {{-- here --}}
     <div
         class="absolute w-[420px] h-[380px] 
-             bg-[rgb(255,87,87)] 
+             bg-[#ff9797] 
              rounded-full blur-[200px] z-[1] 
-             top-[150%] left-[20%] translate-x-[-50%] translate-y-[-50%]">
+             top-[150%] left-[10%] translate-x-[-50%] translate-y-[-50%]">
     </div>
     {{-- second page --}}
     <div
@@ -116,12 +123,12 @@
         top-[500%] left-[85%] translate-x-[-50%] translate-y-[-50%]">
     </div>
 
-    <div
+    {{-- <div
         class="absolute w-[420px] h-[280px] 
     bg-[rgb(37,7,7)] 
     rounded-full blur-[390px] z-[1] animate-bounce
     top-[530%] left-[0%] translate-x-[-50%] translate-y-[-50%]">
-    </div>
+    </div> --}}
 
     <div class="absolute inset-0 z-1 pointer-events-none">
         <div class="absolute w-full h-full">
@@ -182,6 +189,23 @@
             <div
                 class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-twinkle left-[68%] top-[37%]">
             </div>
+            {{--  --}}
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[37%] top-[44%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[48%] top-[30%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[53%] top-[37%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-100 animate-pulse left-[58%] top-[10%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-pulse left-[82%] top-[85%]">
+            </div>
+            <div class="absolute w-[2px] h-[2px] bg-white rounded-full opacity-80 animate-pulse left-[95%] top-[10%]">
+            </div>
+            <div class="absolute w-[3px] h-[3px] bg-white rounded-full opacity-100 animate-pulse left-[14%] top-[14%]">
+            </div>
+
+
         </div>
     </div>
 
@@ -212,10 +236,18 @@
                     </a>
                     <a href="#logs">
                         <div
-                            class="ml-2 md:ml-2 md:mr-16 text-md sm:text-md font-bold text-white hover:text-yellow-500">
+                            class="ml-2 md:ml-2 md:mr-12     text-md sm:text-md font-bold text-white hover:text-yellow-500">
                             Logs
                         </div>
                     </a>
+
+                    <a href="{{ route('section.login') }}" method="POST">
+                        <div
+                            class="ml-2 md:ml-2 md:mr-5 text-xs sm:text-xs mt-[-10px] text-white hover:text-yellow-500">
+                            Logout
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -243,6 +275,42 @@
             <div class="flex justify-center mt-64 font-bold font-mono text-white text-9xl tracking-wider ">
                 EXPLORE
             </div>
+
+
+            <script>
+                (function() {
+                    if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+                        window.chatbase = (...arguments) => {
+                            if (!window.chatbase.q) {
+                                window.chatbase.q = []
+                            }
+                            window.chatbase.q.push(arguments)
+                        };
+                        window.chatbase = new Proxy(window.chatbase, {
+                            get(target, prop) {
+                                if (prop === "q") {
+                                    return target.q
+                                }
+                                return (...args) => target(prop, ...args)
+                            }
+                        })
+                    }
+                    const onLoad = function() {
+                        const script = document.createElement("script");
+                        script.src = "https://www.chatbase.co/embed.min.js";
+                        script.id = "c8_DMYIA1UwABi62_VqHX";
+                        script.domain = "www.chatbase.co";
+                        document.body.appendChild(script)
+                    };
+                    if (document.readyState === "complete") {
+                        onLoad()
+                    } else {
+                        window.addEventListener("load", onLoad)
+                    }
+                })();
+            </script>
+
+
 
             <div x-data="{
                 active: 'home',
@@ -283,13 +351,13 @@
                     class="relative flex flex-row items-center justify-center rounded-full border-[0.3px] p-3 pl-4 pt-8 pb-8 border-white z-40">
 
                     <!-- Sliding Border -->
-                    <div class="absolute h-12 w-44 rounded-full border-[3px] border-white transition-all duration-500 z-40"
+                    <div class="absolute h-12 w-[177px] rounded-full border-[3px] border-white transition-all duration-500 z-40"
                         :class="positions[active]">
                     </div>
 
                     <!-- Navigation Items -->
                     <a href="#" @click.prevent="active = 'home'; redirect('{{ route('section.home') }}')">
-                        <div class="relative flex items-center justify-center w-44 h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
+                        <div class="relative flex items-center justify-center w-[174px] h-12 rounded-full cursor-pointer transition-all duration-300 text-white z-20
                             hover:bg-red-800 hover:text-white"
                             :class="active === 'home' ? 'bg-red-800 text-white' : ''">
                             Home
@@ -784,6 +852,7 @@
         animation: fadeIn 1s ease-out;
     }
 </style>
+{{--  --}}
 
 
 <script>

@@ -6,19 +6,25 @@ use Illuminate\Http\Request;
 
 class NavigationController extends Controller
 {
-    public function home(){
+
+
+    public function home()
+    {
         return view('section.home');
     }
 
-    public function items(){
+    public function items()
+    {
         return view('section.items');
     }
 
-    public function repair(){
+    public function repair()
+    {
         return view('section.repair');
     }
 
-    public function report(){
+    public function report()
+    {
         return view('section.reportPage.itemsReport');
     }
 }

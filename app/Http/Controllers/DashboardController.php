@@ -31,9 +31,9 @@ class DashboardController extends Controller
 
         // Chart Data for Items
         $categories = Category::select('name', 'quantity')
-                              ->orderBy('quantity', 'desc')
-                              ->limit(5)
-                              ->get();
+            ->orderBy('quantity', 'desc')
+            ->limit(5)
+            ->get();
         $itemlabels = $categories->pluck('name');
         $itemdata = $categories->pluck('quantity');
         $itemMaxData = $itemdata->max();
@@ -41,9 +41,9 @@ class DashboardController extends Controller
 
         // Service Data for Services Chart
         $services = Services::select('price', 'service', 'status')
-                            ->orderBy('price', 'desc')
-                            ->limit(5)
-                            ->get();
+            ->orderBy('price', 'desc')
+            ->limit(5)
+            ->get();
         $servicePrice = $services->pluck('price');
         $service = $services->pluck('service');
         $status = $services->pluck('status');
@@ -58,37 +58,48 @@ class DashboardController extends Controller
         $lastDayOfDecember = Carbon::createFromDate(Carbon::now()->year, 12, 31);
 
         $decemberSales = Category::whereBetween('created_at', [$firstDayOfDecember, $lastDayOfDecember])
-                                 ->get()
-                                 ->sum(function ($category) {
-                                     return $category->sold_quantity * $category->price;
-                                 });
+            ->get()
+            ->sum(function ($category) {
+                return $category->sold_quantity * $category->price;
+            });
 
         // Dummy data for October and November
-        $juneSales = 86112;
-        $julySales = 171870;
-        $augustSales = 77392;
-        $septemberSales = 57392;
-        $octoberSales = 98282;  // Dummy value for October
-        $novemberSales = 87528; // Dummy value for November
+        $novemberSales = 86112;
+        $decemberSales = 171870;
+        $januarySales = 77392;
+        $februarySales = 57392;
+        $marchSales = 98282;  // Dummy value for October
 
         // Prepare the data for the chart (October, November, December)
         $sales_data = [
-            'June'=> $juneSales,
-            'July'=> $julySales,
-            'September'=> $septemberSales,
-            'October' => $octoberSales,
             'November' => $novemberSales,
             'December' => $decemberSales,
+            'January' => $januarySales,
+            'February' => $februarySales,
+            'March' => $marchSales,
         ];
 
         // Prepare labels (months)
-        $labels = ['June', 'July', 'September', 'October', 'November', 'December'];
+        $labels = ['November', 'December', 'January', 'February', 'March'];
 
         return view('section.home', compact(
-            'categoryCount', 'itemCount', 'totalQuantity', 'totalValue', 'SoldItems', 'logs',
-            'itemlabels', 'itemdata', 'itemAdjustedMax', 'servicePrice',
-            'service', 'status', 'ServiceAdjustedMax', 'completeCount', 'incompleteCount',
-            'sales_data', 'labels' // Passing chart data
+            'categoryCount',
+            'itemCount',
+            'totalQuantity',
+            'totalValue',
+            'SoldItems',
+            'logs',
+            'itemlabels',
+            'itemdata',
+            'itemAdjustedMax',
+            'servicePrice',
+            'service',
+            'status',
+            'ServiceAdjustedMax',
+            'completeCount',
+            'incompleteCount',
+            'sales_data',
+            'labels' // Passing chart data
         ));
     }
 }

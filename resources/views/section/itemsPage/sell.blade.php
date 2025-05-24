@@ -1,5 +1,48 @@
 <x-navigationBar></x-navigationBar>
-<div class="bg-gradient-to-r from-[#961c1c] to-[hsl(0,87%,15%)]  min-h-screen w-full">
+<div class="bg-gradient-to-r from-[#9e3636] to-[#821111]  min-h-screen w-full">
+
+    <div
+        class="absolute w-[220px] h-[180px] 
+         bg-[#ff6a6a] 
+         rounded-full blur-[95px] z-[1] animate-pulse
+         top-[3%] left-[10%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[220px] h-[180px] 
+         bg-[rgb(255,143,143)] 
+         rounded-full blur-[95px] z-[1] animate-pulse
+         top-[3%] left-[10%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[420px] h-[380px] 
+     bg-[rgb(144,27,27)] 
+     rounded-full blur-[230px] z-[1] animate-bounce
+     top-[3%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[320px] h-[280px] 
+     bg-[hsl(0,100%,75%)] 
+     rounded-full blur-[100px] z-[1] animate-bounce
+     top-[3%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[620px] h-[480px] 
+        bg-[rgb(239,62,62)] 
+        rounded-full blur-[170px] z-[1]
+        top-[0%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[620px] h-[480px] 
+        bg-[rgb(255,119,119)] 
+        rounded-full blur-[80px] z-[1]
+        top-[30%] left-[60%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
     <div
         class="absolute w-[420px] h-[380px] 
          bg-[hsl(0,100%,63%)] 
@@ -15,10 +58,45 @@
     </div>
 
     <div
+        class="absolute w-[420px] h-[380px] 
+         bg-[rgb(255,69,69)] 
+         rounded-full blur-[270px] z-[1] animate-pulse
+         top-[60%] left-[65%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[220px] h-[180px] 
+     bg-[rgb(255,69,69)] 
+     rounded-full blur-[70px] z-[1] animate-pulse
+     top-[60%] left-[65%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
         class="absolute w-[320px] h-[280px] 
          bg-[rgb(255,37,37)] 
          rounded-full blur-[100px] z-[1] animate-pulse
          top-[80%] left-[95%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[220px] h-[180px] 
+     bg-[rgb(255,37,37)] 
+     rounded-full blur-[50px] z-[1] animate-pulse
+     top-[80%] left-[95%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[520px] h-[480px] 
+     bg-[rgb(255,37,37)] 
+     rounded-full blur-[100px] z-[1] animate-pulse
+     top-[130%] left-[85%] translate-x-[-100%] translate-y-[10%]">
+    </div>
+
+    <div
+        class="absolute w-[520px] h-[480px] 
+     bg-[hsl(0,100%,76%)] 
+     rounded-full blur-[100px] z-[1] animate-pulse
+     top-[110%] left-[8%] translate-x-[-100%] translate-y-[10%]">
     </div>
 
 
