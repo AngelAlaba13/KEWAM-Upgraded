@@ -40,7 +40,7 @@ Route::prefix('section')->group(function () {
 // Email Verification Routes
 Route::get('/email/verify', function () {
     return view('section.verification'); // Ensure this view exists
-})->middleware('auth')->name('verification.notice');
+})->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill(); // Mark the user's email as verified
