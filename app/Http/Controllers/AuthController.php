@@ -30,10 +30,12 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->sendEmailVerificationNotification();
+        // $user->sendEmailVerificationNotification();
 
         // return redirect()->route('verification.notice')->with('success', 'Registration successful. Please verify your email.');
-        return redirect()->route('section.login')->with('success', 'Registration successful. Please verify your email.');
+        // return redirect()->route('section.login')->with('success', 'Registration successful. Please verify your email.');
+        return redirect()->intended(route('section.home'))->with('success', 'Login successful');
+        
     }
 
     public function showLoginForm()
