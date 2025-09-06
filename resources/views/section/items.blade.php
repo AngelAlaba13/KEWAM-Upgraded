@@ -81,7 +81,6 @@
             </div>
         </div>
 
-        <!-- Table Section -->
         <div
             class="ml-5 mb-7 mr-5 md:ml-28 md:mr-14 mt-8 bg-white rounded-lg shadow-lg overflow-hidden border-[0.5px] border-black z-40">
             <div class="overflow-x-auto">
@@ -132,8 +131,6 @@
                             </tr>
                         @endforelse
                     </tbody>
-
-
                 </table>
             </div>
             <div class="flex center justify-center mt-5 mb-4">
@@ -184,7 +181,6 @@
 
         </div>
     </div>
-
 
     <script>
         function showPopup(event, itemId, itemName, itemCategory, itemQuantity, itemPrice, itemImagePath) {

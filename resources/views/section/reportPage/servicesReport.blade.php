@@ -19,11 +19,10 @@
             setTimeout(() => {
                 successMessage.classList.remove('opacity-100', 'pointer-events-auto');
                 successMessage.classList.add('opacity-0', 'pointer-events-none');
-            }, 3000); // 3000ms = 3 seconds
+            }, 3000);
         };
     </script>
 
-    <!-- Table and Search Section -->
     <div class="flex flex-wrap items-center justify-start pt-4 ml-16 pb-3 md:ml-16 md:pt-2 md:pb-2 md:h-14 md:border-b md:border-gray-300">
         <div class="flex flex-wrap sm:flex-nowrap w-full items-center justify-between space-y-4 sm:space-y-0">
             <!-- Items Label and Search Bar -->

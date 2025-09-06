@@ -60,7 +60,6 @@
                 KEWAM Computer and Services Shop
             </div>
 
-
             <div
                 class="flex justify-start text-start ml-[180px] mt-7 font-bold font-mono text-white text-2xl tracking-wider">
                 <span class="mr-3">New </span>
@@ -98,14 +97,9 @@
                 </span>
                 <span class="animate-ping">|</span>
             </div>
-
-
         </div>
 
         <div class="flex flex-col w-[50%] z-50">
-
-
-
             <div
                 class="flex flex-col items-center justify-center border-[1px] bg-white bg-opacity-10 border-white/50 m-28 mt-[80px] mb-10 p-24 pt-10 pb-10 rounded-[35px]">
                 <p class=" text-white text-xl font-medium">Add Item</p>
@@ -121,9 +115,6 @@
                             <span class=" text-dan"></span>
                         @enderror
                     </div>
-
-
-
 
                     <div class="flex flex-col mt-5">
                         <label class="text-white">Category</label>
@@ -156,7 +147,6 @@
                         </div>
 
                         <style>
-                            /* Remove spinner for price input only */
                             input.remove-spinner::-webkit-outer-spin-button,
                             input.remove-spinner::-webkit-inner-spin-button {
                                 -webkit-appearance: none;
@@ -190,21 +180,10 @@
                                 style="font-size: 12px;">
                                 BACK
                             </button>
-
-
                         </div>
                     </div>
-
-
                 </form>
             </div>
-
-
         </div>
-
     </div>
-
-
-
-
 </div>

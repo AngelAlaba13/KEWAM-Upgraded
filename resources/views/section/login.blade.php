@@ -19,28 +19,20 @@
   }
   
   .orb:nth-child(2) {
-    width: 250px;
-    height: 250px;
-    bottom: 55%;
-    right: 25%;
+    width: 220px;
+    height: 220px;
+    bottom: 60%;
+    right: 30%;
     animation-duration: 3s;
   }
 
     .orb:nth-child(3) {
     width: 350px;
     height: 350px;
-    bottom: 5%;
-    right: 58%;
+    bottom: 40%;
+    right: 85%;
     animation-duration: 3s;
   }
-
-    .orb:nth-child(4) {
-        width: 400px;
-        height: 400px;
-        top: 20%;
-        left: 70%;
-        animation-duration: 4s;
-    }
 
   @keyframes twinkle {
     0%, 100% {
@@ -54,20 +46,28 @@
   }
 
 </style>
+   <div
+        class="absolute w-[80px] h-[80px] 
+        bg-[rgb(255,28,28)] 
+        rounded-full blur-[50px] z-[1] animate-pulse
+        top-[77%] left-[88%] translate-x-[-50%] translate-y-[-50%]">
+    </div>
 
 <div x-data="starField()" class="relative w-full min-h-screen flex items-center justify-center">
-  <!-- Starfield Canvas -->
   <div class="absolute inset-0 z-0">
     <canvas id="stars" class="w-full h-full"></canvas>
   </div>
-
-  <!-- Glowing orbs -->
+  
   <div class="orb"></div>
   <div class="orb"></div>
-
-    <!-- Glassmorphic Login Form -->
+  
+  <div class= "flex w-[50%] ">
+    <div class=" z-50 flex justify-start text-start font-bold text-white text-7xl  ">
+                KEWAM Computer and Services Shop
+            </div>
+  </div>
     <div
-      class=" z-10 max-w-md w-full bg-white bg-opacity-10 border border-[rgba(255,255,255,0.59)] backdrop-blur-md rounded-2xl shadow-xl p-10 text-white animate-fadeIn">
+      class=" z-10 max-w-md w-[50%] bg-white bg-opacity-10 border border-[rgba(255,255,255,0.59)] backdrop-blur-md rounded-2xl shadow-xl p-10 text-white animate-fadeIn">
 
       <h2 class="text-4xl font-extrabold mb-8 text-center tracking-wide drop-shadow-md">Login</h2>
 
@@ -95,14 +95,14 @@
         <div>
           <label for="email" class="text-white text-md">Email Address</label>
           <input id="email" type="email" name="email" required autofocus placeholder="Email address"
-            class="w-full bg-transparent border-b-2 border-red-600 py-2 px-2 text-white placeholder-transparent
+            class="w-full bg-[#ffffff1b] border-b-2 border-red-600 py-2 px-2 text-white placeholder-transparent
                    focus:outline-none focus:border-red-400 rounded-lg focus:ring-1 focus:ring-red-400 transition" />
         </div>
 
         <div>
           <label for="password" class="text-white text-md">Password</label>
           <input id="password" type="password" name="password" required placeholder="Password"
-            class=" w-full bg-transparent border-b-2 border-red-600 py-2 px-2 text-white placeholder-transparent
+            class=" w-full bg-[#ffffff1b] border-b-2 border-red-600 py-2 px-2 text-white placeholder-transparent
                    focus:outline-none focus:border-red-400 focus:ring-1 rounded-lg focus:ring-red-400 transition" />
         </div>
 
